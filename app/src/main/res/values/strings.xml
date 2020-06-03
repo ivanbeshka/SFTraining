@@ -8,7 +8,7 @@
   <string name="easy">Easy</string>
   <string name="normal">Normal</string>
     <string name="select_part_of_the_body">Select part of the body</string>
-  <string name="head">Head</string>
+  <string name="neck">Neck</string>
   <string name="shoulders">Shoulders</string>
   <string name="biceps">Biceps</string>
   <string name="triceps">Triceps</string>
@@ -31,7 +31,7 @@
   <string name="weights">Weights</string>
 
   <string-array name="sports">
-    <item>Select your sport</item>
+    <item>Select sport</item>
     <item>Climbing</item>
     <item>Bodybuilding</item>
     <item>Running</item>

@@ -8,4 +8,9 @@
     <item name="colorAccent">@color/colorAccent</item>
   </style>
 
+  <style name="MyChip" parent="Widget.MaterialComponents.Chip.Choice">
+    <item name="checkedIcon">@drawable/ic_checked_24</item>
+    <item name="checkedIconVisible">true</item>
+  </style>
+
 </resources>

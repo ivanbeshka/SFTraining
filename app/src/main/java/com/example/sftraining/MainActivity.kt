@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.sftraining.data.Exer
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_main.*
@@ -48,21 +49,33 @@ class MainActivity : AppCompatActivity() {
         initView()
 
         val exerList = arrayListOf(
-            "my first exer",
-            "fehehshi",
-            "ifwii",
-            "sfsdfd",
-            "asadsda",
-            "my last exerd",
-            " ",
-            " ",
-            " ",
-            " dfksjfdjfsdjf",
-            "fjsjdjsjdfjfsd"
+            Exer(),
+            Exer(),
+            Exer(),
+            Exer(),
+            Exer(),
+            Exer(),
+            Exer(),
+            Exer(),
+            Exer(),
+            Exer(),
+            Exer(),
+            Exer(),
+            Exer(),
+            Exer(),
+            Exer(),
+            Exer(),
+            Exer(),
+            Exer(),
+            Exer(),
+            Exer(),
+            Exer(),
+            Exer()
         )
 
         recyclerAdapter = ExercisesRecyclerAdapter(exerList)
-        val layoutManager = LinearLayoutManager(this)
+        val layoutManager = LinearLayoutManager(this)//StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+//        layoutManager.gapStrategy = StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS
         layoutManager.orientation = RecyclerView.VERTICAL
 
 
@@ -71,7 +84,7 @@ class MainActivity : AppCompatActivity() {
 
 
         fab.setOnClickListener {
-            exerList.add("some exercise")
+            exerList.add(Exer())
             recyclerView.adapter = ExercisesRecyclerAdapter(exerList)
         }
     }

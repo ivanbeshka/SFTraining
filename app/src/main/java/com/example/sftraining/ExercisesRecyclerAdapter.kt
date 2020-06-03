@@ -1,32 +1,37 @@
 package com.example.sftraining
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.exer_item.view.*
+import com.example.sftraining.data.Exer
+import com.google.android.material.textview.MaterialTextView
 
-class ExercisesRecyclerAdapter(private val exercisesList: List<String>) :
-    RecyclerView.Adapter<ExercisesRecyclerAdapter.ViewHolder>() {
+class ExercisesRecyclerAdapter(private val exersList: List<Exer>) :
+    RecyclerView.Adapter<ExercisesRecyclerAdapter.ExerViewHolder>() {
 
-    class ViewHolder(val view: View) : RecyclerView.ViewHolder(view){
+    class ExerViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
+        RecyclerView.ViewHolder(inflater.inflate(R.layout.exer_item, parent, false)) {
 
+        private val tvExerName: MaterialTextView = itemView.findViewById(R.id.tv_exer_name)
+
+        fun bind(exer: Exer){
+            tvExerName.text = exer.name
+        }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.exer_item, parent, false) as View
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExerViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
 
-        return ViewHolder(view)
+        return ExerViewHolder(inflater, parent)
     }
 
     override fun getItemCount(): Int {
-        return exercisesList.size
+        return exersList.size
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.view.textView.text = exercisesList[position]
+    override fun onBindViewHolder(holder: ExerViewHolder, position: Int) {
+        val exer = exersList[position]
+        holder.bind(exer)
     }
 
 }

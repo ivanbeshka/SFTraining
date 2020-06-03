@@ -23,7 +23,7 @@
         <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/sports_spinner"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:entries="@array/sports"
             app:layout_constraintEnd_toEndOf="parent"
@@ -52,18 +52,21 @@
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/cheap_easy"
+                style="@style/MyChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/easy" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/cheap_normal"
+                style="@style/MyChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/normal" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/cheap_hard"
+                style="@style/MyChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/hard" />
@@ -89,61 +92,71 @@
             app:layout_constraintTop_toBottomOf="@+id/textView3">
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/cheap_head"
+                android:id="@+id/cheap_neck"
+                style="@style/MyChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/head" />
+                android:text="@string/neck" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/cheap_shoulders"
+                style="@style/MyChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/shoulders" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/cheap_biceps"
+                style="@style/MyChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/biceps" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/cheap_triceps"
+                style="@style/MyChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/triceps" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/cheap_forearm"
+                style="@style/MyChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/forearm" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_fingers"
+                style="@style/MyChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/fingers" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/cheap_back"
+                style="@style/MyChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/back" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/cheap_chest"
+                style="@style/MyChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/chest" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/cheap_abs"
+                style="@style/MyChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/abs" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/cheap_legs"
+                style="@style/MyChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/legs" />
@@ -191,36 +204,42 @@
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_cardio"
+                style="@style/MyChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/cardio" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_power"
+                style="@style/MyChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/power" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_stretching"
+                style="@style/MyChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/stretching" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_endurance"
+                style="@style/MyChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/endurance" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_statics"
+                style="@style/MyChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/statics" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_dynamics"
+                style="@style/MyChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/dynamics" />
@@ -238,12 +257,14 @@
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_your_weight"
+                style="@style/MyChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/your_weight" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_weights"
+                style="@style/MyChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/weights" />
