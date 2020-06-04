@@ -49,28 +49,19 @@ class MainActivity : AppCompatActivity() {
         initView()
 
         val exerList = arrayListOf(
-            Exer(),
-            Exer(),
-            Exer(),
-            Exer(),
-            Exer(),
-            Exer(),
-            Exer(),
-            Exer(),
-            Exer(),
-            Exer(),
-            Exer(),
-            Exer(),
-            Exer(),
-            Exer(),
-            Exer(),
-            Exer(),
-            Exer(),
-            Exer(),
-            Exer(),
-            Exer(),
-            Exer(),
-            Exer()
+            Exer(name = "Some name"),
+            Exer(name = "Some name"),
+            Exer(name = "Some name"),
+            Exer(name = "Some name"),
+            Exer(name = "Some name"),
+            Exer(name = "Some name"),
+            Exer(name = "Some name"),
+            Exer(name = "Some name"),
+            Exer(name = "Some name"),
+            Exer(name = "Some name"),
+            Exer(name = "Some name"),
+            Exer(name = "Some name"),
+            Exer(name = "Some name")
         )
 
         recyclerAdapter = ExercisesRecyclerAdapter(exerList)
