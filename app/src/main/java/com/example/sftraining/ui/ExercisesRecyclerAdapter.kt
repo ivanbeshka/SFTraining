@@ -1,22 +1,22 @@
-package com.example.sftraining
+package com.example.sftraining.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.sftraining.R
 import com.example.sftraining.data.Exer
+import com.example.sftraining.databinding.ExerItemBinding
 import com.google.android.material.imageview.ShapeableImageView
-import com.google.android.material.shape.CornerFamily
-import com.google.android.material.textview.MaterialTextView
 
-class ExercisesRecyclerAdapter(private val exersList: List<Exer>) :
+class ExercisesRecyclerAdapter(private var exersList: List<Exer>) :
     RecyclerView.Adapter<ExercisesRecyclerAdapter.ExerViewHolder>() {
 
-    class ExerViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
-        RecyclerView.ViewHolder(inflater.inflate(R.layout.exer_item, parent, false)) {
+    class ExerViewHolder(private val exerItemBinding: ExerItemBinding) :
+        RecyclerView.ViewHolder(exerItemBinding.root) {
 
-        private val tvExerName: MaterialTextView = itemView.findViewById(R.id.tv_exer_name)
         private val shapeableImageView =
-            itemView.findViewById<ShapeableImageView>(R.id.shapeableImageView).apply {
+            itemView.findViewById<ShapeableImageView>(R.id.ei_main_shapableimage).apply {
                 val cornerSize: Float = resources.getDimension(R.dimen.cornerRadius)
                 this.shapeAppearanceModel =
                     this.shapeAppearanceModel.toBuilder().setAllCornerSizes(cornerSize).build()
@@ -24,14 +24,17 @@ class ExercisesRecyclerAdapter(private val exersList: List<Exer>) :
 
 
         fun bind(exer: Exer) {
-            tvExerName.text = exer.name
+            exerItemBinding.exer = exer
+            exerItemBinding.executePendingBindings()
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExerViewHolder {
         val inflater = LayoutInflater.from(parent.context)
+        val exerItemBinding =
+            DataBindingUtil.inflate<ExerItemBinding>(inflater, R.layout.exer_item, parent, false)
 
-        return ExerViewHolder(inflater, parent)
+        return ExerViewHolder(exerItemBinding)
     }
 
     override fun getItemCount(): Int {

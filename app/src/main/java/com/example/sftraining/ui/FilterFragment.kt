@@ -1,11 +1,11 @@
-package com.example.sftraining
+package com.example.sftraining.ui
 
-import android.content.res.Resources
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
+import com.example.sftraining.R
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class FilterFragment : BottomSheetDialogFragment() {

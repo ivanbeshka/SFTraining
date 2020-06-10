@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/listOfExers">
+
+    <fragment
+        android:id="@+id/listOfExers"
+        tools:layout="@layout/list_of_exers"
+        android:name="com.example.sftraining.ui.ListOfExersFragment">
+        <action
+            android:id="@+id/action_listOfExers_to_listOfFavoriteExers"
+            app:destination="@id/listOfFavoriteExers" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/listOfFavoriteExers"
+        tools:layout="@layout/list_of_favorite_exers"
+        android:name="com.example.sftraining.ui.ListOfFavoriteExersFragment"/>
+
+</navigation>

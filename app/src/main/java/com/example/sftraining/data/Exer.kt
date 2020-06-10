@@ -1,11 +1,14 @@
 package com.example.sftraining.data
 
+// Exercise data class
 data class Exer(
-    var id: String = "",
-    var name: String = "",
-    var imageUrl: String = "",
-    var videoUrl: String = "",
-    var description: String = "",
-    var tags: List<String> = emptyList(),
-    var creator: String = ""
+    val id: String = "",
+    val name: String = "",
+    val imageUrl: String = "",
+    val videoUrl: String = "",
+    val description: String = "",
+    val tags: List<String> = emptyList(),
+    val creator: String = "",
+    val favoriteNum: String = "",
+    val commentsNum: String = ""
 )
