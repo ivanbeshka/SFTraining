@@ -3,6 +3,7 @@ package com.example.sftraining.ui
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -49,15 +50,31 @@ class MainActivity : AppCompatActivity() {
         initView()
 
         fab.setOnClickListener {
-            val createExerFragment = CreateExerFragment()
+            navController.navigate(R.id.navCrateExer)
+        }
 
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.navCrateExer -> {
+
+                    bottomAppBar.performHide()
+                    fab.hide()
+                }
+
+                R.id.navListOfExers -> {
+                    fab.show()
+                    bottomAppBar.performShow()
+
+                }
+            }
         }
     }
 
     private fun initView() {
         bottomAppBar = findViewById(R.id.bottom_bar)
-        fab = findViewById(R.id.fab)
-        navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        fab = findViewById(R.id.fab_add_exer)
+        navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
     }
 

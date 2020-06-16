@@ -10,12 +10,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class FilterFragment : BottomSheetDialogFragment() {
 
-    private lateinit var searchView: SearchView
-
-    override fun onStart() {
-        super.onStart()
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -24,15 +18,10 @@ class FilterFragment : BottomSheetDialogFragment() {
         val root = inflater.inflate(R.layout.search_filters_fragment, container, false)
         initView(root)
 
-        searchView.setOnClickListener {
-            searchView.onActionViewExpanded()
-//            searchView.queryHint = getString(R.string.action_search)
-        }
 
         return root
     }
 
     private fun initView(root: View) {
-        searchView = root.findViewById(R.id.searchView)
     }
 }

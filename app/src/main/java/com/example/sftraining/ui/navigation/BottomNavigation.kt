@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.example.sftraining.R
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.bottom_nav_sheet.*
 
@@ -25,7 +24,7 @@ class BottomNavigation : BottomSheetDialogFragment() {
 
         navigation_view.setNavigationItemSelectedListener {
             when (it.itemId){
-                R.id.favorite -> { findNavController(this).navigate(R.id.listOfFavoriteExers)
+                R.id.favorite -> { findNavController(this).navigate(R.id.navListOfFavoriteExers)
                     dialog?.hide()
                 }
             }

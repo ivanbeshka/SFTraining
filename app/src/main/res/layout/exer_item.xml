@@ -3,12 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="Exer"
             type="com.example.sftraining.data.Exer" />
     </data>
 
-          <!--    ei - exercise item-->
+    <!--    ei - exercise item-->
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/ei_card"

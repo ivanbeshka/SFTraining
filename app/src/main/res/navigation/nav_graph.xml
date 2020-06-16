@@ -3,20 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/listOfExers">
+    app:startDestination="@id/navListOfExers">
 
     <fragment
-        android:id="@+id/listOfExers"
+        android:id="@+id/navListOfExers"
         tools:layout="@layout/list_of_exers"
         android:name="com.example.sftraining.ui.ListOfExersFragment">
         <action
             android:id="@+id/action_listOfExers_to_listOfFavoriteExers"
-            app:destination="@id/listOfFavoriteExers" />
+            app:destination="@id/navListOfFavoriteExers" />
+        <action
+            android:id="@+id/action_navListOfExers_to_navCrateExer"
+            app:destination="@id/navCrateExer" />
     </fragment>
 
     <fragment
-        android:id="@+id/listOfFavoriteExers"
+        android:id="@+id/navListOfFavoriteExers"
         tools:layout="@layout/list_of_favorite_exers"
         android:name="com.example.sftraining.ui.ListOfFavoriteExersFragment"/>
+
+    <fragment
+        android:id="@+id/navCrateExer"
+        tools:layout="@layout/create_exer_fragment"
+        android:name="com.example.sftraining.ui.create_exer.CreateExerFragment"/>
 
 </navigation>
