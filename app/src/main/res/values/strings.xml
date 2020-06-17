@@ -29,6 +29,9 @@
   <string name="dynamics">Dynamics</string>
   <string name="your_weight">Your weight</string>
   <string name="weights">Weights</string>
+    <string name="end_it">End it!</string>
+  <string name="main_part">Main part</string>
+  <string name="start_with">Start with</string>
 
   <string-array name="sports">
     <item>Select sport</item>
