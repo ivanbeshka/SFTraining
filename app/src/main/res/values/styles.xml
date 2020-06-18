@@ -19,4 +19,9 @@
     <item name="checkedIconVisible">true</item>
   </style>
 
+  <style name="ShapeableImageView">
+    <item name="strokeColor">@color/colorBlack</item>
+    <item name="strokeWidth">@dimen/strokeWith</item>
+  </style>
+
 </resources>

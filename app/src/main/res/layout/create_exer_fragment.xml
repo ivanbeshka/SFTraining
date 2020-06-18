@@ -27,7 +27,7 @@
                 android:text="content"
                 app:icon="@drawable/ic_add_24"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
+                app:layout_constraintTop_toBottomOf="@+id/ce_image_view_content_main" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout"
@@ -46,13 +46,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textMultiLine|textLongMessage|textCapSentences" />
-
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/ce_image_view_content_start"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true" />
             </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ce_image_view_content_start"
+                style="@style/ShapeableImageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
+                android:adjustViewBounds="true"
+                app:layout_constraintBottom_toTopOf="@+id/ce_button_add_content_start"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/ce_button_add_content_start"
@@ -63,7 +71,8 @@
                 android:text="content"
                 app:icon="@drawable/ic_add_24"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+                app:layout_constraintTop_toBottomOf="@id/ce_image_view_content_start"
+                tools:layout_editor_absoluteY="75dp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout2"
@@ -83,12 +92,21 @@
                     android:layout_height="wrap_content"
                     android:inputType="textMultiLine|textLongMessage|textCapSentences" />
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/ce_image_view_content_main"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true" />
+
             </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ce_image_view_content_main"
+                style="@style/ShapeableImageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
+                android:adjustViewBounds="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textInputLayout2" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_create_exer"
@@ -118,13 +136,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textMultiLine|textLongMessage|textCapSentences" />
-
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/ce_image_view_content_end"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true" />
             </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ce_image_view_content_end"
+                style="@style/ShapeableImageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:adjustViewBounds="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textInputLayout3" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/ce_button_add_content_end"
@@ -137,8 +162,7 @@
                 app:icon="@drawable/ic_add_24"
                 app:layout_constraintBottom_toTopOf="@+id/btn_create_exer"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toBottomOf="@+id/ce_image_view_content_end" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
@@ -158,10 +182,10 @@
                 android:id="@+id/ce_fab_add_photo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:fabSize="mini"
+                android:layout_gravity="center"
                 android:background="@color/colorTransparent"
                 android:src="@drawable/ic_add_a_photo_24px"
-                android:layout_gravity="center" />
+                app:fabSize="mini" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ce_title_photo"
@@ -173,14 +197,14 @@
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/ce_toolbar"
                 android:layout_width="match_parent"
-                app:contentInsetLeft="0dp"
-                app:contentInsetEnd="0dp"
-                android:background="@drawable/background_edit_text"
-                app:contentInsetEndWithActions="0dp"
-                app:contentInsetStart="0dp"
-                app:contentInsetRight="0dp"
                 android:layout_height="?attr/actionBarSize"
                 android:layout_gravity="bottom"
+                android:background="@drawable/background_edit_text"
+                app:contentInsetEnd="0dp"
+                app:contentInsetEndWithActions="0dp"
+                app:contentInsetLeft="0dp"
+                app:contentInsetRight="0dp"
+                app:contentInsetStart="0dp"
                 app:layout_collapseMode="pin">
 
                 <com.google.android.material.textfield.TextInputEditText

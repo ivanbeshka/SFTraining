@@ -17,6 +17,8 @@ import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.shape.CornerFamily
+import kotlinx.android.synthetic.main.create_exer_fragment.*
 import kotlin.math.abs
 
 class CreateExerFragment : Fragment() {
@@ -25,10 +27,20 @@ class CreateExerFragment : Fragment() {
     private lateinit var collapsingToolbarLayout: CollapsingToolbarLayout
     private lateinit var appBarLayout: AppBarLayout
     private lateinit var toolbar: MaterialToolbar
-    private lateinit var addTitleImage: FloatingActionButton
+    private lateinit var btnAddTitleImage: FloatingActionButton
     private lateinit var titleImage: AppCompatImageView
+    private lateinit var btnAddStartImage: MaterialButton
+    private lateinit var btnAddMainImage: MaterialButton
+    private lateinit var btnAddEndImage: MaterialButton
 
-    private val RC_GALLERY = 752
+    companion object {
+
+        const val RC_GALLERY_TITLE = 100
+        const val RC_GALLERY_START = 200
+        const val RC_GALLERY_MAIN = 301
+        const val RC_GALLERY_END = 400
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,12 +51,10 @@ class CreateExerFragment : Fragment() {
 
         initView(root)
 
+        initPickPhotoListeners()
+
         btnCreateExer.setOnClickListener {
             findNavController(this).navigate(R.id.navListOfExers)
-        }
-
-        addTitleImage.setOnClickListener {
-            pickPhotoFromGallery()
         }
 
         appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
@@ -60,22 +70,73 @@ class CreateExerFragment : Fragment() {
         return root
     }
 
-    private fun pickPhotoFromGallery() {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (requestCode) {
+            RC_GALLERY_TITLE -> {
+                val image: Uri? = data?.data
+                Glide.with(titleImage).load(image).into(titleImage)
+            }
+
+            RC_GALLERY_START -> {
+                val image: Uri? = data?.data
+                val view = ce_image_view_content_start
+                Glide.with(view).load(image)
+                    .into(view.apply {
+                        val cornerSize: Float = resources.getDimension(R.dimen.cornerRadius)
+                        this.shapeAppearanceModel = this.shapeAppearanceModel.toBuilder()
+                            .setAllCornerSizes(cornerSize).build()
+                    })
+            }
+
+            RC_GALLERY_MAIN -> {
+                Log.e("contMain", "call")
+                val image: Uri? = data?.data
+                val view = ce_image_view_content_main
+                Glide.with(view).load(image)
+                    .into(view.apply {
+                        val cornerSize: Float = resources.getDimension(R.dimen.cornerRadius)
+                        this.shapeAppearanceModel = this.shapeAppearanceModel.toBuilder()
+                            .setAllCornerSizes(cornerSize).build()
+                    })
+            }
+
+            RC_GALLERY_END -> {
+                val image: Uri? = data?.data
+                val view = ce_image_view_content_end
+                Glide.with(view).load(image)
+                    .into(view.apply {
+                        val cornerSize: Float = resources.getDimension(R.dimen.cornerRadius)
+                        this.shapeAppearanceModel = this.shapeAppearanceModel.toBuilder()
+                            .setAllCornerSizes(cornerSize).build()
+                    })
+            }
+        }
+    }
+
+    private fun pickPhotoFromGallery(requestCode: Int) {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
         val mimeType = arrayOf("image/jpeg", "image/png")
         intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeType)
-        startActivityForResult(intent, RC_GALLERY)
+        startActivityForResult(intent, requestCode)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        Log.e("ce", "called")
-        when (requestCode) {
-            RC_GALLERY -> {
-                val image: Uri? = data?.data
-                Glide.with(titleImage).load(image).into(titleImage)
-            }
+    private fun initPickPhotoListeners() {
+        btnAddTitleImage.setOnClickListener {
+            pickPhotoFromGallery(RC_GALLERY_TITLE)
+        }
+
+        btnAddStartImage.setOnClickListener {
+            pickPhotoFromGallery(RC_GALLERY_START)
+        }
+
+        btnAddMainImage.setOnClickListener {
+            pickPhotoFromGallery(RC_GALLERY_MAIN)
+        }
+
+        btnAddEndImage.setOnClickListener {
+            pickPhotoFromGallery(RC_GALLERY_END)
         }
     }
 
@@ -84,7 +145,10 @@ class CreateExerFragment : Fragment() {
         collapsingToolbarLayout = root.findViewById(R.id.ce_collapsing_layout)
         appBarLayout = root.findViewById(R.id.ce_app_bar_layout)
         toolbar = root.findViewById(R.id.ce_toolbar)
-        addTitleImage = root.findViewById(R.id.ce_fab_add_photo)
+        btnAddTitleImage = root.findViewById(R.id.ce_fab_add_photo)
         titleImage = root.findViewById(R.id.ce_title_photo)
+        btnAddStartImage = root.findViewById(R.id.ce_button_add_content_start)
+        btnAddMainImage = root.findViewById(R.id.ce_button_add_content_main)
+        btnAddEndImage = root.findViewById(R.id.ce_button_add_content_end)
     }
 }
