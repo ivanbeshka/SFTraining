@@ -8,8 +8,9 @@ import com.example.sftraining.R
 import com.example.sftraining.data.Exer
 import com.example.sftraining.databinding.ExerItemBinding
 import com.google.android.material.imageview.ShapeableImageView
+import javax.inject.Inject
 
-class ExercisesRecyclerAdapter(private var exersList: List<Exer>) :
+class ExercisesRecyclerAdapter (private var exersList: List<Exer>) :
     RecyclerView.Adapter<ExercisesRecyclerAdapter.ExerViewHolder>() {
 
     class ExerViewHolder(private val exerItemBinding: ExerItemBinding) :

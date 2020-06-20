@@ -1,15 +1,15 @@
 package com.example.sftraining.ui
 
-import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.sftraining.R
-import com.example.sftraining.ui.create_exer.CreateExerFragment
+import com.example.sftraining.ui.main_menus.FilterFragment
+import com.example.sftraining.ui.main_menus.SearchFragment
 import com.example.sftraining.ui.navigation.BottomNavigation
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -30,14 +30,20 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_search -> {
-                val filterFragment = FilterFragment()
+            R.id.action_filters -> {
+                val filterFragment =
+                    FilterFragment()
                 filterFragment.show(supportFragmentManager, filterFragment.tag)
             }
             android.R.id.home -> {
                 val bottomNavigation =
                     BottomNavigation()
                 bottomNavigation.show(supportFragmentManager, bottomNavigation.tag)
+            }
+            R.id.action_search -> {
+                val searchFragment = SearchFragment()
+                searchFragment.dialog?.window?.setBackgroundDrawable(ColorDrawable(resources.getColor(R.color.colorTransparent)))
+                searchFragment.show(supportFragmentManager, searchFragment.tag)
             }
         }
         return true

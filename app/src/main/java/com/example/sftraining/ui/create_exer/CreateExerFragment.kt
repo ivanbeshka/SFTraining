@@ -18,6 +18,7 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.shape.CornerFamily
+import dagger.hilt.android.scopes.FragmentScoped
 import kotlinx.android.synthetic.main.create_exer_fragment.*
 import kotlin.math.abs
 

@@ -1,11 +1,16 @@
 package com.example.sftraining.ui
 
+import androidx.hilt.Assisted
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.example.sftraining.data.Exer
 
-class ExerViewModel : ViewModel() {
+class ExerViewModel constructor(
+    private val state: SavedStateHandle
+) : ViewModel() {
 
     private val exerList: MutableLiveData<List<Exer>> by lazy {
         MutableLiveData<List<Exer>>().also {
@@ -22,7 +27,8 @@ class ExerViewModel : ViewModel() {
                 Exer(name = "Some name"),
                 Exer(name = "Some name"),
                 Exer(name = "Some name"),
-                Exer(name = "Some name"))
+                Exer(name = "Some name")
+            )
         }
     }
 

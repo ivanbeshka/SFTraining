@@ -2,6 +2,7 @@ package com.example.sftraining.ui.navigation
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import dagger.hilt.android.scopes.ActivityScoped
 
 class NavigationManager(private val fragmentManager: FragmentManager, private val container: Int) {
 
