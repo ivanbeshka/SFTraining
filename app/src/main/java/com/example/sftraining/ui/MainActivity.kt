@@ -73,6 +73,10 @@ class MainActivity : AppCompatActivity() {
                     bottomAppBar.performShow()
 
                 }
+
+                R.id.navListOfFavoriteExers -> {
+                    fab.hide()
+                }
             }
         }
     }

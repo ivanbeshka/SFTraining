@@ -20,11 +20,19 @@
     <fragment
         android:id="@+id/navListOfFavoriteExers"
         tools:layout="@layout/list_of_favorite_exers"
-        android:name="com.example.sftraining.ui.ListOfFavoriteExersFragment"/>
+        android:name="com.example.sftraining.ui.ListOfFavoriteExersFragment">
+        <action
+            android:id="@+id/action_navListOfFavoriteExers_to_navListOfExers"
+            app:destination="@id/navListOfExers" />
+    </fragment>
 
     <fragment
         android:id="@+id/navCrateExer"
         tools:layout="@layout/create_exer_fragment"
-        android:name="com.example.sftraining.ui.create_exer.CreateExerFragment"/>
+        android:name="com.example.sftraining.ui.create_exer.CreateExerFragment">
+        <action
+            android:id="@+id/action_navCrateExer_to_navListOfExers"
+            app:destination="@id/navListOfExers" />
+    </fragment>
 
 </navigation>
