@@ -5,9 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.viewpager2.widget.ViewPager2
 import com.example.sftraining.R
 
 class KnowingFragment : Fragment() {
+
+    private lateinit var pagerAdapter: KnowingViewPagerAdapter
+    private lateinit var viewPager: ViewPager2
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -16,6 +20,21 @@ class KnowingFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.knowing_viewpager_fragment, container, false)
 
+        initView(root)
+
+        val fragments = arrayListOf<Fragment>(
+            FirstFragment(),
+            SecondFragment(),
+            ThirdFragment()
+        )
+
+        pagerAdapter = KnowingViewPagerAdapter(fragments, lifecycle, requireActivity().supportFragmentManager)
+        viewPager.adapter = pagerAdapter
+
         return root
+    }
+
+    private fun initView(root: View){
+        viewPager = root.findViewById(R.id.knowing_viewpager)
     }
 }

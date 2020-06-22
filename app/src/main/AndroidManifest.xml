@@ -14,7 +14,9 @@
         <activity android:name=".ui.MainActivity">
             <nav-graph android:value="@navigation/nav_graph" />
         </activity>
-        <activity android:name="com.example.sftraining.ui.start.SplashActivity"
+
+        <activity
+            android:name="com.example.sftraining.ui.start.SplashActivity"
             android:theme="@style/AppTheme.Launcher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,5 +24,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ui.registration.RegistrationActivity">
+            <nav-graph android:value="@navigation/register_nav_graph" />
+        </activity>
+
     </application>
 </manifest>
