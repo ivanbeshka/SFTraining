@@ -1,4 +1,4 @@
-package com.example.sftraining.ui.start
+package com.example.sftraining.ui.registration
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
