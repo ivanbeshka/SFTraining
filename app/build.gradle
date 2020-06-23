@@ -92,4 +92,7 @@ dependencies {
     //lottie
     implementation "com.airbnb.android:lottie:3.4.1"
 
+    //viewpager bottom dots
+    implementation 'com.romandanylyk:pageindicatorview:1.0.3'
+
 }
