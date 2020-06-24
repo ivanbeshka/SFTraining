@@ -41,8 +41,8 @@ class ChooseEnterTypeFragment : Fragment() {
     }
 
     private fun initView(root: View) {
-        btnCreateAcc = root.findViewById(R.id.btn_create_acc)
-        btnLogIn = root.findViewById(R.id.btn_log_in)
+        btnCreateAcc = root.findViewById(R.id.btn_enter_create_acc)
+        btnLogIn = root.findViewById(R.id.btn_enter_log_in)
         btnWithoutRegistration = root.findViewById(R.id.btn_continue_without_registration)
     }
 

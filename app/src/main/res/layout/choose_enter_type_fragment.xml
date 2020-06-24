@@ -6,7 +6,7 @@
     android:background="@drawable/registration_gradient">
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_create_acc"
+        android:id="@+id/btn_enter_create_acc"
         style="@style/MyButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_log_in"
+        android:id="@+id/btn_enter_log_in"
         style="@style/MyButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
         android:text="Log in"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_create_acc" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_enter_create_acc" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_continue_without_registration"
@@ -40,7 +40,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
         android:text="Continue without registration"
-        app:layout_constraintBottom_toTopOf="@+id/btn_create_acc"
+        app:layout_constraintBottom_toTopOf="@+id/btn_enter_create_acc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
