@@ -25,8 +25,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.registration.RegistrationActivity">
-            <nav-graph android:value="@navigation/register_nav_graph" />
+        <activity android:name=".ui.registration.EnterActivity">
+            <nav-graph android:value="@navigation/enter_nav_graph" />
         </activity>
 
     </application>

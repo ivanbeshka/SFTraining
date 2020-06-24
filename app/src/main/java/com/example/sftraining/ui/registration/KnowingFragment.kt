@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.sftraining.R
 import com.rd.PageIndicatorView
+import com.rd.animation.type.AnimationType
 
 class KnowingFragment : Fragment() {
 
@@ -35,7 +36,7 @@ class KnowingFragment : Fragment() {
         viewPager.adapter = pagerAdapter
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
             override fun onPageSelected(position: Int) {
-                pagerDots.setSelected(position)
+                pagerDots.selection = position
             }
         })
 
@@ -45,5 +46,6 @@ class KnowingFragment : Fragment() {
     private fun initView(root: View) {
         viewPager = root.findViewById(R.id.knowing_viewpager)
         pagerDots = root.findViewById(R.id.page_indicator)
+        pagerDots.setAnimationType(AnimationType.DROP)
     }
 }

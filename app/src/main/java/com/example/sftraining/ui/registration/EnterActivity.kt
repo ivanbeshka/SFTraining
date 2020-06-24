@@ -6,13 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import com.example.sftraining.R
 
-class RegistrationActivity : AppCompatActivity() {
+class EnterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.registration_activity)
+        setContentView(R.layout.enter_activity)
 
-        if (!onBoardingFinished()) findNavController(R.id.nav_fragment_register).navigate(R.id.knowingFragment)
+        if (!onBoardingFinished()) findNavController(R.id.nav_fragment_enter).navigate(R.id.navKnowingFragment)
 
     }
 

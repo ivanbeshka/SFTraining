@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.sftraining.R
 import com.example.sftraining.ui.MainActivity
-import com.example.sftraining.ui.registration.RegistrationActivity
+import com.example.sftraining.ui.registration.EnterActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -33,7 +33,7 @@ class SplashActivity : AppCompatActivity() {
 
     private fun routeToAppropriatePage(user: FirebaseUser?){
         if (user == null) {
-            val intent = Intent(this, RegistrationActivity::class.java)
+            val intent = Intent(this, EnterActivity::class.java)
             startActivity(intent)
             finish()
         } else {

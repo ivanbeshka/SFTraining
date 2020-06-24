@@ -8,4 +8,7 @@
   <color name="colorWhite">#FFFFFF</color>
   <color name="colorWhiteHint">#99FFFFFF</color>
   <color name="colorPrimary60">#996200EE</color>
+  <color name="colorUnactive">#555555</color>
+  <color name="colorPrimary70">#B36200EE</color>
+  <color name="colorPrimary40">#666200EE</color>
 </resources>
