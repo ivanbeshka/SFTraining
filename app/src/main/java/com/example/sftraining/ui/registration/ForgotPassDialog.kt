@@ -40,7 +40,7 @@ class ForgotPassDialog : DialogFragment() {
                     etEmail.text.toString()
                 )
 
-            }
+            }.setTitle(R.string.reset_pass).setView(R.layout.forgot_pass_fragment)
 
         return dialogBuilder.create()
     }

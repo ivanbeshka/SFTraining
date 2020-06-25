@@ -31,7 +31,7 @@ class ThirdFragment : Fragment(){
         }
 
         thirdFinishBtn.setOnClickListener {
-            findNavController().navigate(R.id.navLoginFragment)
+            findNavController().navigate(R.id.navChooseEnterTypeFragment)
             onBoardingFinished()
         }
 

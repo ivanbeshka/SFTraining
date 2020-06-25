@@ -23,7 +23,8 @@ class LoginFragment : Fragment() {
         initView(root)
 
         btnForgotPass.setOnClickListener {
-            findNavController().navigate(R.id.navForgotPassFragment)
+            val forgotPassDialog = ForgotPassDialog()
+            forgotPassDialog.show(parentFragmentManager, forgotPassDialog.tag)
         }
 
         return root

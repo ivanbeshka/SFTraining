@@ -8,12 +8,16 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.sftraining.R
 import com.google.android.material.button.MaterialButton
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class ChooseEnterTypeFragment : Fragment() {
 
     private lateinit var btnWithoutRegistration: MaterialButton
     private lateinit var btnLogIn: MaterialButton
     private lateinit var btnCreateAcc: MaterialButton
+    private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,6 +27,8 @@ class ChooseEnterTypeFragment : Fragment() {
         val root = inflater.inflate(R.layout.choose_enter_type_fragment, container, false)
 
         initView(root)
+
+        firebaseAuth = Firebase.auth
 
         btnCreateAcc.setOnClickListener {
             findNavController().navigate(R.id.navRegisterFragment)

@@ -54,6 +54,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.main_activity)
         setSupportActionBar(bottom_bar)
 
+        when(intent.getStringExtra("user_type")){
+            "anon" -> updateUIAnon()
+        }
+
         initView()
 
         fab.setOnClickListener {
@@ -79,6 +83,10 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun updateUIAnon(){
+        //TODO
     }
 
     private fun initView() {
