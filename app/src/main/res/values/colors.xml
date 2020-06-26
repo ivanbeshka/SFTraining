@@ -11,4 +11,5 @@
   <color name="colorUnactive">#555555</color>
   <color name="colorPrimary70">#B36200EE</color>
   <color name="colorPrimary40">#666200EE</color>
+  <color name="colorError">#B00020</color>
 </resources>

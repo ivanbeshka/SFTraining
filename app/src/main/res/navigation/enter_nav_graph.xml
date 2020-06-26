@@ -10,6 +10,9 @@
         android:name="com.example.sftraining.ui.registration.LoginFragment"
         android:label="LoginFragment" >
 
+        <action
+            android:id="@+id/action_navLoginFragment_to_forgotPassFragment"
+            app:destination="@id/navForgotPassFragment" />
     </fragment>
     <fragment
         android:id="@+id/navRegisterFragment"
@@ -36,4 +39,8 @@
             android:id="@+id/action_chooseEnterTypeFragment_to_loginFragment"
             app:destination="@id/navLoginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/navForgotPassFragment"
+        android:name="com.example.sftraining.ui.registration.ForgotPassFragment"
+        android:label="ForgotPassFragment" />
 </navigation>

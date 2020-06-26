@@ -22,7 +22,6 @@ class SplashActivity : AppCompatActivity() {
 
         auth = Firebase.auth
 
-
     }
 
     override fun onStart() {

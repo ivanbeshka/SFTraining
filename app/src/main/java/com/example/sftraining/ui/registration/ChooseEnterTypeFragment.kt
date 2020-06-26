@@ -17,6 +17,7 @@ class ChooseEnterTypeFragment : Fragment() {
     private lateinit var btnWithoutRegistration: MaterialButton
     private lateinit var btnLogIn: MaterialButton
     private lateinit var btnCreateAcc: MaterialButton
+    private lateinit var btnSignInWithGoogle: MaterialButton
     private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreateView(
@@ -43,6 +44,11 @@ class ChooseEnterTypeFragment : Fragment() {
             findNavController().navigate(R.id.navLoginFragment)
         }
 
+        btnSignInWithGoogle.setOnClickListener {
+            val enterActivity: EnterActivity = activity as EnterActivity
+            enterActivity.signInWithGoogle()
+        }
+
         return root
     }
 
@@ -50,6 +56,7 @@ class ChooseEnterTypeFragment : Fragment() {
         btnCreateAcc = root.findViewById(R.id.btn_enter_create_acc)
         btnLogIn = root.findViewById(R.id.btn_enter_log_in)
         btnWithoutRegistration = root.findViewById(R.id.btn_continue_without_registration)
+        btnSignInWithGoogle = root.findViewById(R.id.btn_sign_in_google)
     }
 
 }
