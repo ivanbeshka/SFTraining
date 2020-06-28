@@ -60,6 +60,14 @@
     <string name="choose_your_path_consciously">Choose \nyour path \nconsciously</string>
     <string name="incorrect_email">Incorrect Email</string>
     <string name="msg_sending">Message sending</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="name">Name</string>
+    <string name="register">Register</string>
+    <string name="password_mismatch">Password mismatch</string>
+    <string name="empty_field">Empty field</string>
+    <string name="register_failed">Registration failed</string>
+    <string name="auth_failed">Auth failed</string>
+    <string name="favorite_exercises">Favorite exercises</string>
 
 
     <string-array name="sports">

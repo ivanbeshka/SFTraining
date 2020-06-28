@@ -1,45 +1,59 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-  <style name="AppTheme.Launcher" parent="Theme.MaterialComponents.Light.NoActionBar">
-    <item name="android:windowBackground">@drawable/splash_screen</item>
+    <style name="AppTheme.Launcher" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="AppThemeNoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="errorTextColor">@color/colorError</item>
+        <item name="colorOnBackground">@color/colorPrimaryDark</item>
+        <item name="colorOnError">@color/colorWhite</item>
+        <item name="colorOnSurface">@color/colorBlack</item>
+        <item name="backgroundColor">@color/colorWhite</item>
+        <item name="colorSurface">@color/colorWhite</item>
+        <item name="colorOnPrimary">@color/colorBlack</item>
+        <item name="colorOnSecondary">@color/colorBlack</item>
+        <item name="bottomSheetDialogTheme">@style/CustomBottomSheetDialog</item>
+        <item name="android:autofilledHighlight" tools:ignore="NewApi">@color/colorTransparent</item>
+    </style>
+
+    <style name="MyButton" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">20dp</item>
+    </style>
+
+  <style name="MyTextButton" parent="Widget.MaterialComponents.Button.TextButton">
+    <item name="android:textColor">@color/colorBlack</item>
+      <item name="iconTint">@color/colorBlack</item>
   </style>
 
-  <style name="AppThemeNoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
-    <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    <item name="colorAccent">@color/colorAccent</item>
-    <item name="errorTextColor">@color/colorError</item>
-    <item name="bottomSheetDialogTheme">@style/CustomBottomSheetDialog</item>
-  </style>
+    <style name="MyChip" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="checkedIcon">@drawable/ic_checked_24</item>
+        <item name="checkedIconVisible">true</item>
+    </style>
 
-  <style name="MyButton" parent="Widget.MaterialComponents.Button">
-    <item name="cornerRadius">20dp</item>
-  </style>
+    <style name="CustomBottomSheetDialog" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/CustomBottomSheet</item>
+    </style>
 
-  <style name="MyChip" parent="Widget.MaterialComponents.Chip.Choice">
-    <item name="checkedIcon">@drawable/ic_checked_24</item>
-    <item name="checkedIconVisible">true</item>
-  </style>
+    <style name="CustomBottomSheet" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="shapeAppearanceOverlay">@style/CustomShapeAppearanceBottomSheetDialog</item>
+    </style>
 
-  <style name="CustomBottomSheetDialog" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
-    <item name="bottomSheetStyle">@style/CustomBottomSheet</item>
-  </style>
+    <style name="CustomShapeAppearanceBottomSheetDialog" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">16dp</item>
+        <item name="cornerSizeTopLeft">16dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
 
-  <style name="CustomBottomSheet" parent="Widget.MaterialComponents.BottomSheet">
-    <item name="shapeAppearanceOverlay">@style/CustomShapeAppearanceBottomSheetDialog</item>
-  </style>
-
-  <style name="CustomShapeAppearanceBottomSheetDialog" parent="">
-    <item name="cornerFamily">rounded</item>
-    <item name="cornerSizeTopRight">16dp</item>
-    <item name="cornerSizeTopLeft">16dp</item>
-    <item name="cornerSizeBottomRight">0dp</item>
-    <item name="cornerSizeBottomLeft">0dp</item>
-  </style>
-
-  <style name="ShapeableImageView">
-    <item name="strokeColor">@color/colorBlack</item>
-    <item name="strokeWidth">@dimen/strokeWith</item>
-  </style>
+    <style name="ShapeableImageView">
+        <item name="strokeColor">@color/colorBlack</item>
+        <item name="strokeWidth">@dimen/strokeWith</item>
+    </style>
 
 </resources>

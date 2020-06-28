@@ -27,7 +27,7 @@ class ThirdFragment : Fragment(){
         val viewPager = activity?.findViewById<ViewPager2>(R.id.knowing_viewpager)
 
         thirdPrevBtn.setOnClickListener {
-            viewPager?.currentItem = 2
+            viewPager?.currentItem = 1
         }
 
         thirdFinishBtn.setOnClickListener {

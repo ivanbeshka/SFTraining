@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import com.example.sftraining.R
 import com.example.sftraining.ui.MainActivity
@@ -48,7 +49,11 @@ class EnterActivity : AppCompatActivity() {
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
 
-        if (!onBoardingFinished()) findNavController(R.id.nav_fragment_enter).navigate(R.id.navKnowingFragment)
+        if (onBoardingFinished()) findNavController(R.id.nav_fragment_enter).navigate(
+            R.id.navChooseEnterTypeFragment,
+            null,
+            NavOptions.Builder().setPopUpTo(R.id.navKnowingFragment, true).build()
+        )
 
     }
 
@@ -66,7 +71,8 @@ class EnterActivity : AppCompatActivity() {
             try {
                 val account = task.getResult(ApiException::class.java)!!
                 firebaseAuthWithGoogle(account.idToken!!)
-            } catch (e: ApiException) {}
+            } catch (e: ApiException) {
+            }
         }
     }
 

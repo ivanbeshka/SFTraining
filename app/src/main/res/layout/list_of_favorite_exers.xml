@@ -19,14 +19,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
+
                 app:navigationIcon="@drawable/ic_favorite_24">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Favorite exercises"
-                    android:textColor="@color/colorWhite"
+                    android:text="@string/favorite_exercises"
+                    android:textColor="@color/colorBlack"
                     android:textSize="20sp" />
             </com.google.android.material.appbar.MaterialToolbar>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
