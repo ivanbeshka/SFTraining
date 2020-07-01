@@ -14,7 +14,7 @@ class ExerViewModel constructor(
         MutableLiveData<List<Exer>>().also {
             it.value = listOf(
                 Exer(name = "Some name fjdkhsssssssssssssssssssssssssssssssssssssssk"),
-                Exer(name = "Some name", favoriteNum = "453", commentsNum = "90"),
+                Exer(name = "Some name", favoriteNum = 453, commentsNum = 90),
                 Exer(name = "Some name"),
                 Exer(name = "Some name"),
                 Exer(name = "Some name"),

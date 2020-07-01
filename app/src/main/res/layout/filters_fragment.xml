@@ -13,16 +13,6 @@
         android:layout_height="match_parent"
         android:layout_gravity="bottom">
 
-        <!--        <androidx.appcompat.widget.SearchView-->
-<!--            android:id="@+id/searchView"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:defaultQueryHint="@string/action_search"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:queryHint="@string/action_search" />-->
-
         <View
             android:id="@+id/view"
             android:layout_width="150dp"
