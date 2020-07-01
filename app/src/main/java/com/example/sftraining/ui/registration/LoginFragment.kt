@@ -44,23 +44,13 @@ class LoginFragment : Fragment() {
 
         btnLogIn.setOnClickListener {
             if (EnterActivity.isValidEmail(editTextEmail.text.toString())) {
-                login(editTextEmail.text.toString(), etPass.text.toString())
+                val activity = activity as EnterActivity
+                activity.login(editTextEmail.text.toString(), etPass.text.toString())
             } else {
                 tilEmail.error = getString(R.string.incorrect_email)
             }
         }
         return root
-    }
-
-    private fun login(email: String, pass: String) {
-        firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
-            if (it.isSuccessful) {
-                val intent = Intent(context, MainActivity::class.java)
-                startActivity(intent)
-            } else {
-                Toast.makeText(context, R.string.auth_failed, Toast.LENGTH_SHORT).show()
-            }
-        }
     }
 
     private fun initView(root: View) {

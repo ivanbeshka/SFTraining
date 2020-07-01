@@ -1,4 +1,4 @@
-package com.example.sftraining.ui
+package com.example.sftraining.ui.main_exers
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,7 +8,6 @@ import com.example.sftraining.R
 import com.example.sftraining.data.Exer
 import com.example.sftraining.databinding.ExerItemBinding
 import com.google.android.material.imageview.ShapeableImageView
-import javax.inject.Inject
 
 class ExercisesRecyclerAdapter (private var exersList: List<Exer>) :
     RecyclerView.Adapter<ExercisesRecyclerAdapter.ExerViewHolder>() {
@@ -35,7 +34,9 @@ class ExercisesRecyclerAdapter (private var exersList: List<Exer>) :
         val exerItemBinding =
             DataBindingUtil.inflate<ExerItemBinding>(inflater, R.layout.exer_item, parent, false)
 
-        return ExerViewHolder(exerItemBinding)
+        return ExerViewHolder(
+            exerItemBinding
+        )
     }
 
     override fun getItemCount(): Int {

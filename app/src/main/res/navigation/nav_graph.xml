@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/navListOfExers"
         tools:layout="@layout/list_of_exers"
-        android:name="com.example.sftraining.ui.ListOfExersFragment">
+        android:name="com.example.sftraining.ui.main_exers.ListOfExersFragment">
         <action
             android:id="@+id/action_listOfExers_to_listOfFavoriteExers"
             app:destination="@id/navListOfFavoriteExers" />
@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/navListOfFavoriteExers"
         tools:layout="@layout/list_of_favorite_exers"
-        android:name="com.example.sftraining.ui.ListOfFavoriteExersFragment">
+        android:name="com.example.sftraining.ui.favourite_exers.ListOfFavoriteExersFragment">
         <action
             android:id="@+id/action_navListOfFavoriteExers_to_navListOfExers"
             app:destination="@id/navListOfExers" />

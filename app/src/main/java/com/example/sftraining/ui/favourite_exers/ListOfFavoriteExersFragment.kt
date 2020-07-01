@@ -1,4 +1,4 @@
-package com.example.sftraining.ui
+package com.example.sftraining.ui.favourite_exers
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.sftraining.R
-import com.google.android.material.appbar.MaterialToolbar
 
 class ListOfFavoriteExersFragment : Fragment() {
 

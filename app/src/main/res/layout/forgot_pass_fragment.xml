@@ -45,6 +45,7 @@
         android:layout_height="wrap_content"
         android:text="@string/reset_pass"
         android:textSize="36sp"
+        android:textColor="@color/colorBlack"
         android:layout_marginStart="16dp"
         app:layout_constraintBottom_toTopOf="@+id/text_input_layout_send_password"
         app:layout_constraintStart_toStartOf="parent"

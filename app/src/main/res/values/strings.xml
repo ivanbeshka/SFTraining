@@ -68,6 +68,12 @@
     <string name="register_failed">Registration failed</string>
     <string name="auth_failed">Auth failed</string>
     <string name="favorite_exercises">Favorite exercises</string>
+    <string name="create_an_account">Create an account</string>
+    <string name="continue_without_registration">Continue without registration</string>
+    <string name="or">or</string>
+    <string name="write_title_here">Write title here</string>
+    <string name="content">content</string>
+    <string name="registration">Registration</string>
 
 
     <string-array name="sports">

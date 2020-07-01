@@ -1,4 +1,4 @@
-package com.example.sftraining.ui
+package com.example.sftraining.ui.main_exers
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,14 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sftraining.R
-import dagger.hilt.android.scopes.ActivityScoped
-import dagger.hilt.android.scopes.FragmentScoped
-import javax.inject.Inject
 
 class ListOfExersFragment : Fragment() {
 
@@ -31,7 +27,10 @@ class ListOfExersFragment : Fragment() {
         initView(root)
 
         exerViewModel.getExers().observe( viewLifecycleOwner, Observer { t ->
-            recyclerAdapter = ExercisesRecyclerAdapter(t)
+            recyclerAdapter =
+                ExercisesRecyclerAdapter(
+                    t
+                )
             recyclerView.adapter = recyclerAdapter
         })
 

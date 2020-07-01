@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:text="Create an account"
+        android:text="@string/create_an_account"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +38,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
-        android:text="Continue without registration"
+        android:text="@string/continue_without_registration"
         app:layout_constraintBottom_toTopOf="@+id/btn_enter_create_acc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -61,7 +61,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="or"
+        android:fontFamily="@font/roboto_mono_medium"
+        android:text="@string/or"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,13 +72,14 @@
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
-        android:text="@string/choose_your_path_consciously"
+        android:fontFamily="@font/roboto_mono_medium"
         android:gravity="center"
+        android:text="@string/choose_your_path_consciously"
         android:textColor="@color/colorBlack"
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/btn_continue_without_registration"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

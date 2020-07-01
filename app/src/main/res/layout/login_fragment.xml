@@ -13,6 +13,7 @@
         android:layout_marginStart="16dp"
         android:text="@string/log_in"
         android:textSize="36sp"
+        android:textColor="@color/colorBlack"
         app:layout_constraintBottom_toTopOf="@+id/til_login_email"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

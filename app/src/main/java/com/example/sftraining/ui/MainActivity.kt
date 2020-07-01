@@ -15,7 +15,7 @@ import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.main_activity.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var fab: FloatingActionButton
     private lateinit var bottomAppBar: BottomAppBar
