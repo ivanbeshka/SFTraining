@@ -1,9 +1,8 @@
-package com.example.sftraining.data
+package com.example.sftraining.model
 
-class Group(
+data class Group(
     val organizer: User = User(),
     val members: List<User> = emptyList(),
     val avatarUrl: String = "",
     val chat: List<Msg> = emptyList()
-) {
-}
+)

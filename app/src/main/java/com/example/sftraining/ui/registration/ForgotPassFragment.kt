@@ -10,6 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import com.example.sftraining.R
+import com.example.sftraining.utils.Email
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.dialog.MaterialDialogs
@@ -36,7 +37,7 @@ class ForgotPassFragment : Fragment() {
         initView(root)
 
         btnSend.setOnClickListener {
-            if (EnterActivity.isValidEmail(etEmail.text.toString())) {
+            if (Email.isValid(etEmail.text.toString())) {
                 firebaseAuth.sendPasswordResetEmail(etEmail.text.toString())
                 Toast.makeText(context, R.string.msg_sending, Toast.LENGTH_SHORT).show()
             } else {

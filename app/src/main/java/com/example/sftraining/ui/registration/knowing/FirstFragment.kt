@@ -1,4 +1,4 @@
-package com.example.sftraining.ui.registration
+package com.example.sftraining.ui.registration.knowing
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -1,20 +1,15 @@
 package com.example.sftraining.ui.registration
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.sftraining.R
-import com.example.sftraining.ui.MainActivity
+import com.example.sftraining.utils.Email
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 
 class RegisterFragment : Fragment() {
 
@@ -27,7 +22,6 @@ class RegisterFragment : Fragment() {
     private lateinit var tilRepeatPass: TextInputLayout
     private lateinit var etRepeatPass: TextInputEditText
     private lateinit var btnRegister: MaterialButton
-    private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,25 +30,30 @@ class RegisterFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.register_fragment, container, false)
 
-        firebaseAuth = Firebase.auth
-
         initView(root)
 
         btnRegister.setOnClickListener {
 
-            if (EnterActivity.isValidEmail(etEmail.text.toString())) {
+            //some checks validation
+            if (Email.isValid(etEmail.text.toString())) {
                 if (etPass.text.toString().isNotEmpty()) {
                     if (etPass.text.toString() == etRepeatPass.text.toString()) {
                         tilPass.error = null
                         tilRepeatPass.error = null
                         tilEmail.error = null
 
-                        registration(etEmail.text.toString(), etPass.text.toString())
+                        val activity = activity as EnterActivity
+
+                        activity.registration(
+                            etEmail.text.toString(),
+                            etPass.text.toString(),
+                            name = etName.text.toString()
+                        )
 
                     } else {
                         tilRepeatPass.error = getString(R.string.password_mismatch)
                     }
-                }else{
+                } else {
                     tilPass.error = getString(R.string.empty_field)
                 }
             } else {
@@ -64,17 +63,6 @@ class RegisterFragment : Fragment() {
         }
 
         return root
-    }
-
-    private fun registration(email: String, pass: String) {
-        firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
-            if (it.isSuccessful) {
-                val intent = Intent(context, MainActivity::class.java)
-                startActivity(intent)
-            } else {
-                Toast.makeText(context, R.string.register_failed, Toast.LENGTH_SHORT).show()
-            }
-        }
     }
 
     private fun initView(root: View) {

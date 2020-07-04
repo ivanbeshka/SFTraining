@@ -4,11 +4,15 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import com.example.sftraining.R
-import com.example.sftraining.ui.BaseActivity
-import com.example.sftraining.ui.MainActivity
+import com.example.sftraining.globalviewmodels.UsersViewModel
+import com.example.sftraining.model.User
+import com.example.sftraining.repository.UsersRepository
+import com.example.sftraining.ui.main.BaseActivity
+import com.example.sftraining.ui.main.MainActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -17,21 +21,18 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class EnterActivity : BaseActivity() {
 
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var intentMain: Intent
+    private val enterViewModel: EnterViewModel by viewModels()
 
     companion object {
         private const val RC_SIGN_IN = 9001
-
-        //util for check valid email
-        fun isValidEmail(email: String): Boolean {
-            val regex = Regex("^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$")
-            return email.matches(regex)
-        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,6 +80,31 @@ class EnterActivity : BaseActivity() {
         }
     }
 
+    fun registration(email: String, pass: String, name: String = "") {
+
+        startLoadingAnimation()
+
+        firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
+            if (it.isSuccessful) {
+
+                val user = User(
+                    uid = firebaseAuth.uid.toString(),
+                    email = firebaseAuth.currentUser?.email.toString(),
+                    name = name
+                )
+                //create user in db
+                enterViewModel.createUser(user)
+
+                stopLoadingAnimation()
+
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, R.string.register_failed, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
     private fun firebaseAuthWithGoogle(idToken: String) {
 
         startLoadingAnimation()
@@ -87,8 +113,15 @@ class EnterActivity : BaseActivity() {
         firebaseAuth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    stopLoadingAnimation()
+                    //creating new user
+                    val user = User(
+                        uid = firebaseAuth.uid.toString(),
+                        email = firebaseAuth.currentUser?.email.toString()
+                    )
+                    //create user in db
+                    enterViewModel.createUser(user)
 
+                    stopLoadingAnimation()
                     intentMain.putExtra("user_type", "google")
                     startActivity(intentMain)
                     finish()
@@ -125,6 +158,13 @@ class EnterActivity : BaseActivity() {
 
         firebaseAuth.signInAnonymously().addOnCompleteListener(this) { task ->
             if (task.isSuccessful) {
+
+                val user = User(
+                    uid = firebaseAuth.uid.toString()
+                )
+                //create user in db
+                enterViewModel.createUser(user)
+
                 stopLoadingAnimation()
 
                 intentMain.putExtra("user_type", "anon")

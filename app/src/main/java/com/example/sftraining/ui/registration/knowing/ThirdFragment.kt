@@ -1,4 +1,4 @@
-package com.example.sftraining.ui.registration
+package com.example.sftraining.ui.registration.knowing
 
 import android.content.Context
 import android.os.Bundle

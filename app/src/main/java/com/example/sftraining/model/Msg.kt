@@ -1,7 +1,6 @@
-package com.example.sftraining.data
+package com.example.sftraining.model
 
-class Msg(
+data class Msg(
     val creator: User = User(),
     val content: Any = Any()
-) {
-}
+)

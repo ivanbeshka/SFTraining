@@ -1,4 +1,4 @@
-package com.example.sftraining.ui.registration
+package com.example.sftraining.ui.registration.knowing
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -32,7 +32,11 @@ class KnowingFragment : Fragment() {
         )
 
         pagerAdapter =
-            KnowingViewPagerAdapter(fragments, lifecycle, requireActivity().supportFragmentManager)
+            KnowingViewPagerAdapter(
+                fragments,
+                lifecycle,
+                requireActivity().supportFragmentManager
+            )
         viewPager.adapter = pagerAdapter
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
             override fun onPageSelected(position: Int) {

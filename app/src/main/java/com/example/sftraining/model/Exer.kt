@@ -1,6 +1,6 @@
-package com.example.sftraining.data
+package com.example.sftraining.model
 
-// Exercise data class
+// Exercise
 data class Exer(
     val id: String = "",
     val name: String = "",

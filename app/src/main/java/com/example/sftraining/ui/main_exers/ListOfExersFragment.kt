@@ -26,11 +26,8 @@ class ListOfExersFragment : Fragment() {
 
         initView(root)
 
-        exerViewModel.getExers().observe( viewLifecycleOwner, Observer { t ->
-            recyclerAdapter =
-                ExercisesRecyclerAdapter(
-                    t
-                )
+        exerViewModel.getExers().observe(viewLifecycleOwner, Observer { exers ->
+            recyclerAdapter = ExercisesRecyclerAdapter(exers)
             recyclerView.adapter = recyclerAdapter
         })
 
@@ -41,7 +38,7 @@ class ListOfExersFragment : Fragment() {
         return root
     }
 
-    private fun initView(root: View){
+    private fun initView(root: View) {
         recyclerView = root.findViewById(R.id.recycler_exercises)
     }
 }

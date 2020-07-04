@@ -6,7 +6,7 @@
 
         <variable
             name="Exer"
-            type="com.example.sftraining.data.Exer" />
+            type="com.example.sftraining.model.Exer" />
     </data>
 
     <!--    ei - exercise item-->
@@ -151,7 +151,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
-                android:text='@{String.valueOf(Exer.comments.size())}'
+                android:text='@{Exer.comments.size()}'
                 app:layout_constraintBottom_toBottomOf="@+id/ei_imagebutton_comments"
                 app:layout_constraintEnd_toStartOf="@+id/ei_imagebutton_comments"
                 app:layout_constraintTop_toTopOf="@+id/ei_imagebutton_comments" />
@@ -161,7 +161,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
-                android:text='@{String.valueOf(Exer.favoriteNum)}'
+                android:text='@{Exer.favoriteNum}'
                 app:layout_constraintBottom_toBottomOf="@+id/ei_imagebutton_favorite"
                 app:layout_constraintEnd_toStartOf="@+id/ei_imagebutton_favorite"
                 app:layout_constraintTop_toTopOf="@+id/ei_imagebutton_favorite" />

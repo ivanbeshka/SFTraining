@@ -1,20 +1,22 @@
-package com.example.sftraining.ui
+package com.example.sftraining.ui.main
 
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.sftraining.R
+import com.example.sftraining.ui.main.BaseActivity
 import com.example.sftraining.ui.main_menus.FilterFragment
 import com.example.sftraining.ui.main_menus.SearchFragment
 import com.example.sftraining.ui.navigation.BottomNavigation
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.main_activity.*
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity() {
 
     private lateinit var fab: FloatingActionButton

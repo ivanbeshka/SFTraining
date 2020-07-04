@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.example.sftraining.data.Exer
+import com.example.sftraining.model.Exer
 
 class ExerViewModel constructor(
     private val state: SavedStateHandle

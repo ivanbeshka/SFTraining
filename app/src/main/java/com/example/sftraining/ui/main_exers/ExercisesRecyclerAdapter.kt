@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sftraining.R
-import com.example.sftraining.data.Exer
+import com.example.sftraining.model.Exer
 import com.example.sftraining.databinding.ExerItemBinding
 import com.google.android.material.imageview.ShapeableImageView
 

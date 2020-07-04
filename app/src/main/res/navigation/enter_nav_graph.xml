@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/navKnowingFragment"
-        android:name="com.example.sftraining.ui.registration.KnowingFragment"
+        android:name="com.example.sftraining.ui.registration.knowing.KnowingFragment"
         android:label="knowing_viewpager_fragment"
         tools:layout="@layout/knowing_viewpager_fragment" >
         <action
