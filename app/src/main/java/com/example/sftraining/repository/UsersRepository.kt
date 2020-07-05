@@ -1,13 +1,16 @@
 package com.example.sftraining.repository
 
 import com.example.sftraining.model.User
+import com.example.sftraining.ui.registration.EnterViewModel
 import com.google.firebase.firestore.Source
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
+import dagger.Module
+import dagger.hilt.InstallIn
 import javax.inject.Inject
 
-class UsersRepository @Inject constructor() : Repository {
+class UsersRepository : Repository {
     private val db = Firebase.firestore
 
     companion object {

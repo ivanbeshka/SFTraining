@@ -113,7 +113,7 @@ class EnterActivity : BaseActivity() {
         firebaseAuth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    //creating new user
+
                     val user = User(
                         uid = firebaseAuth.uid.toString(),
                         email = firebaseAuth.currentUser?.email.toString()

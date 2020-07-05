@@ -4,15 +4,15 @@ import com.example.sftraining.repository.UsersRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityRetainedComponent
-import dagger.hilt.android.scopes.ActivityRetainedScoped
+import dagger.hilt.android.components.ApplicationComponent
+import javax.inject.Singleton
 
 @Module
-@InstallIn(ActivityRetainedComponent::class)
+@InstallIn(ApplicationComponent::class)
 object RepositoryModule {
 
     @Provides
-    @ActivityRetainedScoped
+    @Singleton
     fun provideUsersRepository(): UsersRepository{
         return UsersRepository()
     }
