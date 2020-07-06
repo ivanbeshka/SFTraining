@@ -10,7 +10,7 @@ import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import com.example.sftraining.R
 import com.example.sftraining.model.User
-import com.example.sftraining.ui.main.BaseActivity
+import com.example.sftraining.ui.base.BaseActivity
 import com.example.sftraining.ui.main.MainActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -28,10 +28,6 @@ class EnterActivity : BaseActivity() {
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var intentMain: Intent
     private val enterViewModel: EnterViewModel by viewModels()
-
-    companion object {
-        private const val RC_SIGN_IN = 9001
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

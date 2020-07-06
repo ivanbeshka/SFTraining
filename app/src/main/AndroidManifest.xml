@@ -16,7 +16,7 @@
         tools:ignore="AllowBackup">
 
         <activity android:name=".ui.main.MainActivity">
-            <nav-graph android:value="@navigation/nav_graph" />
+            <nav-graph android:value="@navigation/main_nav_graph" />
         </activity>
 
         <activity

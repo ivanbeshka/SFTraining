@@ -19,12 +19,22 @@ class BottomNavigation : BottomSheetDialogFragment() {
         return inflater.inflate(R.layout.bottom_nav_sheet, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         navigation_view.setNavigationItemSelectedListener {
             when (it.itemId){
                 R.id.favorite -> { findNavController(this).navigate(R.id.navListOfFavoriteExers)
+                    dialog?.hide()
+                }
+
+                R.id.profile -> {
+                    findNavController(this).navigate(R.id.navAccSettingsFragment)
+                    dialog?.hide()
+                }
+
+                R.id.all_exers -> {
+                    findNavController(this).navigate(R.id.navListOfExers)
                     dialog?.hide()
                 }
             }

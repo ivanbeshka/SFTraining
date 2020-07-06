@@ -1,4 +1,4 @@
-package com.example.sftraining.ui.main
+package com.example.sftraining.ui.base
 
 import android.os.Bundle
 import android.os.PersistableBundle

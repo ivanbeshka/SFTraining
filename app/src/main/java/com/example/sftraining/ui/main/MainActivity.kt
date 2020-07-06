@@ -7,7 +7,7 @@ import android.view.MenuItem
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.sftraining.R
-import com.example.sftraining.ui.main.BaseActivity
+import com.example.sftraining.ui.base.BaseActivity
 import com.example.sftraining.ui.main_menus.FilterFragment
 import com.example.sftraining.ui.main_menus.SearchFragment
 import com.example.sftraining.ui.navigation.BottomNavigation
@@ -81,6 +81,11 @@ class MainActivity : BaseActivity() {
                 }
 
                 R.id.navListOfFavoriteExers -> {
+                    fab.hide()
+                }
+
+                R.id.navAccSettingsFragment -> {
+                    bottomAppBar.performHide()
                     fab.hide()
                 }
             }

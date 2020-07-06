@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
+    android:id="@+id/main_nav_graph"
     app:startDestination="@id/navListOfExers">
 
     <fragment
@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_navListOfExers_to_navCrateExer"
             app:destination="@id/navCrateExer" />
+        <action
+            android:id="@+id/action_navListOfExers_to_accSettingsFragment"
+            app:destination="@id/navAccSettingsFragment" />
     </fragment>
 
     <fragment
@@ -32,6 +35,14 @@
         android:name="com.example.sftraining.ui.create_exer.CreateExerFragment">
         <action
             android:id="@+id/action_navCrateExer_to_navListOfExers"
+            app:destination="@id/navListOfExers" />
+    </fragment>
+    <fragment
+        android:id="@+id/navAccSettingsFragment"
+        android:name="com.example.sftraining.ui.acc_settings.AccSettingsFragment"
+        android:label="AccSettingsFragment" >
+        <action
+            android:id="@+id/action_accSettingsFragment_to_navListOfExers"
             app:destination="@id/navListOfExers" />
     </fragment>
 
