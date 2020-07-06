@@ -1,14 +1,10 @@
 package com.example.sftraining.repository
 
 import com.example.sftraining.model.User
-import com.example.sftraining.ui.registration.EnterViewModel
 import com.google.firebase.firestore.Source
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
-import dagger.Module
-import dagger.hilt.InstallIn
-import javax.inject.Inject
 
 class UsersRepository : Repository {
     private val db = Firebase.firestore
@@ -22,13 +18,23 @@ class UsersRepository : Repository {
         onComplete: () -> Unit,
         onFailure: (String?) -> Unit
     ) {
-        db.collection(USER_PATH).document(user.uid).set(user)
-            .addOnCompleteListener {
-                onComplete()
+        val docPath = db.collection(USER_PATH).document(user.uid)
+        docPath.get().addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val doc = task.result
+                if (!doc?.exists()!!){
+                    docPath.set(user)
+                        .addOnCompleteListener {
+                            onComplete()
+                        }
+                        .addOnFailureListener {
+                            onFailure(it.message)
+                        }
+                } else {
+                    onComplete()
+                }
             }
-            .addOnFailureListener {
-                onFailure(it.message)
-            }
+        }
     }
 
     fun getUser(

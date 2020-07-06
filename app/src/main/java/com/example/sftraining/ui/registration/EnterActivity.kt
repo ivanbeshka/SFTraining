@@ -4,21 +4,17 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import com.example.sftraining.R
-import com.example.sftraining.globalviewmodels.UsersViewModel
 import com.example.sftraining.model.User
-import com.example.sftraining.repository.UsersRepository
 import com.example.sftraining.ui.main.BaseActivity
 import com.example.sftraining.ui.main.MainActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
@@ -115,13 +111,10 @@ class EnterActivity : BaseActivity() {
                         uid = firebaseAuth.uid.toString(),
                         email = firebaseAuth.currentUser?.email.toString()
                     )
-                    //create user in db
-                    enterViewModel.createUser(user)
 
-                    stopLoadingAnimation()
                     intentMain.putExtra("user_type", "google")
-                    startActivity(intentMain)
-                    finish()
+
+                    createUser(user)
 
                 } else {
                     stopLoadingAnimation()
@@ -157,10 +150,11 @@ class EnterActivity : BaseActivity() {
             if (task.isSuccessful) {
 
                 val user = User(
-                    uid = firebaseAuth.uid.toString()
+                    uid = firebaseAuth.uid.toString(),
+                    anon = true
                 )
-                //create user in db
-                enterViewModel.createUser(user)
+
+                createUser(user)
 
                 stopLoadingAnimation()
 
@@ -174,6 +168,17 @@ class EnterActivity : BaseActivity() {
             }
 
         }
+    }
+
+    //create user in db
+    private fun createUser(user: User){
+        enterViewModel.createUser(user, {
+            stopLoadingAnimation()
+            startActivity(intentMain)
+            finish()
+        }, {
+            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+        })
     }
 
     //if user already finished knowing part

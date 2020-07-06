@@ -11,11 +11,15 @@ class EnterViewModel @ViewModelInject constructor(
 ) : ViewModel() {
 
     //create user in db
-    fun createUser(user: User){
+    fun createUser(
+        user: User,
+        onComplete: () -> Unit = {},
+        onFailure: (String?) -> Unit = {}
+    ){
         usersRepository.createUser(
             user = user,
-            onComplete = {},
-            onFailure = {}
+            onComplete = onComplete,
+            onFailure = onFailure
         )
     }
 }
