@@ -4,11 +4,12 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import android.view.ViewGroup
 import android.widget.RelativeLayout
+import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatActivity
 import com.example.sftraining.R
 import com.google.android.material.progressindicator.ProgressIndicator
 
-open class BaseActivity : AppCompatActivity() {
+open class BaseActivity : AppCompatActivity(){
 
     private lateinit var progressIndicator: ProgressIndicator
 

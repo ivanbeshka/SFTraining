@@ -45,7 +45,7 @@ class ChooseEnterTypeFragment : Fragment() {
         }
 
         btnSignInWithGoogle.setOnClickListener {
-            val enterActivity: EnterActivity = activity as EnterActivity
+            val enterActivity = activity as EnterActivity
             enterActivity.signInWithGoogle()
         }
 

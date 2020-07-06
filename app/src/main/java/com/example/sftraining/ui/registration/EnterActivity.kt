@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
@@ -63,21 +65,16 @@ class EnterActivity : BaseActivity() {
 
     fun signInWithGoogle() {
         val signInIntent = googleSignInClient.signInIntent
-        startActivityForResult(signInIntent, RC_SIGN_IN)
-    }
+        val contract = ActivityResultContracts.StartActivityForResult()
 
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == RC_SIGN_IN) {
-            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            try {
-                val account = task.getResult(ApiException::class.java)!!
-                firebaseAuthWithGoogle(account.idToken!!)
-            } catch (e: ApiException) {
-            }
+        //new result api
+        val getAcc = registerForActivityResult(contract) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(it.data)
+            val account = task.result!!
+            firebaseAuthWithGoogle(account.idToken!!)
         }
+
+        getAcc.launch(signInIntent)
     }
 
     fun registration(email: String, pass: String, name: String = "") {
