@@ -1,6 +1,7 @@
 package com.example.sftraining.repository
 
 import com.example.sftraining.model.User
+import com.example.sftraining.repository.Repository.Companion.USER_PATH
 import com.google.firebase.firestore.Source
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
@@ -8,10 +9,6 @@ import com.google.firebase.ktx.Firebase
 
 class UsersRepository : Repository {
     private val db = Firebase.firestore
-
-    companion object {
-        const val USER_PATH = "users"
-    }
 
     fun createUser(
         user: User,

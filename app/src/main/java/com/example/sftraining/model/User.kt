@@ -5,11 +5,5 @@ data class User(
     val name: String = "",
     val email: String = "",
     val anon: Boolean = false,
-    val avatarUrl: String = "",
-    val globalGroups: List<Group> = emptyList(),
-    val myGroups: List<Group> = emptyList(),
-    val globalTrainings: List<Training> = emptyList(),
-    val myTrainings: List<Training> = emptyList(),
-    val friends: List<User> = emptyList(),
-    val favoriteExers: List<Exer> = emptyList()
+    val avatarUrl: String = ""
 )

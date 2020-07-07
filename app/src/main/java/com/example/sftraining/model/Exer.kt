@@ -7,6 +7,8 @@ data class Exer(
     val imageUrl: String = "",
     val videoUrl: String = "",
     val description: String = "",
+    val isPublic: Boolean = true,
+    val userUid: String = "",
     val tags: List<String> = emptyList(),
     val creator: String = "",
     val favoriteNum: Int = 0,

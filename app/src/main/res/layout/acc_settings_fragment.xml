@@ -12,6 +12,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="8dp"
+        android:adjustViewBounds="true"
         android:src="@drawable/ic_account_circle_24px"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,12 +65,14 @@
         app:layout_constraintTop_toBottomOf="@+id/acc_email" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout4"
+        android:id="@+id/til_personal_info"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:hint="@string/add_personal_information"
+        app:endIconMode="custom"
+        app:endIconDrawable="@drawable/ic_send_24px"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/user_name"
@@ -79,17 +82,21 @@
             android:id="@+id/et_person_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textCapSentences|textLongMessage" />
+            android:inputType="textCapSentences|textLongMessage|textMultiLine" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textview.MaterialTextView
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_personal_info"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="You personal information: "
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:text="@string/you_personal_information"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
+        app:layout_constraintTop_toBottomOf="@+id/til_personal_info" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_migrate_to_full_acc"

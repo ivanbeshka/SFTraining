@@ -112,12 +112,12 @@
                 android:id="@+id/btn_create_exer"
                 android:layout_width="200dp"
                 android:layout_height="50dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 android:text="Create Exercise"
                 app:cornerRadius="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout3"
@@ -164,6 +164,16 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ce_image_view_content_end" />
 
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/ce_checkbox_private"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/private_exer"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_create_exer"
+                app:layout_constraintEnd_toStartOf="@+id/btn_create_exer"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/btn_create_exer" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 

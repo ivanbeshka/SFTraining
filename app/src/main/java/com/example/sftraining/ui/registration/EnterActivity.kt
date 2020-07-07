@@ -73,8 +73,8 @@ class EnterActivity : BaseActivity() {
 
         startLoadingAnimation()
 
-        firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
-            if (it.isSuccessful) {
+        firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
 
                 val user = User(
                     uid = firebaseAuth.uid.toString(),
@@ -82,7 +82,10 @@ class EnterActivity : BaseActivity() {
                     name = name
                 )
                 //create user in db
-                enterViewModel.createUser(user)
+                enterViewModel.createUser(user,
+                    onFailure = {
+                        Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+                    })
 
                 stopLoadingAnimation()
 
@@ -167,7 +170,7 @@ class EnterActivity : BaseActivity() {
     }
 
     //create user in db
-    private fun createUser(user: User){
+    private fun createUser(user: User) {
         enterViewModel.createUser(user, {
             stopLoadingAnimation()
             startActivity(intentMain)
