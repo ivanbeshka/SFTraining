@@ -2,18 +2,14 @@ package com.example.sftraining.model
 
 // Exercise
 data class Exer(
-    val id: String = "",
-    val name: String = "",
-    val imageUrl: String = "",
+    val title: String = "",
+    val imageUris: List<String> = emptyList(),
     val videoUrl: String = "",
     val description: String = "",
-    val isPublic: Boolean = true,
+    val isPrivate: Boolean = false,
     val userUid: String = "",
-    val tags: List<String> = emptyList(),
-    val creator: String = "",
     val favoriteNum: Int = 0,
     val commentsNum: Int = 0,
-    val comments: List<Msg> = emptyList(),
     val execTimeMin: Int = 0
 ) {
     companion object {

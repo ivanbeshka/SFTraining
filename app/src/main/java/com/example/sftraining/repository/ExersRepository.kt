@@ -7,7 +7,10 @@ import com.example.sftraining.repository.Repository.Companion.USER_PATH
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-class ExersRepository : Repository {
+class ExersRepository(
+    private val imageRepository: ImageRepository
+) : Repository {
+
     private val db = Firebase.firestore
 
     fun addExer(
@@ -15,8 +18,10 @@ class ExersRepository : Repository {
         onSuccess: () -> Unit,
         onFailure: (String?) -> Unit
     ) {
+        //add images
+        imageRepository.addExerImages(exer)
 
-        if (exer.isPublic) {
+        if (exer.isPrivate) {
             val doc = db.collection(EXER_PATH).document()
             doc.set(exer)
                 .addOnSuccessListener {
