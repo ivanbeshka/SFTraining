@@ -55,6 +55,7 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
         setSupportActionBar(bottom_bar)
+        setProgressIndicatorLayout(R.id.loading_indicator_layout_main)
 
         when(intent.getStringExtra("user_type")){
             "anon" -> updateUIAnon()

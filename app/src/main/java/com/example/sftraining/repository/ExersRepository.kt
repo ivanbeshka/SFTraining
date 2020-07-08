@@ -21,7 +21,7 @@ class ExersRepository(
         //add images
         imageRepository.addExerImages(exer)
 
-        if (exer.isPrivate) {
+        if (!exer.isPrivate) {
             val doc = db.collection(EXER_PATH).document()
             doc.set(exer)
                 .addOnSuccessListener {
@@ -36,7 +36,12 @@ class ExersRepository(
             val doc = db.collection(USER_PATH).document(exer.userUid)
                 .collection(PRIVATE_EXERS_PATH).document()
             doc.set(exer)
+                .addOnSuccessListener {
+                    onSuccess()
+                }
+                .addOnFailureListener {
+                    onFailure(it.message)
+                }
         }
     }
-
 }

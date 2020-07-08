@@ -18,13 +18,15 @@ class ImageRepository : Repository {
         val path = storageReference.child(exer.userUid).child(EXER_IMAGES_PATH)
 
         for (imageUri in exer.imageUris) {
-            val uri = Uri.parse(imageUri)
-            val imageRef = path.child("${uri.lastPathSegment}")
-            val uploadTask = imageRef.putFile(uri)
-            uploadTask.addOnFailureListener {
-                Log.e("error in load", it.message!!)
-            }.addOnSuccessListener {
-                //TODO HANDLE SUCCESS
+            if (imageUri.isNotBlank()) {
+                val uri = Uri.parse(imageUri)
+                val imageRef = path.child("${uri.lastPathSegment}")
+                val uploadTask = imageRef.putFile(uri)
+                uploadTask.addOnFailureListener {
+                    //TODO
+                }.addOnSuccessListener {
+                    //TODO
+                }
             }
         }
 
