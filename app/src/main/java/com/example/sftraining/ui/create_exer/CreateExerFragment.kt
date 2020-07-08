@@ -83,6 +83,7 @@ class CreateExerFragment : Fragment() {
                 exer,
                 onSuccess = {
                     activity.stopLoadingAnimation()
+                    //on create exer animation
                     createExerAnimation.playAnimation()
                     createExerAnimation.addAnimatorListener(object : Animator.AnimatorListener {
                         override fun onAnimationRepeat(p0: Animator?) {
