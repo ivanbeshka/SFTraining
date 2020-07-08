@@ -1,5 +1,6 @@
 package com.example.sftraining.ui.create_exer
 
+import android.animation.Animator
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,8 +11,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment.findNavController
+import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 import com.example.sftraining.R
 import com.example.sftraining.globalviewmodels.ExersViewModel
@@ -25,7 +26,6 @@ import com.google.android.material.checkbox.MaterialCheckBox
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textview.MaterialTextView
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import kotlin.math.abs
@@ -46,6 +46,7 @@ class CreateExerFragment : Fragment() {
     private lateinit var imageMain: ShapeableImageView
     private lateinit var imageEnd: ShapeableImageView
     private lateinit var isPrivate: MaterialCheckBox
+    private lateinit var createExerAnimation: LottieAnimationView
 
     private val exersViewModel: ExersViewModel by activityViewModels()
 
@@ -82,8 +83,21 @@ class CreateExerFragment : Fragment() {
                 exer,
                 onSuccess = {
                     activity.stopLoadingAnimation()
-                    findNavController(this).navigate(R.id.navListOfExers)
+                    createExerAnimation.playAnimation()
+                    createExerAnimation.addAnimatorListener(object : Animator.AnimatorListener {
+                        override fun onAnimationRepeat(p0: Animator?) {
+                        }
 
+                        override fun onAnimationEnd(p0: Animator?) {
+                            findNavController(this@CreateExerFragment).navigate(R.id.navListOfExers)
+                        }
+
+                        override fun onAnimationCancel(p0: Animator?) {
+                        }
+
+                        override fun onAnimationStart(p0: Animator?) {
+                        }
+                    })
                 },
                 onFailure = {
                     Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
@@ -168,5 +182,6 @@ class CreateExerFragment : Fragment() {
         imageEnd.tag = ""
         isPrivate = root.findViewById(R.id.ce_checkbox_private)
         etTitle = root.findViewById(R.id.ce_title_edit_text)
+        createExerAnimation = root.findViewById(R.id.create_exer_animation)
     }
 }

@@ -177,6 +177,13 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/create_exer_animation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:lottie_rawRes="@raw/create_exer_animation"/>
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/ce_app_bar_layout"
         android:layout_width="match_parent"
