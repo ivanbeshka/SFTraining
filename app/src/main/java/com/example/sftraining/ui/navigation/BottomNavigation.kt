@@ -37,6 +37,15 @@ class BottomNavigation : BottomSheetDialogFragment() {
                     findNavController(this).navigate(R.id.navListOfExers)
                     dialog?.hide()
                 }
+
+                R.id.trainings -> {
+                    dialog?.hide()
+                }
+
+                R.id.settings -> {
+                    findNavController(this).navigate(R.id.navAppSettingsFragment)
+                    dialog?.hide()
+                }
             }
 
             true
