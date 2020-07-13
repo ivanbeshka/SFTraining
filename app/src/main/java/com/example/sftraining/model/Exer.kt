@@ -1,5 +1,9 @@
 package com.example.sftraining.model
 
+import android.util.Log
+import android.widget.ImageButton
+
+
 // Exercise
 data class Exer(
     val title: String = "",
@@ -12,6 +16,8 @@ data class Exer(
     val commentsNum: Int = 0,
     val execTimeMin: Int = 0
 ) {
+    private lateinit var imageButton: ImageButton
+
     companion object {
         enum class Sports {
             CLIMBING, BODYBUILDING, RUNNING, WORKOUT,
@@ -35,5 +41,11 @@ data class Exer(
         enum class Weights {
             YOUR_WEIGHT, WEIGHTS
         }
+    }
+
+    fun onSuck(){
+
+        Log.d("XYI", "PIDOR")
+
     }
 }

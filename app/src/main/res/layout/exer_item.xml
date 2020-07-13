@@ -7,6 +7,10 @@
         <variable
             name="Exer"
             type="com.example.sftraining.model.Exer" />
+        
+        <variable
+            name="OnClick"
+            type="com.example.sftraining.binding.OnClick" />
     </data>
 
     <!--    ei - exercise item-->
@@ -129,8 +133,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:background="@color/colorTransparent"
-                android:src="@drawable/ic_favorite_border_24"
+                android:background="@drawable/custom_button_favourite"
+                android:onClick="@{() -> OnClick.onClickFavourite()}"
                 app:layout_constraintBottom_toBottomOf="@+id/ei_name_tv"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/ei_name_tv" />

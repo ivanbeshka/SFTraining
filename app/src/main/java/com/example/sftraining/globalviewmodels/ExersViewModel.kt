@@ -2,11 +2,9 @@ package com.example.sftraining.globalviewmodels
 
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import com.example.sftraining.model.Exer
+import com.example.sftraining.model.User
 import com.example.sftraining.repository.ExersRepository
 
 class ExersViewModel @ViewModelInject constructor(
@@ -20,8 +18,11 @@ class ExersViewModel @ViewModelInject constructor(
 
     private val exersData: MutableLiveData<List<Exer>> = state.getLiveData(SAVE_KEY)
 
+    private val exers: MutableLiveData<List<Exer>> = MutableLiveData(listOf(Exer(), Exer()))
+
     fun getExers(): LiveData<List<Exer>> {
-        return exersData
+//        return exersData
+        return exers
     }
 
     fun createExer(
