@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <PreferenceCategory
+        android:key="setting_theme"
+        android:title="Theme">
+
+        <Preference
+            android:id="@+id/setting_title_show_id"
+            android:icon="@drawable/ic_light_mode_24"
+            android:key="setting_title_show"
+            android:summary="Change app theme"
+            android:title="Theme" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="setting_language"
+        android:title="Language">
+        <ListPreference
+            android:dialogTitle="Language"
+            android:entries="@array/languages"
+            android:entryValues="@array/languages"
+            android:key="setting_language_choose"
+            android:summary="Change language"
+            android:title="Language" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="setting_notification_sound"
+        android:title="Notifications and Sound">
+
+        <CheckBoxPreference
+            android:id="@+id/setting_notifications"
+            android:key="setting_notifications"
+            android:title="Send Notifications" />
+
+        <SeekBarPreference
+            android:id="@+id/setting_sound"
+            android:key="setting_sound"
+            android:summary="Setting sound volume"
+            android:title="Sound" />
+
+    </PreferenceCategory>
+
+    <Preference
+        android:key="setting_version"
+        android:summary="@string/version_code"
+        android:title="Version">
+
+    </Preference>
+
+    <Preference
+        android:key="setting_memory"
+        android:title="Memory">
+        <intent android:action="android.intent.action.VIEW" />
+    </Preference>
+
+    <Preference
+        android:key="setting_help"
+        android:title="Help">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="https://www.google.com/" />
+    </Preference>
+
+    <Preference
+        android:key="setting_support"
+        android:title="Support">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="https://www.google.com/" />
+    </Preference>
+
+</androidx.preference.PreferenceScreen>
