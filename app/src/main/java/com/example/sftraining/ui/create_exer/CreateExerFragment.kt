@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.NavHostFragment.findNavController
@@ -28,6 +29,7 @@ import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import java.util.*
 import kotlin.math.abs
 
 class CreateExerFragment : Fragment() {
@@ -69,20 +71,22 @@ class CreateExerFragment : Fragment() {
 
             val exer = Exer(
                 imageUris = listOf(
-                    imageStart.tag.toString(),
-                    imageMain.tag.toString(),
-                    imageEnd.tag.toString(),
-                    titleImage.tag.toString()
+                    imageStart.tag.toString().toUri(),
+                    imageMain.tag.toString().toUri(),
+                    imageEnd.tag.toString().toUri()
                 ),
+                titleImageUri = titleImage.tag.toString().toUri(),
                 userUid = firebaseAuth.uid!!,
                 isPrivate = isPrivate.isChecked,
-                title = etTitle.text.toString()
+                title = etTitle.text.toString(),
+                uid = UUID.randomUUID().toString()
             )
 
             exersViewModel.createExer(
                 exer,
                 onSuccess = {
                     activity.stopLoadingAnimation()
+
                     //on create exer animation
                     createExerAnimation.playAnimation()
                     createExerAnimation.addAnimatorListener(object : Animator.AnimatorListener {
@@ -139,8 +143,6 @@ class CreateExerFragment : Fragment() {
             } else {
                 Glide.with(titleImage).load(uri).into(titleImage)
             }
-
-
         }
         getPhoto.launch("image/*")
     }

@@ -1,10 +1,15 @@
 package com.example.sftraining.model
 
+import android.net.Uri
+import java.util.*
+
 // Exercise
 data class Exer(
     val title: String = "",
-    val imageUris: List<String> = emptyList(),
-    val videoUrl: String = "",
+    var titleImageUri: Uri,
+    var imageUris: List<Uri>,
+    var videoUrl: String = "",
+    val uid: String = "",
     val description: String = "",
     val isPrivate: Boolean = false,
     val userUid: String = "",
