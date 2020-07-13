@@ -76,6 +76,14 @@
     <string name="content">content</string>
     <string name="registration">Registration</string>
     <string name="exit_from_account">Exit from account</string>
+    <string name="help">Help</string>
+    <string name="support">Support</string>
+    <string name="theme">Theme</string>
+    <string name="language">Language</string>
+    <string name="notifications">Notifications</string>
+    <string name="sound">Sound</string>
+    <string name="memory">Memory</string>
+    <string name="version">Version</string>
     <string name="not_full_account">Your account is not full. If you exit it your data will not be saved</string>
     <string name="migrate_to_full_account">Migrate to full account</string>
     <string name="photo">Photo</string>
