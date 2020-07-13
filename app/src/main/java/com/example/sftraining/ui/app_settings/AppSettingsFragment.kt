@@ -1,20 +1,12 @@
 package com.example.sftraining.ui.app_settings
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.preference.PreferenceFragmentCompat
 import com.example.sftraining.R
-import com.example.sftraining.ui.base.BaseFragment
-import com.example.sftraining.ui.registration.EnterActivity
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.android.material.textview.MaterialTextView
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 
 class AppSettingsFragment : PreferenceFragmentCompat() {
 
