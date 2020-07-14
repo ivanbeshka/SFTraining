@@ -1,21 +1,23 @@
 package com.example.sftraining.binding
 
 import android.net.Uri
-import android.widget.ImageView
 import androidx.databinding.BindingAdapter
-import com.bumptech.glide.Glide
+import com.example.sftraining.R
+import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.textview.MaterialTextView
 
-@BindingAdapter("android:text")
+@BindingAdapter("attrNum")
 fun bindNum(materialTextView: MaterialTextView, value: Int){
     if (value != 0){
         materialTextView.text = value.toString()
     }
 }
 
-@BindingAdapter("android:src")
-fun bindImage(imageView: ImageView, uri: Uri) {
-
-        Glide.with(imageView).load(uri).into(imageView)
-
+@BindingAdapter("userPhoto")
+fun bindPhoto(imageView: ShapeableImageView, uri: String?){
+  if (uri != null && uri.isNotBlank()){
+      //load photo
+  } else {
+      imageView.setImageResource(R.drawable.ic_account_circle_24px)
+  }
 }
