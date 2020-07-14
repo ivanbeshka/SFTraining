@@ -34,9 +34,7 @@ class ExercisesRecyclerAdapter (private var exersList: List<Exer>) :
         val exerItemBinding =
             DataBindingUtil.inflate<ExerItemBinding>(inflater, R.layout.exer_item, parent, false)
 
-        return ExerViewHolder(
-            exerItemBinding
-        )
+        return ExerViewHolder(exerItemBinding)
     }
 
     override fun getItemCount(): Int {

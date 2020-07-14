@@ -36,8 +36,8 @@ class UsersRepository : Repository {
 
     fun getUser(
         uid: String,
-        onComplete: (User?) -> Unit,
-        onFailure: (String?) -> Unit
+        onComplete: (User?) -> Unit = {},
+        onFailure: (String?) -> Unit = {}
     ) {
         val doc = db.collection(USER_PATH).document(uid)
         doc.get()
