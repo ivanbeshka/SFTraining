@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
+<!--    ei - exercise item-->
+
+<layout>
     <data>
+    <variable
+        name="exer"
+        type="com.example.sftraining.model.Exer" />
 
-        <variable
-            name="Exer"
-            type="com.example.sftraining.model.Exer" />
-        
-        <variable
-            name="OnClick"
-            type="com.example.sftraining.binding.OnClick" />
+    <variable
+        name="onClick"
+        type="com.example.sftraining.binding.OnClick" />
     </data>
 
-    <!--    ei - exercise item-->
-
-    <com.google.android.material.card.MaterialCardView
+    <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/ei_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
                 android:ellipsize="end"
                 android:gravity="center"
                 android:maxLines="1"
-                android:text="@{Exer.title}"
+                android:text="@{exer.title}"
                 android:textColor="#000000"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -70,9 +70,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:minHeight="150dp"
                 android:adjustViewBounds="true"
                 android:elevation="4dp"
+                android:minHeight="150dp"
                 android:src="@drawable/image2"
                 app:layout_constraintEnd_toStartOf="@+id/ei_imageview_tag3"
                 app:layout_constraintStart_toStartOf="parent"
@@ -133,8 +133,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:background="@drawable/custom_button_favourite"
-                android:onClick="@{() -> OnClick.onClickFavourite()}"
+                android:onClick="@{(theView) -> exer.onSuck(theView)}"
+                android:background="@drawable/ic_favorite_border_24_default"
                 app:layout_constraintBottom_toBottomOf="@+id/ei_name_tv"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/ei_name_tv" />
@@ -155,7 +155,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
-                android:text='@{Exer.commentsNum}'
+                android:text='@{exer.commentsNum}'
                 app:layout_constraintBottom_toBottomOf="@+id/ei_imagebutton_comments"
                 app:layout_constraintEnd_toStartOf="@+id/ei_imagebutton_comments"
                 app:layout_constraintTop_toTopOf="@+id/ei_imagebutton_comments" />
@@ -165,7 +165,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
-                android:text='@{Exer.favoriteNum}'
+                android:text='@{exer.favoriteNum}'
                 app:layout_constraintBottom_toBottomOf="@+id/ei_imagebutton_favorite"
                 app:layout_constraintEnd_toStartOf="@+id/ei_imagebutton_favorite"
                 app:layout_constraintTop_toTopOf="@+id/ei_imagebutton_favorite" />

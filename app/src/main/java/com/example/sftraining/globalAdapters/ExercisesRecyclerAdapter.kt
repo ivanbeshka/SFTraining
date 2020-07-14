@@ -8,15 +8,15 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sftraining.R
 import com.example.sftraining.binding.OnClick
-import com.example.sftraining.model.Exer
 import com.example.sftraining.databinding.ExerItemBinding
+import com.example.sftraining.model.Exer
 import com.example.sftraining.ui.base.BaseActivity
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.imageview.ShapeableImageView
 
 
 
-class ExercisesRecyclerAdapter (private var exersList: List<Exer>) : RecyclerView.Adapter<ExercisesRecyclerAdapter.ExerViewHolder>(), OnClick{
+class ExercisesRecyclerAdapter (private var exersList: List<Exer>) : RecyclerView.Adapter<ExercisesRecyclerAdapter.ExerViewHolder>(){
 
 
     class ExerViewHolder(private val exerItemBinding: ExerItemBinding) : RecyclerView.ViewHolder(exerItemBinding.root) {

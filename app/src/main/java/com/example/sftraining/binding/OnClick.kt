@@ -1,8 +1,9 @@
 package com.example.sftraining.binding
 
-import android.view.View
+import android.util.Log
 
-interface OnClick  {
-    fun onClickFavourite(view: View){
+class OnClick  {
+    fun onClickFavorite(){
+        Log.d("LOL_LOG", "LOG")
     }
 }
