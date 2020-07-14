@@ -6,7 +6,7 @@ import java.util.*
 // Exercise
 data class Exer(
     val title: String = "",
-    var titleImageUri: Uri,
+    var titleImageUri: String = "",
     var imageUris: List<Uri>,
     var videoUrl: String = "",
     val uid: String = "",

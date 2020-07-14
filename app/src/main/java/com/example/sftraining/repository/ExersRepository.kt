@@ -53,17 +53,16 @@ class ExersRepository(
     ) {
         val doc = db.collection(EXER_PATH).document(exerUid)
 
-        doc.get().addOnSuccessListener {
-            if (it.exists()){
-                val exer = it.toObject<Exer>()
+        doc.get().addOnSuccessListener { snapshot ->
+            if (snapshot.exists()){
+                val exer = snapshot.toObject<Exer>()
                 if (exer != null) {
 
-                    val exerImages = imageRepository.getExerImages(exer)
+                    imageRepository.getExerImages(exer,{
+                        exer.titleImageUri = it
+                        onSuccess(exer)
+                    })
 
-                    exer.imageUris = exerImages.first
-                    exer.titleImageUri = exerImages.second
-
-                    onSuccess(exer)
 
                 } else {
                     onFailure("User is null")
