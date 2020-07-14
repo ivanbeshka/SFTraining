@@ -3,9 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
-            name="Exer"
+            name="exer"
             type="com.example.sftraining.model.Exer" />
     </data>
 
@@ -42,7 +41,7 @@
                 android:ellipsize="end"
                 android:gravity="center"
                 android:maxLines="1"
-                android:text="@{Exer.title}"
+                android:text="@{exer.title}"
                 android:textColor="#000000"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -151,7 +150,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
-                android:text='@{Exer.commentsNum}'
+                attrNum="@{exer.commentsNum}"
                 app:layout_constraintBottom_toBottomOf="@+id/ei_imagebutton_comments"
                 app:layout_constraintEnd_toStartOf="@+id/ei_imagebutton_comments"
                 app:layout_constraintTop_toTopOf="@+id/ei_imagebutton_comments" />
@@ -161,7 +160,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
-                android:text='@{Exer.favoriteNum}'
+                attrNum='@{exer.favoriteNum}'
                 app:layout_constraintBottom_toBottomOf="@+id/ei_imagebutton_favorite"
                 app:layout_constraintEnd_toStartOf="@+id/ei_imagebutton_favorite"
                 app:layout_constraintTop_toTopOf="@+id/ei_imagebutton_favorite" />
