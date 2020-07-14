@@ -3,6 +3,7 @@ package com.example.sftraining.repository
 import com.example.sftraining.model.Exer
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+import java.lang.UnsupportedOperationException
 
 class ImageRepository : Repository {
     private val storageReference = Firebase.storage.reference
