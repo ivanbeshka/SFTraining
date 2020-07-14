@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sftraining.R
 import com.example.sftraining.model.Exer
 import com.example.sftraining.databinding.ExerItemBinding
+import com.example.sftraining.globalviewmodels.ExersViewModel
 import com.google.android.material.imageview.ShapeableImageView
+import javax.inject.Inject
 
 class ExercisesRecyclerAdapter (private var exersList: List<Exer>) :
     RecyclerView.Adapter<ExercisesRecyclerAdapter.ExerViewHolder>() {
@@ -21,7 +23,6 @@ class ExercisesRecyclerAdapter (private var exersList: List<Exer>) :
                 this.shapeAppearanceModel =
                     this.shapeAppearanceModel.toBuilder().setAllCornerSizes(cornerSize).build()
             }
-
 
         fun bind(exer: Exer) {
             exerItemBinding.exer = exer

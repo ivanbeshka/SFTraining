@@ -173,18 +173,42 @@ class CreateExerFragment : Fragment() {
         toolbar = root.findViewById(R.id.ce_toolbar)
         btnAddTitleImage = root.findViewById(R.id.ce_fab_add_photo)
         titleImage = root.findViewById(R.id.ce_title_photo)
-        titleImage.tag = ""
         btnAddStartImage = root.findViewById(R.id.ce_button_add_content_start)
         btnAddMainImage = root.findViewById(R.id.ce_button_add_content_main)
         btnAddEndImage = root.findViewById(R.id.ce_button_add_content_end)
         imageStart = root.findViewById(R.id.ce_image_view_content_start)
-        imageStart.tag = ""
         imageMain = root.findViewById(R.id.ce_image_view_content_main)
-        imageMain.tag = ""
         imageEnd = root.findViewById(R.id.ce_image_view_content_end)
-        imageEnd.tag = ""
         isPrivate = root.findViewById(R.id.ce_checkbox_private)
         etTitle = root.findViewById(R.id.ce_title_edit_text)
         createExerAnimation = root.findViewById(R.id.create_exer_animation)
+
+        //   _        _
+        //  ( `-.__.-' )
+        //   `-.    .-'
+        //      \  /
+        //       ||
+        //       ||
+        //      //\\
+        //     //  \\
+        //    ||    ||
+        //    ||____||
+        //    ||====||
+        //     \\  //
+        //      \\//
+        //       ||
+        //       ||
+        //       ||
+        //       ||
+        //       ||
+        //       ||
+        //       ||
+        //       ||
+        //       []
+        //this is very fucking for save image uri
+        titleImage.tag = ""
+        imageStart.tag = ""
+        imageMain.tag = ""
+        imageEnd.tag = ""
     }
 }

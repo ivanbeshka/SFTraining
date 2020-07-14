@@ -4,6 +4,7 @@ import android.net.Uri
 import com.example.sftraining.model.Exer
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+import java.lang.UnsupportedOperationException
 
 class ImageRepository : Repository {
     private val storageReference = Firebase.storage.reference
@@ -36,41 +37,41 @@ class ImageRepository : Repository {
         }
     }
 
-    fun getExerImages(exer: Exer): Pair<List<Uri>, Uri> {
+    fun getExerImages(
+        exer: Exer,
+        onTitleImageSuccess: (String) -> Unit,
+        onMainImagesSuccess: (List<String>) -> Unit = {},
+        onFailure: (String?) -> Unit = {}
+    ) {
 
         val path = storageReference.child(exer.userUid).child(EXER_IMAGES_PATH).child(exer.uid)
-
-        var titleImageUri: Uri = Uri.EMPTY
-        val mainImageUris: MutableList<Uri> = mutableListOf()
 
         //title image
         path.child(exer.titleImageUri.toString()).downloadUrl
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-                    titleImageUri = it.result!!
+                    onTitleImageSuccess(it.result.toString())
                 } else {
-                    //TODO
+                    onFailure("Task is not successful")
                 }
             }
             .addOnFailureListener {
-                //TODO
+                onFailure(it.message)
             }
 
-        //main images
-        for (mainImageUri in exer.imageUris) {
-            path.child(mainImageUri.toString()).downloadUrl
-                .addOnCompleteListener {
-                    if (it.isSuccessful) {
-                        mainImageUris.add(it.result!!)
-                    } else {
-                        //TODO
-                    }
-                }
-                .addOnFailureListener {
-                    //TODO
-                }
-        }
-
-        return Pair(mainImageUris, titleImageUri)
+        //main images //TODO NEEDS CORUTINE
+//        for (mainImageUri in exer.imageUris) {
+//            path.child(mainImageUri.toString()).downloadUrl
+//                .addOnCompleteListener {
+//                    if (it.isSuccessful) {
+//                        mainImageUris.add(it.result!!)
+//                    } else {
+//                        //TODO
+//                    }
+//                }
+//                .addOnFailureListener {
+//                    //TODO
+//                }
+//        }
     }
 }
