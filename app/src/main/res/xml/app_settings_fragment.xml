@@ -4,26 +4,36 @@
     android:layout_height="wrap_content">
 
     <PreferenceCategory
-        android:key="setting_theme"
-        android:title="Theme">
+        android:key="appearance"
+        android:title="Appearance">
+        <!--        android:layout="@layout/custom_preference_category">-->
 
-        <Preference
-            android:id="@+id/setting_title_show_id"
-            android:icon="@drawable/ic_light_mode_24"
-            android:key="setting_title_show"
-            android:summary="Change app theme"
+        <ListPreference
+            android:defaultValue="@string/light_theme"
+            android:dialogTitle="Theme"
+            android:entries="@array/themes"
+            android:entryValues="@array/themes"
+            android:key="@string/setting_theme"
+            android:summary="@string/light_theme"
             android:title="Theme" />
+
+        <!--        <Preference-->
+        <!--            android:id="@+id/setting_theme"-->
+        <!--            android:icon="@drawable/ic_light_mode_24"-->
+        <!--            android:key="setting_title_show"-->
+        <!--            android:summary="Change app theme"-->
+        <!--            android:title="Theme" />-->
 
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:key="setting_language"
+        android:key="language"
         android:title="Language">
         <ListPreference
             android:dialogTitle="Language"
             android:entries="@array/languages"
             android:entryValues="@array/languages"
-            android:key="setting_language_choose"
+            android:key="setting_language"
             android:summary="Change language"
             android:title="Language" />
 
