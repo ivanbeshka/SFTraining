@@ -1,11 +1,8 @@
 package com.example.sftraining.ui.app_settings
 
-import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Configuration
-import android.content.res.Resources
 import android.os.Bundle
-import android.util.DisplayMetrics
 import androidx.preference.PreferenceFragmentCompat
 import com.example.sftraining.R
 import java.util.*
@@ -14,7 +11,7 @@ import java.util.*
 class AppSettingsFragment : PreferenceFragmentCompat(),
     SharedPreferences.OnSharedPreferenceChangeListener {
 
-//    private lateinit var btnExitAcc: MaterialButton
+    //    private lateinit var btnExitAcc: MaterialButton
 //    private lateinit var tilPersonalInfo: TextInputLayout
 //    private lateinit var etPersonalInfo: TextInputEditText
 //    private lateinit var tvPersonalInfo: MaterialTextView
@@ -50,18 +47,29 @@ class AppSettingsFragment : PreferenceFragmentCompat(),
     }
 
     override fun onSharedPreferenceChanged(p0: SharedPreferences?, p1: String?) {
-        if(p1 == themeSetting){
-            when (p0?.getString(themeSetting, R.string.light_theme.toString()).toString()){
+        if (p1 == themeSetting) {
+            when (p0?.getString(themeSetting, R.string.light_theme.toString()).toString()) {
                 lightTheme -> activity?.setTheme(R.style.ThemeOverlay_AppCompat_Light)
                 darkTheme -> activity?.setTheme(R.style.ThemeOverlay_AppCompat_Dark)
             }
+        } else if (p1 == languageSetting) {
         }
-//        else if(p1 == languageSetting){
-//            when (p0?.getString(themeSetting, R.string.light_theme.toString()).toString()){
-//                languageRu -> activity?.loca(R.style.ThemeOverlay_AppCompat_Light)
-//                languageEn -> activity?.setTheme(R.style.ThemeOverlay_AppCompat_Dark)
-//            }
-//        }
+        when (p0?.getString(themeSetting, R.string.light_theme.toString()).toString()) {
+            languageRu -> changeLanguage("ru")
+            languageEn -> changeLanguage("en")
+        }
+    }
+
+    private fun changeLanguage(languageCode: String) {
+        val locale = Locale(languageCode)
+        val config = Configuration(requireContext().resources.configuration)
+        Locale.setDefault(locale)
+        config.setLocale(locale)
+
+        context?.resources?.updateConfiguration(
+            config,
+            context?.resources?.displayMetrics
+        )
     }
 
 //    fun setLocale(lang: String) {
