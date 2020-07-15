@@ -11,10 +11,6 @@ import java.util.*
 class AppSettingsFragment : PreferenceFragmentCompat(),
     SharedPreferences.OnSharedPreferenceChangeListener {
 
-    //    private lateinit var btnExitAcc: MaterialButton
-//    private lateinit var tilPersonalInfo: TextInputLayout
-//    private lateinit var etPersonalInfo: TextInputEditText
-//    private lateinit var tvPersonalInfo: MaterialTextView
     private lateinit var themeSetting: String
     private lateinit var lightTheme: String
     private lateinit var darkTheme: String
@@ -71,35 +67,4 @@ class AppSettingsFragment : PreferenceFragmentCompat(),
             context?.resources?.displayMetrics
         )
     }
-
-//    fun setLocale(lang: String) {
-//        val myLocale = Locale(lang)
-//        val res: Resources = resources
-//        val dm: DisplayMetrics = res.displayMetrics
-//        val conf: Configuration = res.configuration
-//        conf.locale = myLocale
-//        res.updateConfiguration(conf, dm)
-//        val refresh = Intent(this, AndroidLocalize::class.java)
-//        activity?.finish()
-//        startActivity(refresh)
-//    }
-
-//    override fun onCreateView(
-//        inflater: LayoutInflater,
-//        container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//        val root = inflater.inflate(R.layout.app_settings_fragment, container, false)
-//
-//        initView(root)
-//
-//        return root
-//    }
-
-//    override fun initView(root: View) {
-//        btnExitAcc = root.findViewById(R.id.btn_acc_exit)
-//        tilPersonalInfo = root.findViewById(R.id.til_personal_info)
-//        etPersonalInfo = root.findViewById(R.id.et_person_info)
-//        tvPersonalInfo = root.findViewById(R.id.tv_personal_info)
-//    }
 }
