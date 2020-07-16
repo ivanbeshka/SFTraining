@@ -25,6 +25,7 @@ import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.checkbox.MaterialCheckBox
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.textfield.TextInputEditText
@@ -148,28 +149,69 @@ class CreateExerFragment : Fragment() {
         getPhoto.launch("image/*")
     }
 
-    private fun doPhotot(){
-
+    private fun doPhoto(title: String){
+        val intent = Intent(activity, CameraActivity::class.java)
+        intent.putExtra("type", title.toString())
+        startActivityForResult(intent, 1)
     }
 
     private fun initPickPhotoListeners() {
         btnAddTitleImage.setOnClickListener {
-//            pickPhotoFromGallery(titleImage)
-            val intent = Intent(activity, CameraActivity::class.java)
-            intent.putExtra("type", "title")
-            startActivityForResult(intent, 1)
+
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle("Choose")
+                .setMessage("How do you want to choose image")
+                .setNegativeButton("Take photo now") { dialog, which ->
+                    doPhoto("title")
+                }
+                .setPositiveButton("From gallery") { dialog, which ->
+                    pickPhotoFromGallery(titleImage)
+                }
+                .show()
         }
 
         btnAddStartImage.setOnClickListener {
-            pickPhotoFromGallery(imageStart)
+
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle("Choose")
+                .setMessage("How do you want to choose image")
+                .setNegativeButton("Take photo now") { dialog, which ->
+                    doPhoto("start")
+                }
+                .setPositiveButton("From gallery") { dialog, which ->
+                    pickPhotoFromGallery(imageStart)
+                }
+                .show()
+
         }
 
         btnAddMainImage.setOnClickListener {
-            pickPhotoFromGallery(imageMain)
+
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle("Choose")
+                .setMessage("How do you want to choose image")
+                .setNegativeButton("Take photo now") { dialog, which ->
+                    doPhoto("main")
+                }
+                .setPositiveButton("From gallery") { dialog, which ->
+                    pickPhotoFromGallery(imageMain)
+                }
+                .show()
+
         }
 
         btnAddEndImage.setOnClickListener {
-            pickPhotoFromGallery(imageEnd)
+
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle("Choose")
+                .setMessage("How do you want to choose image")
+                .setNegativeButton("Take photo now") { dialog, which ->
+                    doPhoto("end")
+                }
+                .setPositiveButton("From gallery") { dialog, which ->
+                    pickPhotoFromGallery(imageEnd)
+                }
+                .show()
         }
     }
 
@@ -205,6 +247,7 @@ class CreateExerFragment : Fragment() {
         }
         var Uri =  data.getStringExtra("uri")
         var type = data.getStringExtra("type")
+
 
         Log.d("IMAGE_URI", Uri.toString())
     }

@@ -30,10 +30,14 @@ class CameraActivity : AppCompatActivity() {
 
     private lateinit var outputDirectory: File
     private lateinit var cameraExecutor: ExecutorService
+    private lateinit var type: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_camera)
+
+        type = intent.getStringExtra("type").toString()
 
         // Request camera permissions
         if (allPermissionsGranted()) {
@@ -112,6 +116,7 @@ class CameraActivity : AppCompatActivity() {
 
                     var intent = Intent()
                     intent.putExtra("uri", savedUri.toString())
+                    intent.putExtra("type", type)
                     setResult(Activity.RESULT_OK, intent)
                     finish()
                 }
