@@ -1,8 +1,9 @@
 package com.example.sftraining.ui.app_settings
 
 import android.content.SharedPreferences
-import android.content.res.Configuration
+import android.content.res.Resources
 import android.os.Bundle
+import android.util.Log
 import androidx.preference.PreferenceFragmentCompat
 import com.example.sftraining.R
 import java.util.*
@@ -43,28 +44,36 @@ class AppSettingsFragment : PreferenceFragmentCompat(),
     }
 
     override fun onSharedPreferenceChanged(p0: SharedPreferences?, p1: String?) {
+        Log.i("All prefgerences", p0?.all.toString())
         if (p1 == themeSetting) {
             when (p0?.getString(themeSetting, R.string.light_theme.toString()).toString()) {
                 lightTheme -> activity?.setTheme(R.style.ThemeOverlay_AppCompat_Light)
                 darkTheme -> activity?.setTheme(R.style.ThemeOverlay_AppCompat_Dark)
             }
         } else if (p1 == languageSetting) {
-        }
-        when (p0?.getString(themeSetting, R.string.light_theme.toString()).toString()) {
-            languageRu -> changeLanguage("ru")
-            languageEn -> changeLanguage("en")
+            when (p0?.getString(themeSetting, R.string.light_theme.toString()).toString()) {
+                languageRu -> changeLanguage("ru")
+                languageEn -> changeLanguage("en")
+            }
         }
     }
 
     private fun changeLanguage(languageCode: String) {
-        val locale = Locale(languageCode)
-        val config = Configuration(requireContext().resources.configuration)
-        Locale.setDefault(locale)
-        config.setLocale(locale)
-
-        context?.resources?.updateConfiguration(
-            config,
-            context?.resources?.displayMetrics
-        )
+//        val locale = Locale(languageCode)
+//        val config = Configuration(requireContext().resources.configuration)
+//        Locale.setDefault(locale)
+//        config.setLocale(locale)
+//
+//        context?.resources?.updateConfiguration(
+//            config,
+//            context?.resources?.displayMetrics
+//        )
+        Log.i("Call of locale changing", "start changing...")
+        val res: Resources? = context?.resources
+        val conf = res?.configuration
+        val savedLocale = conf?.locale
+        Log.i("Locaale", savedLocale.toString())
+        conf?.locale = Locale("en")
+        res?.updateConfiguration(conf, null)
     }
 }
