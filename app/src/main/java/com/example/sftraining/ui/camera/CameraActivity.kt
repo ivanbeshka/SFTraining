@@ -1,6 +1,8 @@
 package com.example.sftraining.ui.camera
 
 import android.Manifest
+import android.app.Activity
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -107,6 +109,11 @@ class CameraActivity : AppCompatActivity() {
                     val msg = "Photo capture succeeded: $savedUri"
                     Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                     Log.d(TAG, msg)
+
+                    var intent = Intent()
+                    intent.putExtra("uri", savedUri.toString())
+                    setResult(Activity.RESULT_OK, intent)
+                    finish()
                 }
             })
     }

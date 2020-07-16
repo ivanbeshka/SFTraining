@@ -1,6 +1,7 @@
 package com.example.sftraining.ui.create_exer
 
 import android.animation.Animator
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -17,6 +18,7 @@ import com.bumptech.glide.Glide
 import com.example.sftraining.R
 import com.example.sftraining.globalviewmodels.ExersViewModel
 import com.example.sftraining.model.Exer
+import com.example.sftraining.ui.camera.CameraActivity
 import com.example.sftraining.ui.main.MainActivity
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
@@ -29,6 +31,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import kotlin.math.abs
+
 
 class CreateExerFragment : Fragment() {
 
@@ -145,10 +148,16 @@ class CreateExerFragment : Fragment() {
         getPhoto.launch("image/*")
     }
 
+    private fun doPhotot(){
+
+    }
 
     private fun initPickPhotoListeners() {
         btnAddTitleImage.setOnClickListener {
-            pickPhotoFromGallery(titleImage)
+//            pickPhotoFromGallery(titleImage)
+            val intent = Intent(activity, CameraActivity::class.java)
+            intent.putExtra("type", "title")
+            startActivityForResult(intent, 1)
         }
 
         btnAddStartImage.setOnClickListener {
@@ -184,5 +193,19 @@ class CreateExerFragment : Fragment() {
         isPrivate = root.findViewById(R.id.ce_checkbox_private)
         etTitle = root.findViewById(R.id.ce_title_edit_text)
         createExerAnimation = root.findViewById(R.id.create_exer_animation)
+    }
+
+    override fun onActivityResult(
+        requestCode: Int,
+        resultCode: Int,
+        data: Intent?)
+    {
+        if (data == null) {
+            return
+        }
+        var Uri =  data.getStringExtra("uri")
+        var type = data.getStringExtra("type")
+
+        Log.d("IMAGE_URI", Uri.toString())
     }
 }
