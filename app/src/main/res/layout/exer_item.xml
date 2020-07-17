@@ -69,7 +69,6 @@
                 android:minHeight="150dp"
                 android:adjustViewBounds="true"
                 android:elevation="4dp"
-                android:src="@drawable/image2"
                 app:layout_constraintEnd_toStartOf="@+id/ei_imageview_tag3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

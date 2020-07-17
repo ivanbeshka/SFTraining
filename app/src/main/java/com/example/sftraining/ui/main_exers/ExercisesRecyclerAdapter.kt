@@ -1,9 +1,12 @@
 package com.example.sftraining.ui.main_exers
 
+import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.sftraining.R
 import com.example.sftraining.model.Exer
 import com.example.sftraining.databinding.ExerItemBinding
@@ -22,9 +25,13 @@ class ExercisesRecyclerAdapter (private var exersList: List<Exer>) :
                     this.shapeAppearanceModel.toBuilder().setAllCornerSizes(cornerSize).build()
             }
 
-
         fun bind(exer: Exer) {
             exerItemBinding.exer = exer
+            shapeableImageView.apply {
+                Log.i("exer", exerItemBinding.exer.toString())
+                Log.i("images", exerItemBinding.exer?.imageUris.toString())
+                Glide.with(this).load(exerItemBinding.exer?.imageUris?.get(0)).placeholder(R.drawable.image2).into(this)
+            }
             exerItemBinding.executePendingBindings()
         }
     }
