@@ -2,6 +2,7 @@ package com.example.sftraining.ui.create_exer
 
 import android.animation.Animator
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -55,6 +56,14 @@ class CreateExerFragment : Fragment() {
     private val exersViewModel: ExersViewModel by activityViewModels()
 
     private val firebaseAuth = Firebase.auth
+
+    companion object {
+        const val TYPE_TITLE = "TITLE"
+        const val TYPE_START = "START"
+        const val TYPE_MAIN = "MAIN"
+        const val TYPE_END = "END"
+        const val URI = "uri"
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -128,91 +137,83 @@ class CreateExerFragment : Fragment() {
 
         val getPhoto = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
 
-            view.tag = uri.toString()
-            Log.e("uri", uri.toString())
-
-            if (view is ShapeableImageView) {
-                Glide.with(view).load(uri)
-                    .into(view.apply {
-                        val cornerSize: Float = resources.getDimension(R.dimen.cornerRadius)
-                        this.shapeAppearanceModel =
-                            this.shapeAppearanceModel.toBuilder()
-                                .setAllCornerSizes(cornerSize).build()
-                    })
-
-            } else {
-                Glide.with(titleImage).load(uri).into(titleImage)
-            }
-
-
+            setPhoto(view, uri)
         }
         getPhoto.launch("image/*")
     }
 
-    private fun doPhoto(title: String){
+    private fun setPhoto(view: View, uri: Uri){
+
+        view.tag = uri.toString()
+
+        if (view is ShapeableImageView) {
+            Glide.with(view).load(uri)
+                .into(view.apply {
+                    val cornerSize: Float = resources.getDimension(R.dimen.cornerRadius)
+                    this.shapeAppearanceModel =
+                        this.shapeAppearanceModel.toBuilder()
+                            .setAllCornerSizes(cornerSize).build()
+                })
+
+        } else {
+            Glide.with(titleImage).load(uri).into(titleImage)
+        }
+    }
+
+    private fun doPhoto(type: String) {
         val intent = Intent(activity, CameraActivity::class.java)
-        intent.putExtra("type", title.toString())
-        startActivityForResult(intent, 1)
+
+        val doPhoto = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            val uri = Uri.parse(it.data?.getStringExtra(URI))
+            when (type) {
+                TYPE_TITLE -> {
+                    setPhoto(titleImage, uri)
+                }
+                TYPE_START -> {
+                    setPhoto(imageStart, uri)
+                }
+                TYPE_MAIN -> {
+                    setPhoto(imageMain, uri)
+                }
+                TYPE_END -> {
+                    setPhoto(imageEnd, uri)
+                }
+            }
+        }
+
+        doPhoto.launch(intent)
     }
 
     private fun initPickPhotoListeners() {
         btnAddTitleImage.setOnClickListener {
-
-            MaterialAlertDialogBuilder(requireContext())
-                .setTitle("Choose")
-                .setMessage("How do you want to choose image")
-                .setNegativeButton("Take photo now") { dialog, which ->
-                    doPhoto("title")
-                }
-                .setPositiveButton("From gallery") { dialog, which ->
-                    pickPhotoFromGallery(titleImage)
-                }
-                .show()
+            showDialog(TYPE_TITLE, it)
         }
 
         btnAddStartImage.setOnClickListener {
-
-            MaterialAlertDialogBuilder(requireContext())
-                .setTitle("Choose")
-                .setMessage("How do you want to choose image")
-                .setNegativeButton("Take photo now") { dialog, which ->
-                    doPhoto("start")
-                }
-                .setPositiveButton("From gallery") { dialog, which ->
-                    pickPhotoFromGallery(imageStart)
-                }
-                .show()
-
+            showDialog(TYPE_START, it)
         }
 
         btnAddMainImage.setOnClickListener {
-
-            MaterialAlertDialogBuilder(requireContext())
-                .setTitle("Choose")
-                .setMessage("How do you want to choose image")
-                .setNegativeButton("Take photo now") { dialog, which ->
-                    doPhoto("main")
-                }
-                .setPositiveButton("From gallery") { dialog, which ->
-                    pickPhotoFromGallery(imageMain)
-                }
-                .show()
-
+            showDialog(TYPE_MAIN, it)
         }
 
         btnAddEndImage.setOnClickListener {
-
-            MaterialAlertDialogBuilder(requireContext())
-                .setTitle("Choose")
-                .setMessage("How do you want to choose image")
-                .setNegativeButton("Take photo now") { dialog, which ->
-                    doPhoto("end")
-                }
-                .setPositiveButton("From gallery") { dialog, which ->
-                    pickPhotoFromGallery(imageEnd)
-                }
-                .show()
+            showDialog(TYPE_END, it)
         }
+    }
+
+    private fun showDialog(type: String, view: View) {
+
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Choose")
+            .setMessage("Where to get the photo")
+            .setNegativeButton("Do photo now") { _, _ ->
+                doPhoto(type)
+            }
+            .setPositiveButton("From gallery") { _, _ ->
+                pickPhotoFromGallery(view)
+            }
+            .show()
     }
 
     private fun initView(root: View) {
@@ -235,20 +236,5 @@ class CreateExerFragment : Fragment() {
         isPrivate = root.findViewById(R.id.ce_checkbox_private)
         etTitle = root.findViewById(R.id.ce_title_edit_text)
         createExerAnimation = root.findViewById(R.id.create_exer_animation)
-    }
-
-    override fun onActivityResult(
-        requestCode: Int,
-        resultCode: Int,
-        data: Intent?)
-    {
-        if (data == null) {
-            return
-        }
-        var Uri =  data.getStringExtra("uri")
-        var type = data.getStringExtra("type")
-
-
-        Log.d("IMAGE_URI", Uri.toString())
     }
 }
