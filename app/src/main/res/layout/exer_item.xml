@@ -48,7 +48,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/ei_comments_number"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ei_main_shapableimage" />
+                app:layout_constraintTop_toBottomOf="@+id/knowing_viewpager" />
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/ei_more"
@@ -61,17 +61,24 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/ei_main_shapableimage"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:minHeight="150dp"
-                android:adjustViewBounds="true"
-                android:elevation="4dp"
-                app:layout_constraintEnd_toStartOf="@+id/ei_imageview_tag3"
-                app:layout_constraintStart_toStartOf="parent"
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/knowing_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintStart_toStartOf="@+id/ei_imageview_tag3"
                 app:layout_constraintTop_toTopOf="parent" />
+
+<!--            <com.google.android.material.imageview.ShapeableImageView-->
+<!--                android:id="@+id/ei_main_shapableimage"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginEnd="16dp"-->
+<!--                android:minHeight="150dp"-->
+<!--                android:adjustViewBounds="true"-->
+<!--                android:elevation="4dp"-->
+<!--                app:layout_constraintEnd_toStartOf="@+id/ei_imageview_tag3"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ei_imageview_tag1"

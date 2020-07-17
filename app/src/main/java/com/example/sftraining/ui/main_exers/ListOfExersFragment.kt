@@ -18,18 +18,19 @@ class ListOfExersFragment : Fragment() {
     private val exerViewModel: ExersViewModel by activityViewModels()
     private lateinit var recyclerView: RecyclerView
     private lateinit var recyclerAdapter: ExercisesRecyclerAdapter
+    private lateinit var root: View
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.list_of_exers, container, false)
+        root = inflater.inflate(R.layout.list_of_exers, container, false)
 
         initView(root)
 
         exerViewModel.getExers().observe(viewLifecycleOwner, Observer { exers ->
-            recyclerAdapter = ExercisesRecyclerAdapter(exers)
+            recyclerAdapter = ExercisesRecyclerAdapter(lifecycle, requireActivity().supportFragmentManager, exers)
             recyclerView.adapter = recyclerAdapter
         })
 
