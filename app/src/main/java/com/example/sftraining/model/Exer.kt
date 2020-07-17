@@ -1,5 +1,8 @@
 package com.example.sftraining.model
 
+import android.net.Uri
+import java.util.*
+
 import android.util.Log
 import android.view.View
 import android.widget.ImageButton
@@ -9,8 +12,10 @@ import com.example.sftraining.R
 // Exercise
 data class Exer(
     val title: String = "",
-    val imageUris: List<String> = emptyList(),
-    val videoUrl: String = "",
+    var titleImageUri: Uri = Uri.EMPTY,
+    var imageUris: List<Uri> = emptyList(),
+    var videoUrl: String = "",
+    val uid: String = "",
     val description: String = "",
     val isPrivate: Boolean = false,
     val userUid: String = "",
@@ -18,7 +23,6 @@ data class Exer(
     val commentsNum: Int = 0,
     val execTimeMin: Int = 0
 ) {
-
     companion object {
         enum class Sports {
             CLIMBING, BODYBUILDING, RUNNING, WORKOUT,
@@ -47,7 +51,7 @@ data class Exer(
     fun onSuck(view: View){
 
         Log.d("XYI", "PIDOR")
-        
+
         var imageButton : ImageButton = view.findViewById(R.id.ei_imagebutton_favorite)
 
         imageButton.setBackgroundResource(R.drawable.ic_favorite_border_24_pressed)

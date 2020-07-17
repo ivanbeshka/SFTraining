@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
-<!--    ei - exercise item-->
-
-<layout>
     <data>
     <variable
         name="exer"
@@ -14,8 +12,9 @@
         type="com.example.sftraining.binding.OnClick" />
     </data>
 
-    <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <!--    ei - exercise item-->
+
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/ei_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -70,10 +69,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
+                android:minHeight="150dp"
                 android:adjustViewBounds="true"
                 android:elevation="4dp"
-                android:minHeight="150dp"
-                android:src="@drawable/image2"
+                android:src="@{exer.titleImageUri}"
                 app:layout_constraintEnd_toStartOf="@+id/ei_imageview_tag3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
