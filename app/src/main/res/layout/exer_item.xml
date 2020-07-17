@@ -61,12 +61,51 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <androidx.viewpager2.widget.ViewPager2-->
+<!--                    android:id="@+id/knowing_viewpager"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--                <com.rd.PageIndicatorView-->
+<!--                    android:id="@+id/page_indicator"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignParentBottom="true"-->
+<!--                    android:layout_marginBottom="16dp"-->
+<!--                    app:piv_interactiveAnimation="true"-->
+<!--                    app:piv_selectedColor="@color/colorAccent"-->
+<!--                    app:piv_unselectedColor="@color/colorUnactive"-->
+<!--                    app:piv_viewPager="@id/knowing_viewpager"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent" />-->
+<!--                -->
+<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/knowing_viewpager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_constraintStart_toStartOf="@+id/ei_imageview_tag3"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <com.rd.PageIndicatorView
+                android:id="@+id/page_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="16dp"
+                app:piv_interactiveAnimation="true"
+                app:piv_selectedColor="@color/colorAccent"
+                app:piv_unselectedColor="@color/colorUnactive"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
 <!--            <com.google.android.material.imageview.ShapeableImageView-->
 <!--                android:id="@+id/ei_main_shapableimage"-->
