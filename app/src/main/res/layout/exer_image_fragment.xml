@@ -6,7 +6,7 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/ei_main_shapableimage"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:minHeight="150dp"
