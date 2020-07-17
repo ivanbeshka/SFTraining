@@ -165,6 +165,7 @@ class CreateExerFragment : Fragment() {
     }
 
     private fun doPhoto(type: String) {
+
         val intent = Intent(activity, CameraActivity::class.java)
 
         val doPhoto = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
