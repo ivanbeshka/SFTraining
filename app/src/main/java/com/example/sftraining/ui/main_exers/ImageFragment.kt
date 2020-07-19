@@ -26,11 +26,10 @@ class ImageFragment(private val imageUrl: String) : Fragment() {
     }
 
     private fun initView(root: View){
-        image = root.findViewById(R.id.ei_main_shapableimage)
-        image.apply {
+        root.findViewById<ShapeableImageView>(R.id.ei_main_shapableimage).apply {
             val cornerSize: Float = resources.getDimension(R.dimen.cornerRadius)
             this.shapeAppearanceModel = this.shapeAppearanceModel.toBuilder().setAllCornerSizes(cornerSize).build()
-            Glide.with(this).load(imageUrl).placeholder(R.drawable.image2).into(this)
+            Glide.with(this.context).load(imageUrl).placeholder(R.drawable.image2).centerCrop().into(this)
         }
     }
 }
