@@ -1,6 +1,5 @@
 package com.example.sftraining.binding
 
-import android.net.Uri
 import androidx.databinding.BindingAdapter
 import com.example.sftraining.R
 import com.google.android.material.imageview.ShapeableImageView

@@ -19,7 +19,7 @@ class UsersRepository : Repository {
         docPath.get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val doc = task.result
-                if (!doc?.exists()!!){
+                if (!doc?.exists()!!) {
                     docPath.set(user)
                         .addOnCompleteListener {
                             onComplete()
