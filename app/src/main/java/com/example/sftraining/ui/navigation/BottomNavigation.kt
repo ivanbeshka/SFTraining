@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.example.sftraining.R
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import kotlinx.android.synthetic.main.bottom_nav_sheet.*
+import com.google.android.material.navigation.NavigationView
 
 class BottomNavigation : BottomSheetDialogFragment() {
+
+    private lateinit var navigationView: NavigationView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,8 +23,8 @@ class BottomNavigation : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        navigation_view.setNavigationItemSelectedListener {
+        navigationView = view.findViewById(R.id.navigation_view)
+        navigationView.setNavigationItemSelectedListener {
             when (it.itemId){
                 R.id.favorite -> { findNavController(this).navigate(R.id.navListOfFavoriteExers)
                     dialog?.hide()
@@ -47,6 +49,8 @@ class BottomNavigation : BottomSheetDialogFragment() {
                     dialog?.hide()
                 }
             }
+
+            it.isChecked = true
 
             true
         }

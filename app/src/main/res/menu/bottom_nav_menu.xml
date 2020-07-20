@@ -3,8 +3,9 @@
 
     <item
         android:id="@+id/all_exers"
+        android:checked="true"
         android:icon="@drawable/ic_ballot_24px"
-        android:title="@string/all_exercises"/>
+        android:title="@string/all_exercises" />
 
     <item
         android:id="@+id/trainings"

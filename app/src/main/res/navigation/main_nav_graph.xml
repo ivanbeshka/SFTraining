@@ -54,13 +54,13 @@
             app:destination="@id/navListOfExers" />
     </fragment>
 
-    <fragment
-        android:id="@+id/navAppSettingsFragment"
-        android:name="com.example.sftraining.ui.app_settings.AppSettingsFragment"
-        android:label="AppSettingsFragment" >
-        <action
-            android:id="@+id/action_appSettingsFragment_to_navListOfExers"
-            app:destination="@id/navListOfExers" />
-    </fragment>
+<!--    <fragment-->
+<!--        android:id="@+id/navAppSettingsFragment"-->
+<!--        android:name="com.example.sftraining.ui.app_settings.AppSettingsFragment"-->
+<!--        android:label="AppSettingsFragment" >-->
+<!--        <action-->
+<!--            android:id="@+id/action_appSettingsFragment_to_navListOfExers"-->
+<!--            app:destination="@id/navListOfExers" />-->
+<!--    </fragment>-->
 
 </navigation>
