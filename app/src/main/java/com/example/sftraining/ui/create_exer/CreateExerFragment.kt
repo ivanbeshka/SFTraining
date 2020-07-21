@@ -277,9 +277,6 @@ class CreateExerFragment : Fragment() {
         imageEnd.tag = ""
     }
 
-    private fun init(){
-
-    }
 }
 
 
