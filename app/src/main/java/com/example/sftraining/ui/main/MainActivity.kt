@@ -3,6 +3,7 @@ package com.example.sftraining.ui.main
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.navigation.NavController
@@ -41,13 +42,15 @@ class MainActivity : BaseActivity() {
                 filterFragment.show(supportFragmentManager, filterFragment.tag)
             }
             android.R.id.home -> {
-                if (bottomNavigation == null) {
+                if (bottomNavigation == null || bottomNavigation?.dialog == null) {
                     bottomNavigation =
                         BottomNavigation()
                     bottomNavigation!!.show(supportFragmentManager, bottomNavigation!!.tag)
 
                 }
-                bottomNavigation!!.dialog?.show()
+                else{
+                    bottomNavigation!!.dialog?.show()
+                }
             }
             R.id.action_search -> {
                 val searchFragment = SearchFragment()
