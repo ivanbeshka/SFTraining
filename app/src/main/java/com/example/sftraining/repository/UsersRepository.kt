@@ -19,7 +19,7 @@ class UsersRepository : Repository {
         docPath.get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val doc = task.result
-                if (!doc?.exists()!!){
+                if (!doc?.exists()!!) {
                     docPath.set(user)
                         .addOnCompleteListener {
                             onComplete()
@@ -36,14 +36,24 @@ class UsersRepository : Repository {
 
     fun getUser(
         uid: String,
-        onComplete: (User?) -> Unit,
-        onFailure: (String?) -> Unit
+        onComplete: (User?) -> Unit = {},
+        onFailure: (String?) -> Unit = {}
     ) {
         val doc = db.collection(USER_PATH).document(uid)
         doc.get()
             .addOnSuccessListener {
-                val user: User? = it.toObject<User>()
-                onComplete(user)
+                if (it.exists()) {
+                    val user = it.toObject<User>()
+                    if (user != null) {
+
+                        onComplete(user)
+
+                    } else {
+                        onFailure("User is null")
+                    }
+                } else {
+                    onFailure("User not exists")
+                }
             }
             .addOnFailureListener {
                 onFailure(it.message)

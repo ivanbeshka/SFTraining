@@ -1,14 +1,17 @@
 package com.example.sftraining.ui.create_exer
 
 import android.animation.Animator
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.NavHostFragment.findNavController
@@ -17,18 +20,22 @@ import com.bumptech.glide.Glide
 import com.example.sftraining.R
 import com.example.sftraining.globalviewmodels.ExersViewModel
 import com.example.sftraining.model.Exer
+import com.example.sftraining.ui.camera.CameraActivity
 import com.example.sftraining.ui.main.MainActivity
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.checkbox.MaterialCheckBox
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import java.util.*
 import kotlin.math.abs
+
 
 class CreateExerFragment : Fragment() {
 
@@ -52,6 +59,14 @@ class CreateExerFragment : Fragment() {
 
     private val firebaseAuth = Firebase.auth
 
+    companion object {
+        const val TYPE_TITLE = "TITLE"
+        const val TYPE_START = "START"
+        const val TYPE_MAIN = "MAIN"
+        const val TYPE_END = "END"
+        const val URI = "uri"
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -69,20 +84,22 @@ class CreateExerFragment : Fragment() {
 
             val exer = Exer(
                 imageUris = listOf(
-                    imageStart.tag.toString(),
-                    imageMain.tag.toString(),
-                    imageEnd.tag.toString(),
-                    titleImage.tag.toString()
+                    imageStart.tag.toString().toUri(),
+                    imageMain.tag.toString().toUri(),
+                    imageEnd.tag.toString().toUri()
                 ),
+                titleImageUri = titleImage.tag.toString().toUri(),
                 userUid = firebaseAuth.uid!!,
                 isPrivate = isPrivate.isChecked,
-                title = etTitle.text.toString()
+                title = etTitle.text.toString(),
+                uid = UUID.randomUUID().toString()
             )
 
             exersViewModel.createExer(
                 exer,
                 onSuccess = {
                     activity.stopLoadingAnimation()
+
                     //on create exer animation
                     createExerAnimation.playAnimation()
                     createExerAnimation.addAnimatorListener(object : Animator.AnimatorListener {
@@ -124,44 +141,84 @@ class CreateExerFragment : Fragment() {
 
         val getPhoto = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
 
-            view.tag = uri.toString()
-            Log.e("uri", uri.toString())
-
-            if (view is ShapeableImageView) {
-                Glide.with(view).load(uri)
-                    .into(view.apply {
-                        val cornerSize: Float = resources.getDimension(R.dimen.cornerRadius)
-                        this.shapeAppearanceModel =
-                            this.shapeAppearanceModel.toBuilder()
-                                .setAllCornerSizes(cornerSize).build()
-                    })
-
-            } else {
-                Glide.with(titleImage).load(uri).into(titleImage)
-            }
-
-
+            setPhoto(view, uri)
         }
         getPhoto.launch("image/*")
     }
 
+    private fun setPhoto(view: View, uri: Uri){
+
+        view.tag = uri.toString()
+
+        if (view is ShapeableImageView) {
+            Glide.with(view).load(uri)
+                .into(view.apply {
+                    val cornerSize: Float = resources.getDimension(R.dimen.cornerRadius)
+                    this.shapeAppearanceModel =
+                        this.shapeAppearanceModel.toBuilder()
+                            .setAllCornerSizes(cornerSize).build()
+                })
+
+        } else {
+            Glide.with(titleImage).load(uri).into(titleImage)
+        }
+    }
+
+    private fun doPhoto(type: String) {
+
+        val intent = Intent(activity, CameraActivity::class.java)
+
+        val doPhoto = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            val uri = Uri.parse(it.data?.getStringExtra(URI))
+            when (type) {
+                TYPE_TITLE -> {
+                    setPhoto(titleImage, uri)
+                }
+                TYPE_START -> {
+                    setPhoto(imageStart, uri)
+                }
+                TYPE_MAIN -> {
+                    setPhoto(imageMain, uri)
+                }
+                TYPE_END -> {
+                    setPhoto(imageEnd, uri)
+                }
+            }
+        }
+
+        doPhoto.launch(intent)
+    }
 
     private fun initPickPhotoListeners() {
         btnAddTitleImage.setOnClickListener {
-            pickPhotoFromGallery(titleImage)
+            showDialog(TYPE_TITLE, it)
         }
 
         btnAddStartImage.setOnClickListener {
-            pickPhotoFromGallery(imageStart)
+            showDialog(TYPE_START, it)
         }
 
         btnAddMainImage.setOnClickListener {
-            pickPhotoFromGallery(imageMain)
+            showDialog(TYPE_MAIN, it)
         }
 
         btnAddEndImage.setOnClickListener {
-            pickPhotoFromGallery(imageEnd)
+            showDialog(TYPE_END, it)
         }
+    }
+
+    private fun showDialog(type: String, view: View) {
+
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Choose")
+            .setMessage("Where to get the photo")
+            .setNegativeButton("Do photo now") { _, _ ->
+                doPhoto(type)
+            }
+            .setPositiveButton("From gallery") { _, _ ->
+                pickPhotoFromGallery(view)
+            }
+            .show()
     }
 
     private fun initView(root: View) {
@@ -184,5 +241,33 @@ class CreateExerFragment : Fragment() {
         isPrivate = root.findViewById(R.id.ce_checkbox_private)
         etTitle = root.findViewById(R.id.ce_title_edit_text)
         createExerAnimation = root.findViewById(R.id.create_exer_animation)
+
+        //   _        _
+        //  ( `-.__.-' )
+        //   `-.    .-'
+        //      \  /
+        //       ||
+        //       ||
+        //      //\\
+        //     //  \\
+        //    ||    ||
+        //    ||____||
+        //    ||====||
+        //     \\  //
+        //      \\//
+        //       ||
+        //       ||
+        //       ||
+        //       ||
+        //       ||
+        //       ||
+        //       ||
+        //       ||
+        //       []
+        //this is very fucking for save image uri
+        titleImage.tag = ""
+        imageStart.tag = ""
+        imageMain.tag = ""
+        imageEnd.tag = ""
     }
 }

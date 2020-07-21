@@ -12,10 +12,15 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.sftraining.R
-import com.example.sftraining.model.Exer
+import com.example.sftraining.binding.OnClick
 import com.example.sftraining.databinding.ExerItemBinding
 import com.rd.PageIndicatorView
 import com.rd.animation.type.AnimationType
+import com.example.sftraining.globalviewmodels.ExersViewModel
+import com.example.sftraining.model.Exer
+import com.example.sftraining.ui.base.BaseActivity
+import com.google.android.material.bottomappbar.BottomAppBar
+import com.google.android.material.imageview.ShapeableImageView
 
 class ExercisesRecyclerAdapter (private val lifecycle: Lifecycle, private val supportFragmentManager: FragmentManager, private var exersList: List<Exer>) :
     RecyclerView.Adapter<ExercisesRecyclerAdapter.ExerViewHolder>() {
@@ -62,9 +67,8 @@ class ExercisesRecyclerAdapter (private val lifecycle: Lifecycle, private val su
         val inflater = LayoutInflater.from(parent.context)
         val exerItemBinding =
             DataBindingUtil.inflate<ExerItemBinding>(inflater, R.layout.exer_item, parent, false)
-        return ExerViewHolder(
-            exerItemBinding
-        )
+
+        return ExerViewHolder(exerItemBinding)
     }
 
     override fun getItemCount(): Int {

@@ -5,7 +5,7 @@
     <data>
 
         <variable
-            name="Exer"
+            name="exer"
             type="com.example.sftraining.model.Exer" />
     </data>
 
@@ -42,7 +42,7 @@
                 android:ellipsize="end"
                 android:gravity="center"
                 android:maxLines="1"
-                android:text="@{Exer.title}"
+                android:text="@{exer.title}"
                 android:textColor="#000000"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -70,6 +70,8 @@
                 android:minHeight="150dp"
                 android:adjustViewBounds="true"
                 android:elevation="4dp"
+                android:src="@{exer.titleImageUri}"
+                app:layout_constraintEnd_toStartOf="@+id/ei_imageview_tag3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/ei_imageview_tag3"
@@ -185,8 +187,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:background="@color/colorTransparent"
-                android:src="@drawable/ic_favorite_border_24"
+                android:onClick="@{(theView) -> exer.onSuck(theView)}"
+                android:background="@drawable/ic_favorite_border_24_default"
                 app:layout_constraintBottom_toBottomOf="@+id/ei_name_tv"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/ei_name_tv" />
@@ -207,7 +209,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
-                android:text='@{Exer.commentsNum}'
+                attrNum="@{exer.commentsNum}"
                 app:layout_constraintBottom_toBottomOf="@+id/ei_imagebutton_comments"
                 app:layout_constraintEnd_toStartOf="@+id/ei_imagebutton_comments"
                 app:layout_constraintTop_toTopOf="@+id/ei_imagebutton_comments" />
@@ -217,7 +219,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
-                android:text='@{Exer.favoriteNum}'
+                attrNum='@{exer.favoriteNum}'
                 app:layout_constraintBottom_toBottomOf="@+id/ei_imagebutton_favorite"
                 app:layout_constraintEnd_toStartOf="@+id/ei_imagebutton_favorite"
                 app:layout_constraintTop_toTopOf="@+id/ei_imagebutton_favorite" />
