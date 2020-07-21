@@ -1,25 +1,24 @@
 package com.example.sftraining.ui.create_exer
 
-import android.animation.Animator
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-
+import android.provider.MediaStore.Video.Thumbnails.VIDEO_ID
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 import com.example.sftraining.R
 import com.example.sftraining.globalviewmodels.ExersViewModel
-import com.example.sftraining.model.Exer
 import com.example.sftraining.ui.camera.CameraActivity
 import com.example.sftraining.ui.main.MainActivity
 import com.google.android.material.appbar.AppBarLayout
@@ -31,9 +30,15 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import java.util.*
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+import java.lang.Error
+import java.lang.Exception
 import kotlin.math.abs
 
 
@@ -46,6 +51,8 @@ class CreateExerFragment : Fragment() {
     private lateinit var btnAddTitleImage: FloatingActionButton
     private lateinit var titleImage: AppCompatImageView
     private lateinit var etTitle: TextInputEditText
+    private lateinit var youtubeLink: TextInputEditText
+    private lateinit var youTubePlayerView: YouTubePlayerView
     private lateinit var btnAddStartImage: MaterialButton
     private lateinit var btnAddMainImage: MaterialButton
     private lateinit var btnAddEndImage: MaterialButton
@@ -53,7 +60,9 @@ class CreateExerFragment : Fragment() {
     private lateinit var imageMain: ShapeableImageView
     private lateinit var imageEnd: ShapeableImageView
     private lateinit var isPrivate: MaterialCheckBox
+    private lateinit var textInputLayout: TextInputLayout
     private lateinit var createExerAnimation: LottieAnimationView
+    private lateinit var youtubePlayerGlobal: YouTubePlayer
 
     private val exersViewModel: ExersViewModel by activityViewModels()
 
@@ -78,50 +87,27 @@ class CreateExerFragment : Fragment() {
 
         initPickPhotoListeners()
 
-        btnCreateExer.setOnClickListener {
-            val activity = activity as MainActivity
-            activity.startLoadingAnimation()
+        youTubePlayerView.enableAutomaticInitialization = false
+        youTubePlayerView.initialize(object : AbstractYouTubePlayerListener() {
 
-            val exer = Exer(
-                imageUris = listOf(
-                    imageStart.tag.toString(),
-                    imageMain.tag.toString(),
-                    imageEnd.tag.toString()
-                ),
-                titleImageUri = titleImage.tag.toString(),
-                userUid = firebaseAuth.uid!!,
-                isPrivate = isPrivate.isChecked,
-                title = etTitle.text.toString(),
-                uid = UUID.randomUUID().toString()
-            )
+            override fun onReady(youTubePlayer: YouTubePlayer) {
+                youtubePlayerGlobal = youTubePlayer
+            }
+        })
 
-            exersViewModel.createExer(
-                exer,
-                onSuccess = {
-                    activity.stopLoadingAnimation()
+        textInputLayout.setEndIconOnClickListener {
+            var txt: String = youtubeLink.text.toString()
+            Log.d("LOGLOG", txt)
+            try {
+                youtubePlayerGlobal.loadVideo(txt, 0F)
 
-                    //on create exer animation
-                    createExerAnimation.playAnimation()
-                    createExerAnimation.addAnimatorListener(object : Animator.AnimatorListener {
-                        override fun onAnimationRepeat(p0: Animator?) {
-                        }
+            }catch (e: Exception){
+                Toast.makeText(context, "bad link", Toast.LENGTH_SHORT).show()
+            }
 
-                        override fun onAnimationEnd(p0: Animator?) {
-                            findNavController(this@CreateExerFragment).navigate(R.id.navListOfExers)
-                        }
 
-                        override fun onAnimationCancel(p0: Animator?) {
-                        }
-
-                        override fun onAnimationStart(p0: Animator?) {
-                        }
-                    })
-                },
-                onFailure = {
-                    Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
-                }
-            )
         }
+
 
         //toolbar animation
         appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
@@ -238,10 +224,12 @@ class CreateExerFragment : Fragment() {
         imageMain.tag = ""
         imageEnd = root.findViewById(R.id.ce_image_view_content_end)
         imageEnd.tag = ""
+        youtubeLink = root.findViewById(R.id.ce_youtube_edit_text)
+        youTubePlayerView = root.findViewById(R.id.youtube_player_view)
         isPrivate = root.findViewById(R.id.ce_checkbox_private)
         etTitle = root.findViewById(R.id.ce_title_edit_text)
         createExerAnimation = root.findViewById(R.id.create_exer_animation)
-
+        textInputLayout = root.findViewById(R.id.textInputLayout4)
         //   _        _
         //  ( `-.__.-' )
         //   `-.    .-'
@@ -265,9 +253,16 @@ class CreateExerFragment : Fragment() {
         //       ||
         //       []
         //this is very fucking for save image uri
+
         titleImage.tag = ""
         imageStart.tag = ""
         imageMain.tag = ""
         imageEnd.tag = ""
     }
+
+    private fun init(){
+
+    }
 }
+
+

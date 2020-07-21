@@ -39,7 +39,7 @@ class ImageRepository : Repository {
 
     fun getExerImages(
         exer: Exer,
-        onTitleImageSuccess: (String) -> Unit,
+        onTitleImageSuccess: (String) -> Unit = {},
         onMainImagesSuccess: (List<String>) -> Unit = {},
         onFailure: (String?) -> Unit = {}
     ) {

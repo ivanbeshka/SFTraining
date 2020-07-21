@@ -14,6 +14,7 @@ import com.example.sftraining.databinding.ExerItemBinding
 import com.rd.PageIndicatorView
 import com.rd.animation.type.AnimationType
 import com.example.sftraining.model.Exer
+import com.google.android.material.imageview.ShapeableImageView
 import com.example.sftraining.ui.main_exers.ExerViewPagerAdapter
 import com.example.sftraining.ui.main_exers.ImageFragment
 
