@@ -181,6 +181,8 @@
                 android:id="@+id/youtube_player_view"
                 android:layout_width="match_parent"
                 android:layout_marginEnd="8dp"
+                android:visibility="gone"
+                style="@style/ShapeableImageView"
                 android:layout_marginStart="8dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"

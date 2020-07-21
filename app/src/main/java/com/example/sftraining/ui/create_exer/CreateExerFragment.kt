@@ -99,6 +99,10 @@ class CreateExerFragment : Fragment() {
             var txt: String = youtubeLink.text.toString()
             Log.d("LOGLOG", txt)
             try {
+                txt = videoIdFromUrl(txt)
+                youTubePlayerView.visibility = View.VISIBLE
+//                Toast.makeText(context, txt, Toast.LENGTH_SHORT).show()
+
                 youtubePlayerGlobal.loadVideo(txt, 0F)
 
             }catch (e: Exception){
@@ -205,6 +209,17 @@ class CreateExerFragment : Fragment() {
                 pickPhotoFromGallery(view)
             }
             .show()
+    }
+
+    private fun videoIdFromUrl(url: String) : String {
+        return if (url.indexOf('?') == -1)
+            if(url.indexOf('/') == -1)
+                url
+            else
+                url.substringAfterLast('/')
+        else
+            url.substringAfterLast('=')
+
     }
 
     private fun initView(root: View) {
