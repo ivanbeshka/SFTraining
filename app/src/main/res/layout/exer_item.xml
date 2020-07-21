@@ -1,30 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <data>
-
         <variable
             name="exer"
             type="com.example.sftraining.model.Exer" />
     </data>
 
     <!--    ei - exercise item-->
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/ei_card"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="12dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="6dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+<com.google.android.material.card.MaterialCardView android:id="@+id/ei_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="12dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="6dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+  >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/ei_layout"
@@ -70,8 +67,6 @@
                 android:minHeight="150dp"
                 android:adjustViewBounds="true"
                 android:elevation="4dp"
-                android:src="@{exer.titleImageUri}"
-                app:layout_constraintEnd_toStartOf="@+id/ei_imageview_tag3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/ei_imageview_tag3"
@@ -100,37 +95,6 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--            <androidx.viewpager2.widget.ViewPager2-->
-<!--                android:id="@+id/knowing_viewpager"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                app:layout_constraintStart_toStartOf="@+id/ei_imageview_tag3"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--            <com.rd.PageIndicatorView-->
-<!--                android:id="@+id/page_indicator"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_alignParentBottom="true"-->
-<!--                android:layout_marginBottom="16dp"-->
-<!--                app:piv_interactiveAnimation="true"-->
-<!--                app:piv_selectedColor="@color/colorAccent"-->
-<!--                app:piv_unselectedColor="@color/colorUnactive"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent" />-->
-
-<!--            <com.google.android.material.imageview.ShapeableImageView-->
-<!--                android:id="@+id/ei_main_shapableimage"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginEnd="16dp"-->
-<!--                android:minHeight="150dp"-->
-<!--                android:adjustViewBounds="true"-->
-<!--                android:elevation="4dp"-->
-<!--                app:layout_constraintEnd_toStartOf="@+id/ei_imageview_tag3"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ei_imageview_tag1"

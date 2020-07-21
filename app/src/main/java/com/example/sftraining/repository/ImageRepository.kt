@@ -20,7 +20,7 @@ class ImageRepository : Repository {
         for (imageUri in exer.imageUris) {
 
             val imageRef = path.child(imageUri.toString())
-            val uploadTask = imageRef.putFile(imageUri)
+            val uploadTask = imageRef.putFile(Uri.parse(imageUri))
             uploadTask.addOnFailureListener {
                 //TODO
             }.addOnSuccessListener {
@@ -28,8 +28,8 @@ class ImageRepository : Repository {
             }
         }
 
-        val titleImageRef = path.child(exer.titleImageUri.toString())
-        val uploadTask = titleImageRef.putFile(exer.titleImageUri)
+        val titleImageRef = path.child(exer.titleImageUri)
+        val uploadTask = titleImageRef.putFile(Uri.parse(exer.titleImageUri))
         uploadTask.addOnSuccessListener {
             //TODO
         }.addOnFailureListener {

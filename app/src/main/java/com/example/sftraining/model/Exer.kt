@@ -1,7 +1,6 @@
 package com.example.sftraining.model
 
 import android.net.Uri
-import android.util.Log
 import android.view.View
 import android.widget.ImageButton
 import com.example.sftraining.R
@@ -9,8 +8,8 @@ import com.example.sftraining.R
 // Exercise
 data class Exer(
     val title: String = "",
-    var titleImageUri: Uri = Uri.EMPTY,
-    var imageUris: List<Uri> = emptyList(),
+    var titleImageUri: String = "",
+    var imageUris: List<String> = emptyList(),
     var videoUrl: String = "",
     val uid: String = "",
     val description: String = "",
@@ -46,8 +45,6 @@ data class Exer(
     }
 
     fun onSuck(view: View){
-
-        Log.d("XYI", "PIDOR")
 
         val imageButton : ImageButton = view.findViewById(R.id.ei_imagebutton_favorite)
 

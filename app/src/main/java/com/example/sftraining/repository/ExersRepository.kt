@@ -58,10 +58,7 @@ class ExersRepository(
                 val exer = it.toObject<Exer>()
                 if (exer != null) {
 
-                    val exerImages = imageRepository.getExerImages(exer)
-
-                    exer.imageUris = exerImages.first
-                    exer.titleImageUri = exerImages.second
+                    val exerImages = imageRepository.getExerImages(exer, {})
 
                     onSuccess(exer)
 

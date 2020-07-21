@@ -84,11 +84,11 @@ class CreateExerFragment : Fragment() {
 
             val exer = Exer(
                 imageUris = listOf(
-                    imageStart.tag.toString().toUri(),
-                    imageMain.tag.toString().toUri(),
-                    imageEnd.tag.toString().toUri()
+                    imageStart.tag.toString(),
+                    imageMain.tag.toString(),
+                    imageEnd.tag.toString()
                 ),
-                titleImageUri = titleImage.tag.toString().toUri(),
+                titleImageUri = titleImage.tag.toString(),
                 userUid = firebaseAuth.uid!!,
                 isPrivate = isPrivate.isChecked,
                 title = etTitle.text.toString(),

@@ -1,28 +1,23 @@
-package com.example.sftraining.ui.main_exers
+package com.example.sftraining.globalAdapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.updateLayoutParams
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.sftraining.R
-import com.example.sftraining.binding.OnClick
 import com.example.sftraining.databinding.ExerItemBinding
 import com.rd.PageIndicatorView
 import com.rd.animation.type.AnimationType
-import com.example.sftraining.globalviewmodels.ExersViewModel
 import com.example.sftraining.model.Exer
-import com.example.sftraining.ui.base.BaseActivity
-import com.google.android.material.bottomappbar.BottomAppBar
-import com.google.android.material.imageview.ShapeableImageView
+import com.example.sftraining.ui.main_exers.ExerViewPagerAdapter
+import com.example.sftraining.ui.main_exers.ImageFragment
 
-class ExercisesRecyclerAdapter (private val lifecycle: Lifecycle, private val supportFragmentManager: FragmentManager, private var exersList: List<Exer>) :
+class ExercisesRecyclerAdapter (private val lifecycle: Lifecycle, private val fragmentManager: FragmentManager, private var exersList: List<Exer>) :
     RecyclerView.Adapter<ExercisesRecyclerAdapter.ExerViewHolder>() {
 
     private lateinit var pagerAdapter: ExerViewPagerAdapter
@@ -43,7 +38,7 @@ class ExercisesRecyclerAdapter (private val lifecycle: Lifecycle, private val su
                 ExerViewPagerAdapter(
                     fragments,
                     lifecycle,
-                    supportFragmentManager
+                    fragmentManager
                 )
             viewPager.adapter = pagerAdapter
             pagerDots.count = fragments.size

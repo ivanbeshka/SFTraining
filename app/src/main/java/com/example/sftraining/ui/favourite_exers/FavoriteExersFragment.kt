@@ -29,7 +29,7 @@ class FavoriteExersFragment : Fragment() {
         initView(root)
 
         exerViewModel.getExers().observe(viewLifecycleOwner, Observer { exers ->
-            recyclerAdapter = ExercisesRecyclerAdapter(exers)
+            recyclerAdapter = ExercisesRecyclerAdapter(lifecycle, exersList = exers, fragmentManager = parentFragmentManager)
             recyclerView.adapter = recyclerAdapter
         })
 
@@ -41,6 +41,6 @@ class FavoriteExersFragment : Fragment() {
     }
 
     private fun initView(root: View) {
-        recyclerView = root.findViewById(R.id.recycler_exercises)
+        recyclerView = root.findViewById(R.id.recycler_fav_exers)
     }
 }
