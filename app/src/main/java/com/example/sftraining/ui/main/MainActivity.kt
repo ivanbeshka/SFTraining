@@ -23,6 +23,7 @@ class MainActivity : BaseActivity() {
     private lateinit var bottomAppBar: BottomAppBar
     private lateinit var navController: NavController
     private lateinit var navHostFragment: NavHostFragment
+    private var bottomNavigation: BottomNavigation? = null
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
@@ -38,13 +39,23 @@ class MainActivity : BaseActivity() {
                 filterFragment.show(supportFragmentManager, filterFragment.tag)
             }
             android.R.id.home -> {
-                val bottomNavigation =
-                    BottomNavigation()
-                bottomNavigation.show(supportFragmentManager, bottomNavigation.tag)
+                if (bottomNavigation == null) {
+                    bottomNavigation =
+                        BottomNavigation()
+                    bottomNavigation!!.show(supportFragmentManager, bottomNavigation!!.tag)
+
+                }
+                bottomNavigation!!.dialog?.show()
             }
             R.id.action_search -> {
                 val searchFragment = SearchFragment()
-                searchFragment.dialog?.window?.setBackgroundDrawable(ColorDrawable(resources.getColor(R.color.colorTransparent)))
+                searchFragment.dialog?.window?.setBackgroundDrawable(
+                    ColorDrawable(
+                        resources.getColor(
+                            R.color.colorTransparent
+                        )
+                    )
+                )
                 searchFragment.show(supportFragmentManager, searchFragment.tag)
             }
         }
@@ -57,7 +68,7 @@ class MainActivity : BaseActivity() {
         setSupportActionBar(bottom_bar)
         setProgressIndicatorLayout(R.id.loading_indicator_layout_main)
 
-        when(intent.getStringExtra("user_type")){
+        when (intent.getStringExtra("user_type")) {
             "anon" -> updateUIAnon()
         }
 
@@ -93,7 +104,7 @@ class MainActivity : BaseActivity() {
         }
     }
 
-    private fun updateUIAnon(){
+    private fun updateUIAnon() {
         //TODO
     }
 

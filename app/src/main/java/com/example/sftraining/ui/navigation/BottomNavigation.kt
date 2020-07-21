@@ -25,17 +25,21 @@ class BottomNavigation : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         navigationView = view.findViewById(R.id.navigation_view)
         navigationView.setNavigationItemSelectedListener {
-            when (it.itemId){
-                R.id.favorite -> { findNavController(this).navigate(R.id.navListOfFavoriteExers)
+            when (it.itemId) {
+                R.id.favorite -> {
+                    findNavController(this).popBackStack(R.id.navListOfFavoriteExers, true)
+                    findNavController(this).navigate(R.id.navListOfFavoriteExers)
                     dialog?.hide()
                 }
 
                 R.id.profile -> {
+                    findNavController(this).popBackStack(R.id.navAccSettingsFragment, true)
                     findNavController(this).navigate(R.id.navAccSettingsFragment)
                     dialog?.hide()
                 }
 
                 R.id.all_exers -> {
+                    findNavController(this).popBackStack(R.id.navListOfExers, true)
                     findNavController(this).navigate(R.id.navListOfExers)
                     dialog?.hide()
                 }
@@ -45,12 +49,11 @@ class BottomNavigation : BottomSheetDialogFragment() {
                 }
 
                 R.id.settings -> {
+                    findNavController(this).popBackStack(R.id.navAppSettingsFragment, true)
                     findNavController(this).navigate(R.id.navAppSettingsFragment)
                     dialog?.hide()
                 }
             }
-
-            it.isChecked = true
 
             true
         }
