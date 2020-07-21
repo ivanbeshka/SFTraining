@@ -7,8 +7,8 @@
 
     <fragment
         android:id="@+id/navListOfExers"
-        tools:layout="@layout/list_of_exers"
-        android:name="com.example.sftraining.ui.main_exers.ExersFragment">
+        android:name="com.example.sftraining.ui.main_exers.ExersFragment"
+        tools:layout="@layout/list_of_exers">
         <action
             android:id="@+id/action_listOfExers_to_listOfFavoriteExers"
             app:destination="@id/navListOfFavoriteExers" />
@@ -22,8 +22,8 @@
 
     <fragment
         android:id="@+id/navListOfFavoriteExers"
-        tools:layout="@layout/list_of_favorite_exers"
-        android:name="com.example.sftraining.ui.favourite_exers.FavoriteExersFragment">
+        android:name="com.example.sftraining.ui.favourite_exers.FavoriteExersFragment"
+        tools:layout="@layout/list_of_favorite_exers">
         <action
             android:id="@+id/action_navListOfFavoriteExers_to_navListOfExers"
             app:destination="@id/navListOfExers" />
@@ -31,8 +31,8 @@
 
     <fragment
         android:id="@+id/navCrateExer"
-        tools:layout="@layout/create_exer_fragment"
-        android:name="com.example.sftraining.ui.create_exer.CreateExerFragment">
+        android:name="com.example.sftraining.ui.create_exer.CreateExerFragment"
+        tools:layout="@layout/create_exer_fragment">
         <action
             android:id="@+id/action_navCrateExer_to_navListOfExers"
             app:destination="@id/navListOfExers" />
@@ -40,7 +40,7 @@
     <fragment
         android:id="@+id/navAccSettingsFragment"
         android:name="com.example.sftraining.ui.acc_settings.AccSettingsFragment"
-        android:label="AccSettingsFragment" >
+        android:label="AccSettingsFragment">
         <action
             android:id="@+id/action_accSettingsFragment_to_navListOfExers"
             app:destination="@id/navListOfExers" />
@@ -48,8 +48,18 @@
     <fragment
         android:id="@+id/navAppSettingsFragment"
         android:name="com.example.sftraining.ui.app_settings.AppSettingsFragment"
-        android:label="AppSettingsFragment" >
+        android:label="AppSettingsFragment">
+        <action
+            android:id="@+id/action_appSettingsFragment_to_navListOfExers"
+            app:destination="@id/navListOfExers" />
     </fragment>
-
+    <fragment
+        android:id="@+id/navListOfTrainings"
+        android:name="com.example.sftraining.ui.trainings.TrainingsFragment"
+        android:label="TrainingsFragment">
+        <action
+            android:id="@+id/action_trainingsFragment_to_navListOfExers"
+            app:destination="@id/navListOfExers" />
+    </fragment>
 
 </navigation>

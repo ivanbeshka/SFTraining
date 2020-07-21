@@ -45,6 +45,8 @@ class BottomNavigation : BottomSheetDialogFragment() {
                 }
 
                 R.id.trainings -> {
+                    findNavController(this).popBackStack(R.id.navListOfTrainings, true)
+                    findNavController(this).navigate(R.id.navListOfTrainings)
                     dialog?.hide()
                 }
 
