@@ -94,7 +94,9 @@ class CreateExerFragment : Fragment() {
 
 
         btnNext.setOnClickListener {
-            findNavController(this).navigate(R.id.chooseFilterFragment)
+            val action = CreateExerFragmentDirections.actionNavCreateExerToChooseFilterFragment("lolKEK")
+
+            findNavController(this).navigate(action)
         }
 
         youTubePlayerView.enableAutomaticInitialization = false
