@@ -69,7 +69,7 @@
                 android:elevation="4dp"
                 android:minHeight="150dp"
                 android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/expandable_layout"
                 app:layout_constraintEnd_toStartOf="@+id/ei_comments_number"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ei_name_tv" />
@@ -112,7 +112,15 @@
                 app:layout_constraintEnd_toStartOf="@+id/ei_imagebutton_favorite"
                 app:layout_constraintTop_toTopOf="@+id/ei_imagebutton_favorite" />
 
+            <net.cachapa.expandablelayout.ExpandableLayout
+                android:id="@+id/expandable_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+            </net.cachapa.expandablelayout.ExpandableLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
-        
+
     </com.google.android.material.card.MaterialCardView>
 </layout>
