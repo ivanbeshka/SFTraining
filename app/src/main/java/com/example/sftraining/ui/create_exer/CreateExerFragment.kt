@@ -18,6 +18,7 @@ import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.NavHostFragment.findNavController
+import androidx.viewpager2.widget.ViewPager2
 import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 import com.example.sftraining.R
@@ -48,7 +49,7 @@ import kotlin.math.abs
 
 class CreateExerFragment : Fragment() {
 
-    private lateinit var btnCreateExer: MaterialButton
+    private lateinit var btnNext: MaterialButton
     private lateinit var collapsingToolbarLayout: CollapsingToolbarLayout
     private lateinit var appBarLayout: AppBarLayout
     private lateinit var toolbar: MaterialToolbar
@@ -91,6 +92,11 @@ class CreateExerFragment : Fragment() {
 
         initPickPhotoListeners()
 
+
+        btnNext.setOnClickListener {
+            findNavController(this).navigate(R.id.chooseFilterFragment)
+        }
+
         youTubePlayerView.enableAutomaticInitialization = false
         youTubePlayerView.initialize(object : AbstractYouTubePlayerListener() {
 
@@ -105,7 +111,7 @@ class CreateExerFragment : Fragment() {
             try {
                 txt = videoIdFromUrl(txt)
                 youTubePlayerView.visibility = View.VISIBLE
-//                Toast.makeText(context, txt, Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, txt, Toast.LENGTH_SHORT).show()
 
                 youtubePlayerGlobal.loadVideo(txt, 0F)
 
@@ -117,7 +123,7 @@ class CreateExerFragment : Fragment() {
         }
 
 
-        //toolbar animation
+//        toolbar animation
         appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
             if (abs(verticalOffset) - appBarLayout.totalScrollRange == 0) {
                 toolbar.background =
@@ -227,7 +233,7 @@ class CreateExerFragment : Fragment() {
     }
 
     private fun initView(root: View) {
-        btnCreateExer = root.findViewById(R.id.btn_create_exer)
+        btnNext = root.findViewById(R.id.btn_create_exer)
         collapsingToolbarLayout = root.findViewById(R.id.ce_collapsing_layout)
         appBarLayout = root.findViewById(R.id.ce_app_bar_layout)
         toolbar = root.findViewById(R.id.ce_toolbar)
@@ -247,29 +253,29 @@ class CreateExerFragment : Fragment() {
         etTitle = root.findViewById(R.id.ce_title_edit_text)
         createExerAnimation = root.findViewById(R.id.create_exer_animation)
         textInputLayout = root.findViewById(R.id.textInputLayout4)
-        //   _        _
-        //  ( `-.__.-' )
-        //   `-.    .-'
-        //      \  /
-        //       ||
-        //       ||
-        //      //\\
-        //     //  \\
-        //    ||    ||
-        //    ||____||
-        //    ||====||
-        //     \\  //
-        //      \\//
-        //       ||
-        //       ||
-        //       ||
-        //       ||
-        //       ||
-        //       ||
-        //       ||
-        //       ||
-        //       []
-        //this is very fucking for save image uri
+//           _        _
+//          ( `-.__.-' )
+//             `-.    .-'
+//              \  /
+//               ||
+//               ||
+//             \\
+//               \\
+//            ||    ||
+//            ||____||
+//            ||====||
+//             \\
+//              \\
+//               ||
+//               ||
+//               ||
+//               ||
+//               ||
+//               ||
+//               ||
+//               ||
+//               []
+//        this is very fucking for save image uri
 
         titleImage.tag = ""
         imageStart.tag = ""

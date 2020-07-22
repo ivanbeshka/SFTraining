@@ -7,6 +7,62 @@
     tools:context=".ui.create_exer.CreateExerFragment">
 
     <!--               ce - create exer                -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/ce_app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/ce_collapsing_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/ce_fab_add_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/colorTransparent"
+                android:src="@drawable/ic_add_a_photo_24px"
+                app:fabSize="mini" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ce_title_photo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax" />
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/ce_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_gravity="bottom"
+                android:background="@drawable/background_edit_text"
+                app:contentInsetEnd="0dp"
+                app:contentInsetEndWithActions="0dp"
+                app:contentInsetLeft="0dp"
+                app:contentInsetRight="0dp"
+                app:contentInsetStart="0dp"
+                app:layout_collapseMode="pin">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ce_title_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:backgroundTint="@color/colorTransparent"
+                    android:hint="@string/write_title_here"
+                    android:imeActionLabel="Done"
+                    android:imeOptions="actionDone"
+                    android:inputType="text|textCapSentences"
+                    android:textColor="@color/colorBlack"
+                    android:textColorHint="@color/colorBlackHint"
+                    android:textSize="24sp" />
+            </com.google.android.material.appbar.MaterialToolbar>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
@@ -107,14 +163,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textInputLayout2" />
 
-            <com.google.android.material.button.MaterialButton
+            V<com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_create_exer"
                 android:layout_width="200dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
-                android:text="Create Exercise"
+                android:text="@string/next"
                 app:cornerRadius="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -222,62 +278,7 @@
         android:layout_gravity="center"
         app:lottie_rawRes="@raw/create_exer_animation"/>
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/ce_app_bar_layout"
-        android:layout_width="match_parent"
-        android:layout_height="250dp">
 
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/ce_collapsing_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/ce_fab_add_photo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@color/colorTransparent"
-                android:src="@drawable/ic_add_a_photo_24px"
-                app:fabSize="mini" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/ce_title_photo"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                app:layout_collapseMode="parallax" />
-
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/ce_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:layout_gravity="bottom"
-                android:background="@drawable/background_edit_text"
-                app:contentInsetEnd="0dp"
-                app:contentInsetEndWithActions="0dp"
-                app:contentInsetLeft="0dp"
-                app:contentInsetRight="0dp"
-                app:contentInsetStart="0dp"
-                app:layout_collapseMode="pin">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/ce_title_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="8dp"
-                    android:backgroundTint="@color/colorTransparent"
-                    android:hint="@string/write_title_here"
-                    android:imeActionLabel="Done"
-                    android:imeOptions="actionDone"
-                    android:inputType="text|textCapSentences"
-                    android:textColor="@color/colorBlack"
-                    android:textColorHint="@color/colorBlackHint"
-                    android:textSize="24sp" />
-            </com.google.android.material.appbar.MaterialToolbar>
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-    </com.google.android.material.appbar.AppBarLayout>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
