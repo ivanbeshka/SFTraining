@@ -3,6 +3,7 @@ package com.example.sftraining.di
 import com.example.sftraining.repository.ExersRepository
 import com.example.sftraining.repository.ImageRepository
 import com.example.sftraining.repository.UsersRepository
+import com.example.sftraining.repository.TrainingsRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,4 +21,8 @@ object RepositoryModule {
     @Provides
     @Singleton
     fun provideExersRepository() = ExersRepository(ImageRepository())
+
+    @Provides
+    @Singleton
+    fun provideTrainingsRepository() = TrainingsRepository()
 }
