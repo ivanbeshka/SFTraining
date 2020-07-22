@@ -18,7 +18,10 @@ class TrainingsViewModel @ViewModelInject constructor(
 //    private val trainingsData: MutableLiveData<List<Training>> = state.getLiveData(SAVE_KEY)
 
     fun getTrainings(): LiveData<List<Training>> {
-        val training1 = Training(name = "Training 1")
+        val training1 = Training(
+            name = "Training 1",
+            titleImageUri = "https://www.dqindia.com/wp-content/uploads/2018/10/training.png"
+        )
         val training2 = Training(name = "Training 2")
         return MutableLiveData(listOf(training1, training2))
 //        return trainingsData
