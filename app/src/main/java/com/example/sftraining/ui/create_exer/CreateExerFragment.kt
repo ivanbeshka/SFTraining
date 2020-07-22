@@ -2,11 +2,7 @@ package com.example.sftraining.ui.create_exer
 
 import android.content.Intent
 import android.net.Uri
-import android.animation.Animator
 import android.os.Bundle
-import android.provider.MediaStore.Video.Thumbnails.VIDEO_ID
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,18 +10,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.NavHostFragment.findNavController
-import androidx.viewpager2.widget.ViewPager2
 import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 import com.example.sftraining.R
-import com.example.sftraining.globalviewmodels.ExersViewModel
 import com.example.sftraining.ui.camera.CameraActivity
-import com.example.sftraining.model.Exer
-import com.example.sftraining.ui.main.MainActivity
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.appbar.MaterialToolbar
@@ -36,15 +26,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-import java.lang.Error
 import java.lang.Exception
-import java.util.*
 import kotlin.math.abs
 
 class CreateExerFragment : Fragment() {
@@ -54,24 +39,25 @@ class CreateExerFragment : Fragment() {
     private lateinit var appBarLayout: AppBarLayout
     private lateinit var toolbar: MaterialToolbar
     private lateinit var btnAddTitleImage: FloatingActionButton
-    private lateinit var titleImage: AppCompatImageView
-    private lateinit var etTitle: TextInputEditText
-    private lateinit var youtubeLink: TextInputEditText
     private lateinit var youTubePlayerView: YouTubePlayerView
     private lateinit var btnAddStartImage: MaterialButton
     private lateinit var btnAddMainImage: MaterialButton
     private lateinit var btnAddEndImage: MaterialButton
-    private lateinit var imageStart: ShapeableImageView
-    private lateinit var imageMain: ShapeableImageView
-    private lateinit var imageEnd: ShapeableImageView
     private lateinit var isPrivate: MaterialCheckBox
     private lateinit var textInputLayout: TextInputLayout
     private lateinit var createExerAnimation: LottieAnimationView
     private lateinit var youtubePlayerGlobal: YouTubePlayer
 
-    private val exersViewModel: ExersViewModel by activityViewModels()
+    private lateinit var imageTitle: AppCompatImageView
+    private lateinit var imageStart: ShapeableImageView
+    private lateinit var imageMain:  ShapeableImageView
+    private lateinit var imageEnd:   ShapeableImageView
 
-    private val firebaseAuth = Firebase.auth
+    private lateinit var titleEditText: TextInputEditText
+    private lateinit var startEditText: TextInputEditText
+    private lateinit var mainEditText:  TextInputEditText
+    private lateinit var endEditText:   TextInputEditText
+    private lateinit var youtubeLink:   TextInputEditText
 
     companion object {
         const val TYPE_TITLE = "TITLE"
@@ -94,7 +80,14 @@ class CreateExerFragment : Fragment() {
 
 
         btnNext.setOnClickListener {
-            val action = CreateExerFragmentDirections.actionNavCreateExerToChooseFilterFragment("lolKEK")
+            val title: String = titleEditText.text.toString()
+            val start: String = startEditText.text.toString()
+            val main : String = mainEditText .text.toString()
+            val end  : String = endEditText  .text.toString()
+
+
+
+            val action = CreateExerFragmentDirections.actionNavCreateExerToChooseFilterFragment()
 
             findNavController(this).navigate(action)
         }
@@ -162,7 +155,7 @@ class CreateExerFragment : Fragment() {
                 })
 
         } else {
-            Glide.with(titleImage).load(uri).into(titleImage)
+            Glide.with(imageTitle).load(uri).into(imageTitle)
         }
     }
 
@@ -174,7 +167,7 @@ class CreateExerFragment : Fragment() {
             val uri = Uri.parse(it.data?.getStringExtra(URI))
             when (type) {
                 TYPE_TITLE -> {
-                    setPhoto(titleImage, uri)
+                    setPhoto(imageTitle, uri)
                 }
                 TYPE_START -> {
                     setPhoto(imageStart, uri)
@@ -240,7 +233,7 @@ class CreateExerFragment : Fragment() {
         appBarLayout = root.findViewById(R.id.ce_app_bar_layout)
         toolbar = root.findViewById(R.id.ce_toolbar)
         btnAddTitleImage = root.findViewById(R.id.ce_fab_add_photo)
-        titleImage = root.findViewById(R.id.ce_title_photo)
+        imageTitle = root.findViewById(R.id.ce_title_photo)
         btnAddStartImage = root.findViewById(R.id.ce_button_add_content_start)
         btnAddMainImage = root.findViewById(R.id.ce_button_add_content_main)
         btnAddEndImage = root.findViewById(R.id.ce_button_add_content_end)
@@ -248,13 +241,16 @@ class CreateExerFragment : Fragment() {
         imageMain = root.findViewById(R.id.ce_image_view_content_main)
         imageEnd = root.findViewById(R.id.ce_image_view_content_end)
         imageEnd.tag = ""
-        imageEnd.tag = ""
         youtubeLink = root.findViewById(R.id.ce_youtube_edit_text)
         youTubePlayerView = root.findViewById(R.id.youtube_player_view)
         isPrivate = root.findViewById(R.id.ce_checkbox_private)
-        etTitle = root.findViewById(R.id.ce_title_edit_text)
         createExerAnimation = root.findViewById(R.id.create_exer_animation)
         textInputLayout = root.findViewById(R.id.textInputLayout4)
+
+        titleEditText = root.findViewById(R.id.ce_title_edit_text)
+        startEditText = root.findViewById(R.id.ce_start_edit_text)
+        mainEditText  = root.findViewById(R.id.ce_main_edit_text)
+        endEditText   = root.findViewById(R.id.ce_end_edit_text)
 //           _        _
 //          ( `-.__.-' )
 //             `-.    .-'
@@ -279,7 +275,7 @@ class CreateExerFragment : Fragment() {
 //               []
 //        this is very fucking for save image uri
 
-        titleImage.tag = ""
+        imageTitle.tag = ""
         imageStart.tag = ""
         imageMain.tag = ""
         imageEnd.tag = ""

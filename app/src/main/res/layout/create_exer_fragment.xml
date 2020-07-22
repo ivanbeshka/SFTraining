@@ -99,6 +99,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ce_start_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textMultiLine|textLongMessage|textCapSentences" />
@@ -144,6 +145,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/ce_button_add_content_start">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ce_main_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textMultiLine|textLongMessage|textCapSentences" />
@@ -191,6 +193,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/ce_button_add_content_main">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ce_end_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textMultiLine|textLongMessage|textCapSentences" />

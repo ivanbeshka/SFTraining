@@ -20,7 +20,7 @@ class ChooseFilterFragment :  Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.choose_filters_fragment, container, false)
 
-        val args = arguments?.let { ChooseFilterFragmentArgs.fromBundle(it).titile }
+        val args = arguments?.let { ChooseFilterFragmentArgs.fromBundle(it) }
 
         Toast.makeText(context, args, Toast.LENGTH_SHORT).show()
         return root
