@@ -27,7 +27,6 @@ android {
     }
 
 
-
     dataBinding {
         enabled true
     }
@@ -111,4 +110,12 @@ dependencies {
 
     //youtube
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
+    //photoEditor
+    implementation 'jp.co.cyberagent.android:gpuimage:2.0.3'
+
+    implementation "androidx.appcompat:appcompat:1.1.0-beta01"
+
+    //expandable layout
+    implementation "net.cachapa.expandablelayout:expandablelayout:2.9.2"
+
 }
