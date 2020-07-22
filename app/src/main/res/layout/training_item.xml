@@ -69,7 +69,7 @@
                 android:elevation="4dp"
                 android:minHeight="150dp"
                 android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="@id/training_description_list"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/ei_comments_number"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ei_name_tv" />
@@ -112,16 +112,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/ei_imagebutton_favorite"
                 app:layout_constraintTop_toTopOf="@+id/ei_imagebutton_favorite" />
 
-            <ExpandableListView
-                android:id="@+id/training_description_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:pointerIcon="all_scroll"
-                app:layout_constraintBottom_toBottomOf="parent">
-
-            </ExpandableListView>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
+        
     </com.google.android.material.card.MaterialCardView>
 </layout>
