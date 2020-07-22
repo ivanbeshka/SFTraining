@@ -6,5 +6,8 @@ data class Training(
     val name: String = "",
     val description: String = "",
     val creatorUid: String = "",
-    val trainingUid: String = ""
+    val trainingUid: String = "",
+    val favoriteNum: Int = 0,
+    val commentsNum: Int = 0,
+    var titleImageUri: String = ""
 )

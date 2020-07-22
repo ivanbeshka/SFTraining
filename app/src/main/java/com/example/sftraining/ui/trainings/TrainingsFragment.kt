@@ -32,8 +32,6 @@ class TrainingsFragment : Fragment() {
 
         trainingsViewModel.getTrainings().observe(viewLifecycleOwner, Observer { trainings ->
             recyclerAdapter = TrainingsRecyclerAdapter(
-                lifecycle,
-                requireActivity().supportFragmentManager,
                 trainings
             )
             recyclerView.adapter = recyclerAdapter

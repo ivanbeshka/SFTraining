@@ -4,14 +4,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.sftraining.R
 import com.example.sftraining.databinding.TrainingItemBinding
 import com.example.sftraining.model.Training
+import com.google.android.material.imageview.ShapeableImageView
 
-class TrainingsRecyclerAdapter (private val lifecycle: Lifecycle, private val fragmentManager: FragmentManager, private var trainingsList: List<Training>) :
+class TrainingsRecyclerAdapter (private var trainingsList: List<Training>) :
     RecyclerView.Adapter<TrainingsRecyclerAdapter.TrainingViewHolder>() {
 
     inner class TrainingViewHolder(private val trainingItemBinding: TrainingItemBinding) :
@@ -19,32 +19,16 @@ class TrainingsRecyclerAdapter (private val lifecycle: Lifecycle, private val fr
 
         fun bind(training: Training) {
             trainingItemBinding.training = training
-//            val fragments = arrayListOf<Fragment>()
-//            for (img in trainings.imageUris){
-//                fragments.add(ImageFragment(img))
-//            }
             initView(trainingItemBinding.root)
-//            pagerAdapter =
-//                ExerViewPagerAdapter(
-//                    fragments,
-//                    lifecycle,
-//                    fragmentManager
-//                )
-//            viewPager.adapter = pagerAdapter
-//            pagerDots.count = fragments.size
-//            pagerDots.setAnimationType(AnimationType.DROP)
-//            viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
-//                override fun onPageSelected(position: Int) {
-//                    pagerDots.selection = position
-//                    exerItemBinding.root.findViewById<PageIndicatorView>(R.id.page_indicator).selection = position
-//                }
-//            })
-//            exerItemBinding.executePendingBindings()
+            trainingItemBinding.root.findViewById<ShapeableImageView>(R.id.training_shapeable_image).apply {
+                val cornerSize: Float = resources.getDimension(R.dimen.cornerRadius)
+                this.shapeAppearanceModel = this.shapeAppearanceModel.toBuilder().setAllCornerSizes(cornerSize).build()
+                Glide.with(this.context).load(training.titleImageUri).placeholder(R.drawable.image2).centerCrop().into(this)
+            }
+            trainingItemBinding.executePendingBindings()
         }
 
         fun initView(root: View){
-//            viewPager = root.findViewById(R.id.knowing_viewpager)
-//            pagerDots = root.findViewById(R.id.page_indicator)
         }
     }
 
