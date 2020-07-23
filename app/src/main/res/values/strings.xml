@@ -101,6 +101,7 @@
     <string name="your_name">Your name</string>
     <string name="your_email">Your email</string>
     <string name="add_trainer_verification_docs">Add trainer verification docs</string>
+    <string name="show_more">Show more</string>
 
 
     <string-array name="sports">
