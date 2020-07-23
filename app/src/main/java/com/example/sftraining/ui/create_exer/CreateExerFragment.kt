@@ -59,6 +59,19 @@ class CreateExerFragment : Fragment() {
     private lateinit var endEditText:   TextInputEditText
     private lateinit var youtubeLink:   TextInputEditText
 
+    private lateinit var title: String
+    private lateinit var start: String
+    private lateinit var main:  String
+    private lateinit var end:   String
+
+    private lateinit var titleURI: String
+    private lateinit var startURI: String
+    private lateinit var mainURI:  String
+    private lateinit var endURI:   String
+
+    private lateinit var youtubeID: String
+    private var private: Boolean = false
+
     companion object {
         const val TYPE_TITLE = "TITLE"
         const val TYPE_START = "START"
@@ -80,16 +93,21 @@ class CreateExerFragment : Fragment() {
 
 
         btnNext.setOnClickListener {
-            val title: String = titleEditText.text.toString()
-            val start: String = startEditText.text.toString()
-            val main : String = mainEditText .text.toString()
-            val end  : String = endEditText  .text.toString()
+            title = titleEditText.text.toString()
+            start = startEditText.text.toString()
+            main  = mainEditText .text.toString()
+            end   = endEditText  .text.toString()
+
+            if (titleURI != null){
+                val action = CreateExerFragmentDirections.actionNavCreateExerToChooseFilterFragment()
+                action.title = title
+                action.titleURI = titleURI
+                findNavController(this).navigate(action)
+            }else{
+                Toast.makeText(context, "not all", Toast.LENGTH_SHORT).show()
+            }
 
 
-
-            val action = CreateExerFragmentDirections.actionNavCreateExerToChooseFilterFragment()
-
-            findNavController(this).navigate(action)
         }
 
         youTubePlayerView.enableAutomaticInitialization = false
@@ -105,6 +123,7 @@ class CreateExerFragment : Fragment() {
             Log.d("LOGLOG", txt)
             try {
                 txt = videoIdFromUrl(txt)
+                youtubeID = txt
                 youTubePlayerView.visibility = View.VISIBLE
                 Toast.makeText(context, txt, Toast.LENGTH_SHORT).show()
 
@@ -167,15 +186,19 @@ class CreateExerFragment : Fragment() {
             val uri = Uri.parse(it.data?.getStringExtra(URI))
             when (type) {
                 TYPE_TITLE -> {
+                    titleURI = uri.toString()
                     setPhoto(imageTitle, uri)
                 }
                 TYPE_START -> {
+                    startURI = uri.toString()
                     setPhoto(imageStart, uri)
                 }
                 TYPE_MAIN -> {
+                    mainURI = uri.toString()
                     setPhoto(imageMain, uri)
                 }
                 TYPE_END -> {
+                    endURI = uri.toString()
                     setPhoto(imageEnd, uri)
                 }
             }

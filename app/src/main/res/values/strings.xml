@@ -44,6 +44,7 @@
     <string name="next">next</string>
     <string name="start">start</string>
     <string name="prev">prev</string>
+    <string name="def_uri">https</string>
     <string name="finish">finish</string>
 
     <string name="dialog_without_register">

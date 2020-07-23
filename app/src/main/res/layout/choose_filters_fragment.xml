@@ -7,7 +7,7 @@
     tools:context=".ui.create_exer.ChooseFilterFragment">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/ce_app_bar_layout"
+        android:id="@+id/cf_app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -15,20 +15,20 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/ce_collapsing_layout"
+            android:id="@+id/cf_collapsing_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/ce_title_photo"
+                android:id="@+id/cf_title_photo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax" />
 
             <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/ce_toolbar"
+                android:id="@+id/cf_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:layout_gravity="bottom"
@@ -41,7 +41,7 @@
                 app:layout_collapseMode="pin">
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/ce_title_edit_text"
+                    android:id="@+id/cf_title_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
