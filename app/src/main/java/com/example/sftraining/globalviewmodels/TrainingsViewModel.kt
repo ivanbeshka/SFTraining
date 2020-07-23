@@ -3,6 +3,7 @@ package com.example.sftraining.globalviewmodels
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
+import com.example.sftraining.model.Exer
 import com.example.sftraining.model.Training
 import com.example.sftraining.repository.TrainingsRepository
 
@@ -20,6 +21,8 @@ class TrainingsViewModel @ViewModelInject constructor(
     fun getTrainings(): LiveData<List<Training>> {
         val training1 = Training(
             name = "Training 1",
+            description = "Description 1",
+            exers = listOf(Exer(title = "exer 1"), Exer(title = "exer 2")),
             titleImageUri = "https://www.dqindia.com/wp-content/uploads/2018/10/training.png"
         )
         val training2 = Training(name = "Training 2")
