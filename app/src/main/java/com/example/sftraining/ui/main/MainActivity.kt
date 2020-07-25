@@ -26,7 +26,7 @@ class MainActivity : BaseActivity() {
     private lateinit var bottomAppBar: BottomAppBar
     private lateinit var navController: NavController
     private lateinit var navHostFragment: NavHostFragment
-    private var bottomNavigation: BottomNavigation? = null
+    private var bottomNavigation: BottomNavigation = BottomNavigation()
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
@@ -42,14 +42,14 @@ class MainActivity : BaseActivity() {
                 filterFragment.show(supportFragmentManager, filterFragment.tag)
             }
             android.R.id.home -> {
-                if (bottomNavigation == null || bottomNavigation?.dialog == null) {
+                if (bottomNavigation.dialog == null) {
                     bottomNavigation =
                         BottomNavigation()
-                    bottomNavigation!!.show(supportFragmentManager, bottomNavigation!!.tag)
+                    bottomNavigation.show(supportFragmentManager, bottomNavigation.tag)
 
                 }
                 else{
-                    bottomNavigation!!.dialog?.show()
+                    bottomNavigation.dialog?.show()
                 }
             }
             R.id.action_search -> {
