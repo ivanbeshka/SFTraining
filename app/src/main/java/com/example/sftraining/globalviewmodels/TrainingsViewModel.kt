@@ -22,11 +22,62 @@ class TrainingsViewModel @ViewModelInject constructor(
         val training1 = Training(
             name = "Training 1",
             description = "Description 1",
-            exers = listOf(Exer(title = "exer 1"), Exer(title = "exer 2")),
+            exers = listOf(
+                Exer(title = "exer 1"),
+                Exer(title = "exer 2"),
+                Exer(title = "exer 3"),
+                Exer(title = "exer 4"),
+                Exer(title = "exer 5"),
+                Exer(title = "exer 6"),
+                Exer(title = "exer 7"),
+                Exer(title = "exer 8"),
+                Exer(title = "exer 9"),
+                Exer(title = "exer 10"),
+                Exer(title = "exer 11"),
+                Exer(title = "exer 12")
+            ),
             titleImageUri = "https://www.dqindia.com/wp-content/uploads/2018/10/training.png"
         )
         val training2 = Training(name = "Training 2")
-        return MutableLiveData(listOf(training1, training2))
+        val training3 = Training(
+            name = "Training 1",
+            description = "Description 1",
+            exers = listOf(
+                Exer(title = "exer 1"),
+                Exer(title = "exer 2"),
+                Exer(title = "exer 3"),
+                Exer(title = "exer 4"),
+                Exer(title = "exer 5"),
+                Exer(title = "exer 6"),
+                Exer(title = "exer 7"),
+                Exer(title = "exer 8"),
+                Exer(title = "exer 9"),
+                Exer(title = "exer 10"),
+                Exer(title = "exer 11"),
+                Exer(title = "exer 12")
+            ),
+            titleImageUri = "https://www.dqindia.com/wp-content/uploads/2018/10/training.png"
+        )
+        val training4 = Training(
+            name = "Training 1",
+            description = "Description 1",
+            exers = listOf(
+                Exer(title = "exer 1"),
+                Exer(title = "exer 2"),
+                Exer(title = "exer 3"),
+                Exer(title = "exer 4"),
+                Exer(title = "exer 5"),
+                Exer(title = "exer 6"),
+                Exer(title = "exer 7"),
+                Exer(title = "exer 8"),
+                Exer(title = "exer 9"),
+                Exer(title = "exer 10"),
+                Exer(title = "exer 11"),
+                Exer(title = "exer 12")
+            ),
+            titleImageUri = "https://www.dqindia.com/wp-content/uploads/2018/10/training.png"
+        )
+        return MutableLiveData(listOf(training1, training2, training3, training4))
 //        return trainingsData
     }
 
