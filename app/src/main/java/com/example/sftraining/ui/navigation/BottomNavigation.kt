@@ -2,6 +2,7 @@ package com.example.sftraining.ui.navigation
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.NavHostFragment.findNavController
@@ -12,6 +13,7 @@ import com.google.android.material.navigation.NavigationView
 class BottomNavigation : BottomSheetDialogFragment() {
 
     private lateinit var navigationView: NavigationView
+    private var nowItem: MenuItem? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,6 +26,9 @@ class BottomNavigation : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navigationView = view.findViewById(R.id.navigation_view)
+
+        nowItem?.let { navigationView.setCheckedItem(it) }
+
         navigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.favorite -> {
@@ -56,8 +61,18 @@ class BottomNavigation : BottomSheetDialogFragment() {
                     dialog?.hide()
                 }
             }
-
+            nowItem = it
             true
         }
     }
+
+//    fun goBack() {
+////        findNavController(this).popBackStack()
+//        Log.e("now", R.id.all_exers.toString())
+//        Log.e("now", R.id.trainings.toString())
+//        Log.e("now", R.id.settings.toString())
+//        Log.e("now", R.id.profile.toString())
+//        Log.e("now", R.id.favorite.toString())
+//        Log.e("now", findNavController(this).currentDestination?.id.toString())
+//    }
 }

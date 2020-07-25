@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/coordinatorLayout"
@@ -14,7 +13,7 @@
         android:id="@+id/loading_indicator_layout_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="top"/>
+        android:layout_gravity="top" />
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottom_bar"
@@ -22,8 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:fabAlignmentMode="center"
-        app:fabCradleRoundedCornerRadius="16dp"
         app:fabCradleMargin="6dp"
+        app:fabCradleRoundedCornerRadius="16dp"
         app:hideOnScroll="true"
         app:navigationIcon="@drawable/ic_menu_24" />
 
@@ -31,8 +30,8 @@
         android:id="@+id/fab_add_exer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
         app:layout_anchor="@id/bottom_bar"
+        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
         app:srcCompat="@drawable/ic_add_24" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
