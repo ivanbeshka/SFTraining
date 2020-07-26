@@ -78,12 +78,12 @@ class MainActivity : BaseActivity() {
         initView()
 
         fab.setOnClickListener {
-            navController.navigate(R.id.navCrateExer)
+            navController.navigate(R.id.navCreateExer)
         }
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.navCrateExer -> {
+                R.id.navCreateExer -> {
 
                     bottomAppBar.performHide()
                     fab.hide()

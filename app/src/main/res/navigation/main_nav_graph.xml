@@ -13,8 +13,8 @@
             android:id="@+id/action_listOfExers_to_listOfFavoriteExers"
             app:destination="@id/navListOfFavoriteExers" />
         <action
-            android:id="@+id/action_navListOfExers_to_navCrateExer"
-            app:destination="@id/navCrateExer" />
+            android:id="@+id/action_navListOfExers_to_navCreateExer"
+            app:destination="@+id/navCreateExer" />
         <action
             android:id="@+id/action_navListOfExers_to_accSettingsFragment"
             app:destination="@id/navAccSettingsFragment" />
@@ -30,12 +30,15 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navCrateExer"
+        android:id="@+id/navCreateExer"
         android:name="com.example.sftraining.ui.create_exer.CreateExerFragment"
         tools:layout="@layout/create_exer_fragment">
         <action
-            android:id="@+id/action_navCrateExer_to_navListOfExers"
+            android:id="@+id/action_navCreateExer_to_navListOfExers"
             app:destination="@id/navListOfExers" />
+        <action
+            android:id="@+id/action_navCreateExer_to_chooseFilterFragment"
+            app:destination="@id/chooseFilterFragment" />
     </fragment>
     <fragment
         android:id="@+id/navAccSettingsFragment"
@@ -60,6 +63,65 @@
         <action
             android:id="@+id/action_trainingsFragment_to_navListOfExers"
             app:destination="@id/navListOfExers" />
+    </fragment>
+    <fragment
+        android:id="@+id/chooseFilterFragment"
+        android:name="com.example.sftraining.ui.create_exer.ChooseFilterFragment"
+        android:label="choose_filters_fragment"
+        tools:layout="@layout/choose_filters_fragment">
+        <argument
+            android:name="title"
+            android:defaultValue="title"
+            app:argType="string" />
+
+        <argument
+            android:name="titleURI"
+            android:defaultValue="i"
+            app:argType="string" />
+
+
+        <argument
+            android:name="start"
+            android:defaultValue="start"
+            app:argType="string" />
+
+        <argument
+            android:name="startURI"
+            android:defaultValue="i"
+            app:argType="string" />
+
+
+        <argument
+            android:name="main"
+            android:defaultValue="main"
+            app:argType="string" />
+
+        <argument
+            android:name="mainURI"
+            android:defaultValue="i"
+            app:argType="string" />
+
+
+        <argument
+            android:name="end"
+            android:defaultValue="end"
+            app:argType="string" />
+
+        <argument
+            android:name="endURI"
+            android:defaultValue="i"
+            app:argType="string" />
+
+
+        <argument
+            android:name="youtubeVideoID"
+            android:defaultValue="0wMruHbCJoc"
+            app:argType="string" />
+
+        <argument
+            android:name="isPrivate"
+            android:defaultValue="false"
+            app:argType="boolean" />
     </fragment>
 
 </navigation>

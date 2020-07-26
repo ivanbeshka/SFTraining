@@ -8,6 +8,8 @@ import com.example.sftraining.R
 // Exercise
 data class Exer(
     val title: String = "",
+//    var titleImageUri: String = "",
+//    var imageUris: List<Uri>,
     var titleImageUri: String = "",
     var imageUris: List<String> = emptyList(),
     var videoUrl: String = "",

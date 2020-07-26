@@ -4,7 +4,6 @@ import android.net.Uri
 import com.example.sftraining.model.Exer
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
-import java.lang.UnsupportedOperationException
 
 class ImageRepository : Repository {
     private val storageReference = Firebase.storage.reference
@@ -39,7 +38,7 @@ class ImageRepository : Repository {
 
     fun getExerImages(
         exer: Exer,
-        onTitleImageSuccess: (String) -> Unit,
+        onTitleImageSuccess: (String) -> Unit = {},
         onMainImagesSuccess: (List<String>) -> Unit = {},
         onFailure: (String?) -> Unit = {}
     ) {
