@@ -1,5 +1,6 @@
 package com.example.sftraining.globalAdapters
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.util.Log
@@ -14,7 +15,6 @@ import com.example.sftraining.R
 import com.example.sftraining.databinding.TrainingItemBinding
 import com.example.sftraining.model.Training
 import com.google.android.material.imageview.ShapeableImageView
-import com.google.android.material.textview.MaterialTextView
 import net.cachapa.expandablelayout.ExpandableLayout
 import net.cachapa.expandablelayout.ExpandableLayout.OnExpansionUpdateListener
 
@@ -49,26 +49,22 @@ class TrainingsRecyclerAdapter(private var trainingsList: List<Training>) :
             expandButton = root.findViewById(R.id.expand_button)
 
             val list = root.findViewById(R.id.exer_titles_layout) as LinearLayout
-            inflater = root.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            inflater =
+                root.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             for (exer in training.exers) {
-                val vi: TextView = inflater.inflate(android.R.layout.simple_list_item_1, null) as TextView
-                vi.text = exer.title
-                list.addView(vi)
+                list.addView(createTitleView(exer.title))
             }
-
-            Log.e("Child count", exerTitlesLayout.childCount.toString())
 
             expandableLayout.setOnExpansionUpdateListener(this)
             expandButton.setOnClickListener(this)
             trainingItemBinding.executePendingBindings()
         }
 
-        private fun createTitleView(text: String): MaterialTextView {
-            val descriptionText = trainingItemBinding.root.findViewById<MaterialTextView>(R.id.training_description)
-            val tv = MaterialTextView(trainingItemBinding.root.context)
+        @SuppressLint("InflateParams")
+        private fun createTitleView(text: String): TextView {
+            val tv: TextView =
+                inflater.inflate(R.layout.exer_title_item, null) as TextView
             tv.text = text
-            tv.layoutParams = descriptionText.layoutParams
-            tv.setTextColor(Color.BLACK)
             return tv
         }
 

@@ -38,10 +38,10 @@ class TrainingsViewModel @ViewModelInject constructor(
             ),
             titleImageUri = "https://www.dqindia.com/wp-content/uploads/2018/10/training.png"
         )
-        val training2 = Training(name = "Training 2")
+        val training2 = Training(name = "Training 2", description = "Description 2")
         val training3 = Training(
-            name = "Training 1",
-            description = "Description 1",
+            name = "Training 3",
+            description = "Description 3",
             exers = listOf(
                 Exer(title = "exer 1"),
                 Exer(title = "exer 2"),
@@ -59,8 +59,8 @@ class TrainingsViewModel @ViewModelInject constructor(
             titleImageUri = "https://www.dqindia.com/wp-content/uploads/2018/10/training.png"
         )
         val training4 = Training(
-            name = "Training 1",
-            description = "Description 1",
+            name = "Training 4",
+            description = "Description 4",
             exers = listOf(
                 Exer(title = "exer 1"),
                 Exer(title = "exer 2"),
