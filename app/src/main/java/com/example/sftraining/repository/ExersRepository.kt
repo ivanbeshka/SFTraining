@@ -60,7 +60,6 @@ class ExersRepository(
 
                     val exerImages = imageRepository.getExerImages(exer)
 
-
                     onSuccess(exer)
 
                 } else {
