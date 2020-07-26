@@ -98,16 +98,10 @@ class CreateExerFragment : Fragment() {
             main  = mainEditText .text.toString()
             end   = endEditText  .text.toString()
 
-            if (titleURI != null){
-                val action = CreateExerFragmentDirections.actionNavCreateExerToChooseFilterFragment()
-                action.title = title
-                action.titleURI = titleURI
-                findNavController(this).navigate(action)
-            }else{
-                Toast.makeText(context, "not all", Toast.LENGTH_SHORT).show()
-            }
-
-
+            val action = CreateExerFragmentDirections.actionNavCreateExerToChooseFilterFragment()
+            action.title = title
+            action.titleURI = titleURI
+            findNavController(this).navigate(action)
         }
 
         youTubePlayerView.enableAutomaticInitialization = false
