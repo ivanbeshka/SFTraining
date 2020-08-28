@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="training"
+            type="com.example.sftraining.model.Training" />
+    </data>
+
+    <!--    ei - training item-->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/ei_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="12dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ei_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/ei_name_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:ellipsize="start"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@{training.name}"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@+id/ei_more"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/ei_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@color/colorTransparent"
+                android:src="@drawable/ic_more_vert_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/training_shapeable_image"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/image2"
+                android:elevation="4dp"
+                android:minHeight="150dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/expand_button"
+                app:layout_constraintEnd_toStartOf="@+id/ei_comments_number"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ei_name_tv" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/ei_imagebutton_favorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/ic_favorite_border_24_default"
+                app:layout_constraintBottom_toBottomOf="@+id/training_shapeable_image"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/ei_imagebutton_comments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@color/colorTransparent"
+                android:src="@drawable/ic_forum_24"
+                app:layout_constraintBottom_toBottomOf="@+id/training_shapeable_image"
+                app:layout_constraintEnd_toStartOf="@+id/ei_favorite_number"
+                app:layout_constraintStart_toEndOf="@+id/training_shapeable_image" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/ei_comments_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                app:layout_constraintBottom_toBottomOf="@+id/ei_imagebutton_comments"
+                app:layout_constraintEnd_toStartOf="@+id/ei_imagebutton_comments"
+                app:layout_constraintTop_toTopOf="@+id/ei_imagebutton_comments" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/ei_favorite_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                app:layout_constraintBottom_toBottomOf="@+id/ei_imagebutton_favorite"
+                app:layout_constraintEnd_toStartOf="@+id/ei_imagebutton_favorite"
+                app:layout_constraintTop_toTopOf="@+id/ei_imagebutton_favorite" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/expand_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@color/colorTransparent"
+                android:src="@drawable/ic_show_more_image"
+                app:layout_constraintEnd_toStartOf="@+id/expandable_layout"
+                app:layout_constraintStart_toEndOf="@+id/training_shapeable_image"
+                app:layout_constraintTop_toBottomOf="@+id/training_shapeable_image">
+
+            </androidx.appcompat.widget.AppCompatImageButton>
+
+            <net.cachapa.expandablelayout.ExpandableLayout
+                android:id="@+id/expandable_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:el_duration="1000"
+                app:el_expanded="false"
+                app:el_parallax="0.5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/expand_button">
+
+                <LinearLayout
+                    android:id="@+id/exer_titles_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/training_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:ellipsize="start"
+                        android:gravity="center"
+                        android:padding="16dp"
+                        android:singleLine="true"
+                        android:text="@{training.description}"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        app:layout_constraintEnd_toStartOf="@+id/ei_more"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </LinearLayout>
+
+            </net.cachapa.expandablelayout.ExpandableLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

@@ -33,6 +33,7 @@
     <string name="end_it">End it!</string>
     <string name="main_part">Main part</string>
     <string name="start_with">Start with</string>
+    <string name="youtube_video">Youtube video</string>
     <string name="apply_filters">Apply filters</string>
     <string name="action_filters">Filters</string>
     <string name="write_exercise_name">Write exercise name</string>
@@ -43,6 +44,7 @@
     <string name="next">next</string>
     <string name="start">start</string>
     <string name="prev">prev</string>
+    <string name="def_uri">https</string>
     <string name="finish">finish</string>
 
     <string name="dialog_without_register">
@@ -101,6 +103,10 @@
     <string name="your_name">Your name</string>
     <string name="your_email">Your email</string>
     <string name="add_trainer_verification_docs">Add trainer verification docs</string>
+    <string name="show_more">Show more</string>
+    <string name="what_do_you_think">What do you think?</string>
+    <string name="title">Title</string>
+    <string name="create_exer">create exer</string>
 
 
     <string-array name="sports">

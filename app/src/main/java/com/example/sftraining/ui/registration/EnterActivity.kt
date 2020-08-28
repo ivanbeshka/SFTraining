@@ -153,7 +153,7 @@ class EnterActivity : BaseActivity() {
                     anon = true
                 )
 
-                createUser(user)
+                createUser(user, false)
 
                 stopLoadingAnimation()
 
@@ -170,11 +170,13 @@ class EnterActivity : BaseActivity() {
     }
 
     //create user in db
-    private fun createUser(user: User) {
+    private fun createUser(user: User, startMain: Boolean = true) {
         enterViewModel.createUser(user, {
             stopLoadingAnimation()
-            startActivity(intentMain)
-            finish()
+            if (startMain){
+                startActivity(intentMain)
+                finish()
+            }
         }, {
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         })

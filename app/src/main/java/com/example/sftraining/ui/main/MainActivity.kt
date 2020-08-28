@@ -1,10 +1,10 @@
 package com.example.sftraining.ui.main
 
-import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.addCallback
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.sftraining.R
@@ -12,20 +12,19 @@ import com.example.sftraining.ui.base.BaseActivity
 import com.example.sftraining.ui.main_menus.FilterFragment
 import com.example.sftraining.ui.main_menus.SearchFragment
 import com.example.sftraining.ui.navigation.BottomNavigation
-import com.example.sftraining.ui.youtube.YoutubeActivity
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.main_activity.*
 
+
 @AndroidEntryPoint
 class MainActivity : BaseActivity() {
-
     private lateinit var fab: FloatingActionButton
     private lateinit var bottomAppBar: BottomAppBar
     private lateinit var navController: NavController
     private lateinit var navHostFragment: NavHostFragment
-    private var bottomNavigation: BottomNavigation? = null
+    private var bottomNavigation: BottomNavigation = BottomNavigation()
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
@@ -41,13 +40,14 @@ class MainActivity : BaseActivity() {
                 filterFragment.show(supportFragmentManager, filterFragment.tag)
             }
             android.R.id.home -> {
-                if (bottomNavigation == null) {
-                    bottomNavigation =
-                        BottomNavigation()
-                    bottomNavigation!!.show(supportFragmentManager, bottomNavigation!!.tag)
-
+                if (bottomNavigation.dialog == null) {
+                    bottomNavigation.show(supportFragmentManager, bottomNavigation.tag)
+//                    this.onBackPressedDispatcher.addCallback(this) {
+//                        bottomNavigation.goBack()
+//                    }
+                } else {
+                    bottomNavigation.dialog?.show()
                 }
-                bottomNavigation!!.dialog?.show()
             }
             R.id.action_search -> {
                 val searchFragment = SearchFragment()
@@ -68,9 +68,6 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
 
-//        var intent = Intent(this, YoutubeActivity::class.java)
-//        startActivity(intent)
-//        finish()
         setSupportActionBar(bottom_bar)
         setProgressIndicatorLayout(R.id.loading_indicator_layout_main)
 
@@ -81,12 +78,12 @@ class MainActivity : BaseActivity() {
         initView()
 
         fab.setOnClickListener {
-            navController.navigate(R.id.navCrateExer)
+            navController.navigate(R.id.navCreateExer)
         }
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.navCrateExer -> {
+                R.id.navCreateExer -> {
 
                     bottomAppBar.performHide()
                     fab.hide()
@@ -121,5 +118,4 @@ class MainActivity : BaseActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
     }
-
 }
