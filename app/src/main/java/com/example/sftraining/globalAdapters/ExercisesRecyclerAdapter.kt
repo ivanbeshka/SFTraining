@@ -17,7 +17,7 @@ import com.example.sftraining.model.Exer
 import com.example.sftraining.ui.main_exers.ExerViewPagerAdapter
 import com.example.sftraining.ui.main_exers.ImageFragment
 
-class ExercisesRecyclerAdapter (private val lifecycle: Lifecycle, private val fragmentManager: FragmentManager, private var exersList: List<Exer>) :
+class ExercisesRecyclerAdapter (private val lifecycle: Lifecycle, private val fragmentManager: FragmentManager, private val exersList: List<Exer>) :
     RecyclerView.Adapter<ExercisesRecyclerAdapter.ExerViewHolder>() {
 
     private lateinit var pagerAdapter: ExerViewPagerAdapter

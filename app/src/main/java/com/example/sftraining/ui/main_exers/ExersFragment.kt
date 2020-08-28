@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sftraining.R
 import com.example.sftraining.globalAdapters.ExercisesRecyclerAdapter
 import com.example.sftraining.globalviewmodels.ExersViewModel
+
 class ExersFragment : Fragment() {
 
     private val exerViewModel: ExersViewModel by activityViewModels()
