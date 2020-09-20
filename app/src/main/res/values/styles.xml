@@ -20,15 +20,17 @@
         <item name="colorOnSecondary">@color/colorBlack</item>
         <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
         <item name="bottomSheetDialogTheme">@style/CustomBottomSheetDialog</item>
-        <item name="android:autofilledHighlight" tools:ignore="NewApi">@color/colorTransparent</item>
-        <item name="fontFamily">@font/roboto_mono_medium</item>
+        <item name="android:autofilledHighlight" tools:ignore="NewApi">@color/colorTransparent
+        </item>
         <item name="textAppearanceBody1">@style/TextAppearance.MdcTypographyStyles.Body1</item>
         <item name="textAppearanceBody2">@style/TextAppearance.MdcTypographyStyles.Body2</item>
         <item name="textAppearanceButton">@style/TextAppearance.MdcTypographyStyles.Button</item>
         <item name="textAppearanceCaption">@style/TextAppearance.MdcTypographyStyles.Caption</item>
-        <item name="textAppearanceHeadline1">@style/TextAppearance.MdcTypographyStyles.Headline1</item>
-        <item name="textAppearanceHeadline2">@style/TextAppearance.MdcTypographyStyles.Headline2</item>
-    <item name="hintTextAppearance">@style/TextAppearance.MdcTypographyStyles.Body1</item>
+        <item name="textAppearanceHeadline1">@style/TextAppearance.MdcTypographyStyles.Headline1
+        </item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.MdcTypographyStyles.Headline2
+        </item>
+        <item name="hintTextAppearance">@style/TextAppearance.MdcTypographyStyles.Body1</item>
     </style>
 
     <style name="MyButton" parent="Widget.MaterialComponents.Button">
