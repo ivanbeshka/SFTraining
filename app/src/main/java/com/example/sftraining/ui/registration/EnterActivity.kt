@@ -3,6 +3,7 @@ package com.example.sftraining.ui.registration
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -13,16 +14,23 @@ import com.example.sftraining.model.User
 import com.example.sftraining.ui.base.BaseActivity
 import com.example.sftraining.ui.main.MainActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.Exception
 
 @AndroidEntryPoint
 class EnterActivity : BaseActivity() {
+
+    companion object {
+        const val TAG = "EnterActivity"
+    }
 
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
@@ -43,9 +51,7 @@ class EnterActivity : BaseActivity() {
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
-
         googleSignInClient = GoogleSignIn.getClient(this, gso)
-
 
         if (onBoardingFinished()) findNavController(R.id.nav_fragment_enter).navigate(
             R.id.navChooseEnterTypeFragment,
@@ -55,18 +61,63 @@ class EnterActivity : BaseActivity() {
 
     }
 
+
     fun signInWithGoogle() {
         val signInIntent = googleSignInClient.signInIntent
+//        startActivityForResult(signInIntent, RC_SIGN_IN)
+
         val contract = ActivityResultContracts.StartActivityForResult()
 
-        //new result api
-        val getAcc = registerForActivityResult(contract) {
-            val task = GoogleSignIn.getSignedInAccountFromIntent(it.data)
-            val account = task.result!!
-            firebaseAuthWithGoogle(account.idToken!!)
-        }
+        registerForActivityResult(contract) {
+            if (it.resultCode == RESULT_OK) {
+                val task = GoogleSignIn.getSignedInAccountFromIntent(it.data)
+                try {
+                    val account = task.getResult(ApiException::class.java)
+                    firebaseAuthWithGoogle(account)
 
-        getAcc.launch(signInIntent)
+                    Log.d(TAG, "signInWithGoogle: success")
+                } catch (e: ApiException) {
+                    Log.e(TAG, "signInWithGoogle: ${e.message}", e)
+                }
+            }
+        }.launch(signInIntent)
+    }
+
+    //
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//
+//        if (requestCode == RC_SIGN_IN && resultCode == RESULT_OK) {
+//            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+//            try {
+//                val account = task.result!!
+//                firebaseAuthWithGoogle(account.idToken!!)
+//            } catch (e: ApiException) {
+//                Log.e(TAG, "signInWithGoogle: ${e.message}", e)
+//            }
+//        }
+//    }
+
+    private fun firebaseAuthWithGoogle(account: GoogleSignInAccount?) {
+
+        startLoadingAnimation()
+
+        val credential = GoogleAuthProvider.getCredential(account?.idToken ?: "", null)
+        firebaseAuth.signInWithCredential(credential)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    val user = User(
+                        uid = firebaseAuth.uid.toString(),
+                        email = firebaseAuth.currentUser?.email.toString()
+                    )
+
+                    intentMain.putExtra("user_type", "google")
+                    createUser(user)
+                } else {
+                    stopLoadingAnimation()
+                    Toast.makeText(this, "Registration fail", Toast.LENGTH_SHORT).show()
+                }
+            }
     }
 
     fun registration(email: String, pass: String, name: String = "") {
@@ -97,31 +148,6 @@ class EnterActivity : BaseActivity() {
         }
     }
 
-    private fun firebaseAuthWithGoogle(idToken: String) {
-
-        startLoadingAnimation()
-
-        val credential = GoogleAuthProvider.getCredential(idToken, null)
-        firebaseAuth.signInWithCredential(credential)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-
-                    val user = User(
-                        uid = firebaseAuth.uid.toString(),
-                        email = firebaseAuth.currentUser?.email.toString()
-                    )
-
-                    intentMain.putExtra("user_type", "google")
-
-                    createUser(user)
-
-                } else {
-                    stopLoadingAnimation()
-
-                    Toast.makeText(this, "Registration fail", Toast.LENGTH_SHORT).show()
-                }
-            }
-    }
 
     fun login(email: String, pass: String) {
 
@@ -173,7 +199,7 @@ class EnterActivity : BaseActivity() {
     private fun createUser(user: User, startMain: Boolean = true) {
         enterViewModel.createUser(user, {
             stopLoadingAnimation()
-            if (startMain){
+            if (startMain) {
                 startActivity(intentMain)
                 finish()
             }
