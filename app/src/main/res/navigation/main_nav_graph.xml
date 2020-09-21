@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/navListOfExers"
         android:name="com.example.sftraining.ui.main_exers.ExersFragment"
-        tools:layout="@layout/list_of_exers">
+        tools:layout="@layout/fragment_list_of_exers">
         <action
             android:id="@+id/action_listOfExers_to_listOfFavoriteExers"
             app:destination="@id/navListOfFavoriteExers" />
@@ -23,7 +23,7 @@
     <fragment
         android:id="@+id/navListOfFavoriteExers"
         android:name="com.example.sftraining.ui.favourite_exers.FavoriteExersFragment"
-        tools:layout="@layout/list_of_favorite_exers">
+        tools:layout="@layout/fragment_list_of_favorite_exers">
         <action
             android:id="@+id/action_navListOfFavoriteExers_to_navListOfExers"
             app:destination="@id/navListOfExers" />
@@ -32,7 +32,7 @@
     <fragment
         android:id="@+id/navCreateExer"
         android:name="com.example.sftraining.ui.create_exer.CreateExerFragment"
-        tools:layout="@layout/create_exer_fragment">
+        tools:layout="@layout/fragment_create_exer">
         <action
             android:id="@+id/action_navCreateExer_to_navListOfExers"
             app:destination="@id/navListOfExers" />
@@ -68,7 +68,7 @@
         android:id="@+id/chooseFilterFragment"
         android:name="com.example.sftraining.ui.create_exer.ChooseFilterFragment"
         android:label="choose_filters_fragment"
-        tools:layout="@layout/choose_filters_fragment">
+        tools:layout="@layout/fragment_choose_filters">
         <argument
             android:name="title"
             android:defaultValue="title"

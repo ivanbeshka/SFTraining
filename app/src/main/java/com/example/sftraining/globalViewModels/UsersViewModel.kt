@@ -1,4 +1,5 @@
-package com.example.sftraining.globalviewmodels
+package com.example.sftraining.globalViewModels
+
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData

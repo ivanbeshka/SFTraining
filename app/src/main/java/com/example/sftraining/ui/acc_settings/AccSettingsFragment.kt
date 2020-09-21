@@ -9,8 +9,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.example.sftraining.R
-import com.example.sftraining.databinding.AccSettingsFragmentBinding
-import com.example.sftraining.globalviewmodels.UsersViewModel
+import com.example.sftraining.databinding.FragmentAccSettingsBinding
+import com.example.sftraining.globalViewModels.UsersViewModel
 import com.example.sftraining.ui.base.BaseFragment
 import com.example.sftraining.ui.registration.EnterActivity
 import com.google.android.material.button.MaterialButton
@@ -42,9 +42,9 @@ class AccSettingsFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val binding = DataBindingUtil.inflate<AccSettingsFragmentBinding>(
+        val binding = DataBindingUtil.inflate<FragmentAccSettingsBinding>(
             inflater,
-            R.layout.acc_settings_fragment,
+            R.layout.fragment_acc_settings,
             container,
             false
         )

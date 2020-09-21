@@ -11,14 +11,14 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sftraining.R
-import com.example.sftraining.globalAdapters.ExercisesRecyclerAdapter
-import com.example.sftraining.globalviewmodels.ExersViewModel
+import com.example.sftraining.globalAdapters.ExersRecyclerAdapter
+import com.example.sftraining.globalViewModels.ExersViewModel
 
 class ExersFragment : Fragment() {
 
     private val exerViewModel: ExersViewModel by activityViewModels()
     private lateinit var recyclerView: RecyclerView
-    private lateinit var recyclerAdapter: ExercisesRecyclerAdapter
+    private lateinit var recyclerAdapter: ExersRecyclerAdapter
     private lateinit var root: View
 
     override fun onCreateView(
@@ -26,12 +26,12 @@ class ExersFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        root = inflater.inflate(R.layout.list_of_exers, container, false)
+        root = inflater.inflate(R.layout.fragment_list_of_exers, container, false)
 
         initView(root)
 
         exerViewModel.getExers().observe(viewLifecycleOwner, Observer { exers ->
-            recyclerAdapter = ExercisesRecyclerAdapter(lifecycle, requireActivity().supportFragmentManager, exers)
+            recyclerAdapter = ExersRecyclerAdapter(lifecycle, requireActivity().supportFragmentManager, exers)
             recyclerView.adapter = recyclerAdapter
         })
 

@@ -23,7 +23,6 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.Exception
 
 @AndroidEntryPoint
 class EnterActivity : BaseActivity() {
@@ -39,7 +38,7 @@ class EnterActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.enter_activity)
+        setContentView(R.layout.activity_enter)
 
         setProgressIndicatorLayout(R.id.loading_indicator_layout_enter)
 

@@ -23,7 +23,7 @@
         android:id="@+id/navKnowingFragment"
         android:name="com.example.sftraining.ui.registration.knowing.KnowingFragment"
         android:label="knowing_viewpager_fragment"
-        tools:layout="@layout/knowing_viewpager_fragment">
+        tools:layout="@layout/fragment_knowing_viewpager">
         <action
             android:id="@+id/action_knowingFragment_to_chooseEnterTypeFragment"
             app:destination="@id/navChooseEnterTypeFragment"

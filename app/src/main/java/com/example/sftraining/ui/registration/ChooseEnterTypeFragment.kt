@@ -25,7 +25,7 @@ class ChooseEnterTypeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.choose_enter_type_fragment, container, false)
+        val root = inflater.inflate(R.layout.fragment_choose_enter_type, container, false)
 
         initView(root)
 

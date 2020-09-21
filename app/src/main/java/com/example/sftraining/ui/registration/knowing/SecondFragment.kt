@@ -19,7 +19,7 @@ class SecondFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.second_start_fragment, container, false)
+        val root = inflater.inflate(R.layout.fragment_second_start, container, false)
 
         initView(root)
         val viewPager = activity?.findViewById<ViewPager2>(R.id.knowing_viewpager)

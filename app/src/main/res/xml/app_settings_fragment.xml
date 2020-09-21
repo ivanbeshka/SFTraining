@@ -6,7 +6,7 @@
     <PreferenceCategory
         android:key="appearance"
         android:title="Appearance">
-        <!--        android:layout="@layout/custom_preference_category">-->
+        <!--        android:layout="@layout/fragment_custom_preference_category">-->
 
         <ListPreference
             android:defaultValue="@string/light_theme"

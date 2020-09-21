@@ -21,7 +21,7 @@ class KnowingFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.knowing_viewpager_fragment, container, false)
+        val root = inflater.inflate(R.layout.fragment_knowing_viewpager, container, false)
 
         initView(root)
 

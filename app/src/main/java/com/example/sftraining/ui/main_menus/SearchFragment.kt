@@ -20,7 +20,7 @@ class SearchFragment : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.autocomplete_fragment, container, false)
+        val root = inflater.inflate(R.layout.fragment_autocomplete, container, false)
 
         initView(root)
 

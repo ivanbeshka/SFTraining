@@ -20,7 +20,7 @@ class BottomNavigation : BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.bottom_nav_sheet, container, false)
+        return inflater.inflate(R.layout.fragment_bottom_nav_sheet, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -1,4 +1,4 @@
-package com.example.sftraining.globalviewmodels
+package com.example.sftraining.globalViewModels
 
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject

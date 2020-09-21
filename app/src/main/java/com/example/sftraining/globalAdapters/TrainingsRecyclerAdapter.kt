@@ -2,8 +2,6 @@ package com.example.sftraining.globalAdapters
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Color
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.sftraining.R
-import com.example.sftraining.databinding.TrainingItemBinding
+import com.example.sftraining.databinding.ItemTrainingBinding
 import com.example.sftraining.model.Training
 import com.google.android.material.imageview.ShapeableImageView
 import net.cachapa.expandablelayout.ExpandableLayout
@@ -22,7 +20,7 @@ import net.cachapa.expandablelayout.ExpandableLayout.OnExpansionUpdateListener
 class TrainingsRecyclerAdapter(private var trainingsList: List<Training>) :
     RecyclerView.Adapter<TrainingsRecyclerAdapter.TrainingViewHolder>() {
 
-    inner class TrainingViewHolder(private val trainingItemBinding: TrainingItemBinding) :
+    inner class TrainingViewHolder(private val trainingItemBinding: ItemTrainingBinding) :
         RecyclerView.ViewHolder(trainingItemBinding.root), View.OnClickListener,
         OnExpansionUpdateListener {
 
@@ -63,7 +61,7 @@ class TrainingsRecyclerAdapter(private var trainingsList: List<Training>) :
         @SuppressLint("InflateParams")
         private fun createTitleView(text: String): TextView {
             val tv: TextView =
-                inflater.inflate(R.layout.exer_title_item, null) as TextView
+                inflater.inflate(R.layout.item_exer_title, null) as TextView
             tv.text = text
             return tv
         }
@@ -80,9 +78,9 @@ class TrainingsRecyclerAdapter(private var trainingsList: List<Training>) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrainingViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val trainingItemBinding =
-            DataBindingUtil.inflate<TrainingItemBinding>(
+            DataBindingUtil.inflate<ItemTrainingBinding>(
                 inflater,
-                R.layout.training_item,
+                R.layout.item_training,
                 parent,
                 false
             )

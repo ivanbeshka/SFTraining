@@ -85,7 +85,7 @@ class CreateExerFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.create_exer_fragment, container, false)
+        val root = inflater.inflate(R.layout.fragment_create_exer, container, false)
 
         initView(root)
 

@@ -28,7 +28,7 @@ class RegisterFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.register_fragment, container, false)
+        val root = inflater.inflate(R.layout.fragment_register, container, false)
 
         initView(root)
 

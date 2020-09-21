@@ -21,7 +21,7 @@ class ThirdFragment : Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.third_start_fragment, container, false)
+        val root = inflater.inflate(R.layout.fragment_third_start, container, false)
 
         initView(root)
         val viewPager = activity?.findViewById<ViewPager2>(R.id.knowing_viewpager)

@@ -30,7 +30,7 @@ class LoginFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.login_fragment, container, false)
+        val root = inflater.inflate(R.layout.fragment_login, container, false)
 
         firebaseAuth = Firebase.auth
 

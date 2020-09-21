@@ -4,7 +4,6 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.activity.addCallback
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.sftraining.R
@@ -15,7 +14,7 @@ import com.example.sftraining.ui.navigation.BottomNavigation
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.main_activity.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 @AndroidEntryPoint
@@ -66,7 +65,7 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_activity)
+        setContentView(R.layout.activity_main)
 
         setSupportActionBar(bottom_bar)
         setProgressIndicatorLayout(R.id.loading_indicator_layout_main)

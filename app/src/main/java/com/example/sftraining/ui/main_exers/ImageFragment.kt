@@ -18,7 +18,7 @@ class ImageFragment(private val imageUrl: String) : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.exer_image_fragment, container, false)
+        val root = inflater.inflate(R.layout.fragment_exer_image, container, false)
 
         initView(root)
 

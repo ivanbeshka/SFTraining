@@ -10,22 +10,21 @@ import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.sftraining.R
-import com.example.sftraining.databinding.ExerItemBinding
+import com.example.sftraining.databinding.ItemExerBinding
 import com.rd.PageIndicatorView
 import com.rd.animation.type.AnimationType
 import com.example.sftraining.model.Exer
-import com.google.android.material.imageview.ShapeableImageView
 import com.example.sftraining.ui.main_exers.ExerViewPagerAdapter
 import com.example.sftraining.ui.main_exers.ImageFragment
 
-class ExercisesRecyclerAdapter (private val lifecycle: Lifecycle, private val fragmentManager: FragmentManager, private val exersList: List<Exer>) :
-    RecyclerView.Adapter<ExercisesRecyclerAdapter.ExerViewHolder>() {
+class ExersRecyclerAdapter (private val lifecycle: Lifecycle, private val fragmentManager: FragmentManager, private val exersList: List<Exer>) :
+    RecyclerView.Adapter<ExersRecyclerAdapter.ExerViewHolder>() {
 
     private lateinit var pagerAdapter: ExerViewPagerAdapter
     private lateinit var viewPager: ViewPager2
     private lateinit var pagerDots: PageIndicatorView
 
-    inner class ExerViewHolder(private val exerItemBinding: ExerItemBinding) :
+    inner class ExerViewHolder(private val exerItemBinding: ItemExerBinding) :
         RecyclerView.ViewHolder(exerItemBinding.root) {
 
         fun bind(exer: Exer) {
@@ -62,7 +61,7 @@ class ExercisesRecyclerAdapter (private val lifecycle: Lifecycle, private val fr
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExerViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val exerItemBinding =
-            DataBindingUtil.inflate<ExerItemBinding>(inflater, R.layout.exer_item, parent, false)
+            DataBindingUtil.inflate<ItemExerBinding>(inflater, R.layout.item_exer, parent, false)
 
         return ExerViewHolder(exerItemBinding)
     }

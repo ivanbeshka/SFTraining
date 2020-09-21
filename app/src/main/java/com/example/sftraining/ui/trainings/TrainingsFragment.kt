@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sftraining.R
 import com.example.sftraining.globalAdapters.TrainingsRecyclerAdapter
-import com.example.sftraining.globalviewmodels.TrainingsViewModel
+import com.example.sftraining.globalViewModels.TrainingsViewModel
 
 class TrainingsFragment : Fragment() {
 
@@ -26,7 +26,7 @@ class TrainingsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        root = inflater.inflate(R.layout.trainings_fragment, container, false)
+        root = inflater.inflate(R.layout.fragment_trainings, container, false)
 
         initView(root)
 
